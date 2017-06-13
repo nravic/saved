@@ -1,0 +1,25 @@
+#!/usr/bin/perl
+#
+# adapted from Larry Wall's version
+
+if( $#ARGV < 1 )
+{
+   print "Usage: $0\n";
+   print << 'EOU';
+  rename script examples from lwall:
+    rename 's/\.orig$//' *.orig
+    rename 'y/A-Z/a-z/ unless /^Make/' *
+    rename '$_ .= \".bad\"' *.f
+    rename 'print \"$_: \"; s/foo/bar/ if <stdin> =~ /^y/i' *
+EOU
+   exit(1);
+}
+
+$op = shift;
+for($k = 0; $k <= $#ARGV; $k++) 
+{
+    $was = $_ = $ARGV[$k];
+    eval $op;
+    die $@ if $@;
+    system("mv \"$was\" \"$_\"\n") unless $was eq $_;
+}

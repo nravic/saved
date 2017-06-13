@@ -1,0 +1,177 @@
+//
+//	THIS SOFTWARE AND ANY ACCOMPANYING DOCUMENTATION IS RELEASED "AS IS." THE
+//	U.S.GOVERNMENT MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, CONCERNING
+//	THIS SOFTWARE AND ANY ACCOMPANYING DOCUMENTATION, INCLUDING, WITHOUT LIMITATION,
+//	ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT
+//	WILL THE U.S. GOVERNMENT BE LIABLE FOR ANY DAMAGES, INCLUDING ANY LOST PROFITS,
+//	LOST SAVINGS OR OTHER INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE,
+//	OR INABILITY TO USE, THIS SOFTWARE OR ANY ACCOMPANYING DOCUMENTATION, EVEN IF
+//	INFORMED IN ADVANCE OF THE POSSIBILITY OF SUCH DAMAGES.
+//
+//
+// TacticalVehicle.cpp: implementation of the CTacticalVehicle class.
+//
+//////////////////////////////////////////////////////////////////////
+
+
+#pragma warning(disable:4786)
+
+#include <cmath>	// sin cos, ...
+#include <valarray>
+#include <iostream>
+using namespace std;
+
+#ifdef STEVETEST
+#include <mex.h>	//used for mexPrintf
+#endif	//STEVETEST
+
+#include <GlobalDefines.h>
+
+#include "TacticalVehicle.h"
+
+#define UPDATE_INCREMENT_sec (0.02)
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CTacticalVehicle::CTacticalVehicle( const BOOL& isSubtractBaseTables,
+								   const char* params_file, const char* datcom_file,stringstream& sstrErrorMessage):
+	m_cmdType(cmdWaypoints)
+{
+	m_pVehicleSimulation = new CVEHICLESIMULATION_t(sstrErrorMessage, isSubtractBaseTables,
+																									params_file, datcom_file);
+	
+	// size storage for inputs and outputs
+	vdGetInputsVehicle().resize(vehGetVehicle().iGetNumberInputs(),0.0);
+	vdGetOutputsVehicle().resize(vehGetVehicle().iGetNumberOutputs(),0.0);
+
+	dGetElapsedTimeLast() = 0.0;
+	dGetLeftoverTime() = 0.0;
+	iGetVehicleID() = -1;	//uninitialized
+
+	m_psensorFootprint = new CSensorFootprint();
+	m_pwaypointGuidance = new CWaypointGuidance();
+
+	vdGetCommands().resize(cmdvahTotal,0.0);
+}
+
+CTacticalVehicle::~CTacticalVehicle()
+{
+	delete m_pwaypointGuidance;
+	m_pwaypointGuidance = 0;
+	delete m_psensorFootprint;
+	m_psensorFootprint = 0;
+	delete m_pVehicleSimulation;
+	m_pVehicleSimulation = 0;
+}
+
+void CTacticalVehicle::UpdateDynamics(double dElapsedTime_sec,stringstream& sstrMessage)
+{
+	double dDeltaTimeSec = dElapsedTime_sec - dGetElapsedTimeLast() + dGetLeftoverTime();
+	if(dDeltaTimeSec > 0.0)
+	{
+		dGetLeftoverTime() = fmod(dDeltaTimeSec,UPDATE_INCREMENT_sec);
+		int iNumberUpdates = static_cast<int>(dDeltaTimeSec / UPDATE_INCREMENT_sec);
+		for(int iCount=0;iCount<iNumberUpdates;iCount++)
+		{
+			double dCommandHeading_rad = 0.0;
+			double dCommandAltitude_ft = 0.0;
+			double dCommandVelocity_ftpersec = 0.0;
+			dGetElapsedTimeLast() += UPDATE_INCREMENT_sec;
+			dElapsedTime_sec += UPDATE_INCREMENT_sec;	//for printouts
+			stringstream sstrMessageTemp1;
+			waypointGetGuidance().WaypointGuidance(dElapsedTime_sec,iGetVehicleID(),UPDATE_INCREMENT_sec,
+													dGetVehicleState(CVEHICLEDYNAMICS_t::stateX_Feet),
+													dGetVehicleState(CVEHICLEDYNAMICS_t::stateY_Feet),
+													dGetVehicleState(CVEHICLEDYNAMICS_t::statePsi_Rad),
+													dCommandHeading_rad,dCommandAltitude_ft,dCommandVelocity_ftpersec,
+													sstrMessage);
+			if(!sstrMessageTemp1.str().empty())
+			{
+				sstrMessage << dElapsedTime_sec << " :VEHICLE " << iGetVehicleID() <<  ": " << sstrMessageTemp1.str();
+			}
+			vdGetInputsVehicle()[CVEHICLESIMULATION_t::inapbvPsi_rad] = dCommandHeading_rad;
+			vdGetInputsVehicle()[CVEHICLESIMULATION_t::inapbvAltitude_ft] = dCommandAltitude_ft;
+			vdGetInputsVehicle()[CVEHICLESIMULATION_t::inapbvVelocity_fps] = dCommandVelocity_ftpersec;
+
+			stringstream sstrMessageTemp2;
+			if(!vehGetVehicle().bUpdate(vdGetInputsVehicle(),dGetElapsedTimeLast(),vdGetOutputsVehicle(),sstrMessageTemp2))
+			{
+				sstrMessage << dElapsedTime_sec << " :VEHICLE " << iGetVehicleID() <<  ": " << sstrMessageTemp2.str();
+				break;
+			}
+			
+			sensorGetFootprint().Sensor(dElapsedTime_sec,iGetVehicleID(),
+																	dGetVehicleState(CVEHICLEDYNAMICS_t::stateX_Feet),
+																	dGetVehicleState(CVEHICLEDYNAMICS_t::stateY_Feet),
+																	dGetVehicleState(CVEHICLEDYNAMICS_t::statePsi_Rad),
+																	dGetVehicleState(CVEHICLEDYNAMICS_t::statePhi_Rad),
+																	sstrMessage);
+
+#     ifdef JWM_DEBUG
+			if( isnan( dGetVehicleState(CVEHICLEDYNAMICS_t::stateX_Feet) ) ||
+					isnan( dGetVehicleState(CVEHICLEDYNAMICS_t::stateY_Feet) ) ||
+					isnan( dGetVehicleState(CVEHICLEDYNAMICS_t::statePhi_Rad)) ||
+					isnan( dGetVehicleState(CVEHICLEDYNAMICS_t::statePsi_Rad)) ||
+					isnan( dCommandHeading_rad ) ||
+					isnan( dCommandAltitude_ft ) ||
+					isnan( dCommandVelocity_ftpersec ) )
+			{
+				sstrMessage << "@t = dGetElapsedTimeLast(): some NaNs found!"
+										<< "\ndGetVehicleState(CVEHICLEDYNAMICS_t::stateX_Feet) = "
+										<< dGetVehicleState(CVEHICLEDYNAMICS_t::stateX_Feet)
+										<< "\ndGetVehicleState(CVEHICLEDYNAMICS_t::stateY_Feet) = "
+										<< dGetVehicleState(CVEHICLEDYNAMICS_t::stateY_Feet)
+										<< "\ndGetVehicleState(CVEHICLEDYNAMICS_t::statePhi_Rad) = " 
+										<< dGetVehicleState(CVEHICLEDYNAMICS_t::statePhi_Rad)
+										<< "\ndGetVehicleState(CVEHICLEDYNAMICS_t::statePsi_Rad) = "
+										<< dGetVehicleState(CVEHICLEDYNAMICS_t::statePsi_Rad)
+										<< "\ndCommandHeading_rad = "
+										<< dCommandHeading_rad
+										<< "\ndCommandAltitude_ft = "
+										<< dCommandAltitude_ft
+										<< "\ndCommandVelocity_ftpersec = "
+										<< dCommandVelocity_ftpersec
+										<< endl << flush;
+			}
+#     endif
+		}	//for(int iCount=0;iCount<iNumberUpdates;iCount++)
+	
+	}
+	else if(dDeltaTimeSec < 0)
+	{
+		sstrMessage << dGetElapsedTimeLast() << " :VEHICLE " << iGetVehicleID() 
+					<<  ": CTacticalVehicle::UpdateDynamics:: Negative time encountered, dElapsedTimeSec " 
+					<< dElapsedTime_sec << ", dGetElapsedTimeLast() " << dGetElapsedTimeLast() <<  endl;
+	}
+
+	return;
+}
+
+void CTacticalVehicle::InitializeDynamics(VAL_DOUBLE_t& valdInitialState,stringstream& sstrErrorMessage)
+{
+	//  set command type and cntrl alloc method
+	CVEHICLESIMULATION_t::enFCStype cmdtype = CVEHICLESIMULATION_t::fcsAltPsiBetaVel;
+//	CDYNAMIC_INVERSION_t::enControlAllocation ctlallcmeth = CDYNAMIC_INVERSION_t::ctlallcPsuedoInverse;
+	CDYNAMIC_INVERSION_t::enControlAllocation ctlallcmeth = CDYNAMIC_INVERSION_t::ctlallcControlAllocationLP;
+	vehGetVehicle().bReinitialize(valdInitialState,cmdtype,ctlallcmeth,sstrErrorMessage);
+}
+
+
+void
+CTacticalVehicle::ConvertMachToFPS(const double& dMach,const double& dAltitude,double& dVelocityFPS)
+{
+    double dTemperature = 390.0;
+    if ((dAltitude < 35000.0)&&(dAltitude>0.0))
+	{
+		dTemperature = 519.0*(1.0 - 0.00000703*dAltitude);
+	}
+    	// Mach number
+    double dSpeedOfSound_fps = sqrt(1.4*1716.3*dTemperature);
+	
+	dVelocityFPS = dMach * dSpeedOfSound_fps;
+}
+
+
+
+

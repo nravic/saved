@@ -1,0 +1,59 @@
+# FILE VERSION 
+1.4
+# Weight = 90 lb
+90.0
+# Ixx = 0.610 sl-ft^2
+ 0.610 
+#Iyy = 0.758 sl-ft^2
+0.758 
+#Izz = 1.843 sl-ft^2
+1.843 
+#Izx = 0.0 sl-ft^2 (didn't have a good estimate of this)
+0.0
+#Reference quantities
+#Wing area (S) = 230 sq in = 1.5972 sq ft
+1.5972  
+#Chord (c) = 31.25 in = 2.6042 ft
+2.6042 
+#Span (b) = 31.25 in = 2.6042 ft
+2.6042 
+# Nominal landing condition for the Globalhawk
+# PID control parameters
+# K, Ti, Td, Tt
+# P channel
+5.0
+0.1
+10.0
+0.5
+# Q channel
+5.0
+0.05
+0.5
+0.5 
+# R channel
+10.0
+0.5
+0.5
+0.5 
+# Gains for Alt, Psi, Beta, Vel command system
+#KGammaPerAltErr, degrees per 100 ft
+0.00087266
+#KThetaDotperGammaErr, (deg/sec)/deg or (rad/sec)/rad
+0.85
+#KPsiDotperPsiErr, (deg/sec)/deg or (rad/sec)/rad
+0.6
+#KCosPhiForQGain
+1.0
+#KPLoop
+2.0
+#KBetaLoop
+-10.0
+#KVLoop
+1.0
+#engine #1 parameters
+#MaxThrust_lbs,
+#50.0
+100.0
+#MinThrust_lbs,
+5.0
+

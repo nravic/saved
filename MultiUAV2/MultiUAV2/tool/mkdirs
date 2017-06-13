@@ -1,0 +1,56 @@
+#!/bin/bash
+#
+# This will make a skeleton directory structure for import into CVS.
+# After importing the tree, check out the tree, add the files, commit the
+# files, and you'll have a new repository.
+#
+# Note: If you add directories to the base tree, you'll have to add them
+# here too!!!!
+
+DIRS=( \
+	./AVDSData \
+	./AVDSData/craft.MultiUAV \
+	./Documents \
+	./InputFiles \
+	./m-file \
+	./MonteCarloData \
+	./s-model \
+	./src \
+	./src/CapTranShip \
+	./src/CapTranShip/CapTranShipDll \
+	./src/CapTranShip/CapTranShipLib \
+	./src/CapTranShip/CapTranShipMex \
+	./src/CommunicationsDLL \
+	./src/Includes \
+	./src/lib \
+	./src/lib/aix \
+	./src/lib/hpux \
+	./src/lib/linux \
+	./src/lib/macosx \
+	./src/lib/sgi \
+	./src/lib/solaris \
+	./src/lib/win32 \
+	./src/Master \
+	./src/TacticalVehicleDLL \
+	./src/Trajectory \
+	./src/Trajectory/TrajectoryLib \
+	./src/Trajectory/TrajectoryMEX \
+	./src/Vehicle \
+	./src/Vehicle/VehicleDynamics \
+	./src/Vehicle/VehicleDynamics/DATCOMTableLib \
+	./src/Vehicle/VehicleDynamics/DATCOMTableLib/DATCOMTableMex \
+	./src/Vehicle/VehicleDynamics/DATCOMTableLib/DATCOMTest \
+	./src/Vehicle/VehicleDynamics/EuminxdLib \
+	./src/Vehicle/VehicleDynamics/EuminxdLib/TestEuminxd \
+	./src/Vehicle/VehicleDynamicsMex \
+	./src/Vehicle/VehicleDynamicsSFunc \
+	./tool \
+)
+
+for d in ${DIRS[*]}; do
+  mkdir -p $d
+	if [ $? -ne 0 ]; then
+	  echo "Error: ${0##*/} - command 'mkdir -p $d' failed!"
+		exit 1
+  fi
+done

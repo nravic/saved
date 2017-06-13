@@ -1,0 +1,207 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CapTransShipLib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE1.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /Fp"Release/CapTransShipLib.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CapTranShip\CapTranShipLib\CapTransShip.cpp"
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CapTranShip\CapTranShipLib\ctp.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE1.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Release\CapTransShipLib.lib"  ".\Release\CapTransShip.obj" ".\Release\ctp.obj" "
+<h3>Output Window</h3>
+Compiling...
+CapTransShip.cpp
+ctp.c
+C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CapTranShip\CapTranShipLib\ctp.c(161) : warning C4018: '>' : signed/unsigned mismatch
+C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CapTranShip\CapTranShipLib\ctp.c(192) : warning C4018: '<' : signed/unsigned mismatch
+C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CapTranShip\CapTranShipLib\ctp.c(192) : warning C4018: '<' : signed/unsigned mismatch
+C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CapTranShip\CapTranShipLib\ctp.c(1836) : warning C4047: '=' : 'int ' differs in levels of indirection from 'struct _iobuf *'
+C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CapTranShip\CapTranShipLib\ctp.c(1837) : warning C4047: '==' : 'int ' differs in levels of indirection from 'void *'
+C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CapTranShip\CapTranShipLib\ctp.c(1636) : warning C4700: local variable 'f' used without having been initialized
+Creating library...
+<h3>
+--------------------Configuration: CapTranShipDll - Win32 ReleaseDLL R14--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE2.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "..\CapTranShipLib" /I "..\..\includes" /D "MATLAB_MEX_FILE" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "CapTranShipDll_EXPORTS" /U "MATLAB_R12" /Fp"CapTranShipDll___Win32_ReleaseDLL_R14/CapTranShipDll.pch" /YX /Fo"CapTranShipDll___Win32_ReleaseDLL_R14/" /Fd"CapTranShipDll___Win32_ReleaseDLL_R14/" /FD /c 
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CapTranShip\CapTranShipDll\CapTranShipDll.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE2.tmp" 
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE3.tmp" with contents
+[
+..\CapTranShipLib\release\CapTransShipLib.lib winmm.lib libmex.lib libmx.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"CapTranShipDll___Win32_ReleaseDLL_R14/CapTranShipDll.pdb" /machine:I386 /out:"..\..\lib\win32\R14\CapTranShipDll.dll" /implib:"CapTranShipDll___Win32_ReleaseDLL_R14/CapTranShipDll.lib" /export:mexFunction 
+".\CapTranShipDll___Win32_ReleaseDLL_R14\CapTranShipDll.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE3.tmp"
+<h3>Output Window</h3>
+Compiling...
+CapTranShipDll.cpp
+Linking...
+   Creating library CapTranShipDll___Win32_ReleaseDLL_R14/CapTranShipDll.lib and object CapTranShipDll___Win32_ReleaseDLL_R14/CapTranShipDll.exp
+<h3>
+--------------------Configuration: VehicleDynamics - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+<h3>
+--------------------Configuration: DATCOMTableLib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE7.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "..\..\..\includes" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /Fp"Release/DATCOMTableLib.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\Vehicle\VehicleDynamics\DATCOMTableLib\DataTable.cpp"
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\Vehicle\VehicleDynamics\DATCOMTableLib\DATCOMTable.cpp"
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\Vehicle\VehicleDynamics\DATCOMTableLib\DeltaTable.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE7.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Release\DATCOMTableLib.lib"  ".\Release\DataTable.obj" ".\Release\DATCOMTable.obj" ".\Release\DeltaTable.obj" "
+<h3>Output Window</h3>
+Compiling...
+DataTable.cpp
+DATCOMTable.cpp
+DeltaTable.cpp
+Creating library...
+<h3>
+--------------------Configuration: EuminxdLib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE8.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /Fp"Release/EuminxdLib.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\Vehicle\VehicleDynamics\EuminxdLib\Euminxd.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE8.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Release\EuminxdLib.lib"  ".\Release\Euminxd.obj" "
+<h3>Output Window</h3>
+Compiling...
+Euminxd.cpp
+Creating library...
+<h3>
+--------------------Configuration: TacticalVehicleDLL - Win32 ReleaseDLL R14--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE9.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "..\Includes" /I "..\Vehicle\VehicleDynamics\EuminxdLib" /I "..\Vehicle\VehicleDynamics" /I "..\Vehicle\VehicleDynamics\DATCOMTableLib" /D "NDEBUG" /D "EXTERNAL_VEHICLE" /D "MATLAB_MEX_FILE" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "TacticalVehicleDLL_EXPORTS" /U "MATLAB_R12" /Fo"TacticalVehicleDLL___Win32_ReleaseDLL_R14/" /Fd"TacticalVehicleDLL___Win32_ReleaseDLL_R14/" /FD /c 
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\TacticalVehicleDLL\SensorFootprint.cpp"
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\TacticalVehicleDLL\TacticalVehicle.cpp"
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\TacticalVehicleDLL\TacticalVehicleDLL.cpp"
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\TacticalVehicleDLL\WaypointGuidance.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBE9.tmp" 
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBEA.tmp" with contents
+[
+..\Vehicle\VehicleDynamics\EuminxdLib\Release\EuminxdLib.lib ..\Vehicle\VehicleDynamics\DATCOMTableLib\release\DATCOMTableLib.lib libmex.lib libmx.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"TacticalVehicleDLL___Win32_ReleaseDLL_R14/TacticalVehicle.pdb" /machine:I386 /out:"..\lib\win32\R14\TacticalVehicle.dll" /implib:"TacticalVehicleDLL___Win32_ReleaseDLL_R14/TacticalVehicle.lib" /export:mexFunction 
+".\TacticalVehicleDLL___Win32_ReleaseDLL_R14\SensorFootprint.obj"
+".\TacticalVehicleDLL___Win32_ReleaseDLL_R14\TacticalVehicle.obj"
+".\TacticalVehicleDLL___Win32_ReleaseDLL_R14\TacticalVehicleDLL.obj"
+".\TacticalVehicleDLL___Win32_ReleaseDLL_R14\WaypointGuidance.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBEA.tmp"
+<h3>Output Window</h3>
+Compiling...
+SensorFootprint.cpp
+TacticalVehicle.cpp
+TacticalVehicleDLL.cpp
+WaypointGuidance.cpp
+Generating Code...
+Linking...
+   Creating library TacticalVehicleDLL___Win32_ReleaseDLL_R14/TacticalVehicle.lib and object TacticalVehicleDLL___Win32_ReleaseDLL_R14/TacticalVehicle.exp
+<h3>
+--------------------Configuration: TrajectoryLib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBEE.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "..\..\Includes" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\Trajectory\TrajectoryLib\Trajectory.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBEE.tmp" 
+Creating command line "link.exe -lib /nologo /out:"Release\TrajectoryLib.lib"  ".\Release\Trajectory.obj" "
+<h3>Output Window</h3>
+Compiling...
+Trajectory.cpp
+Creating library...
+<h3>
+--------------------Configuration: TrajectoryMEX - Win32 ReleaseDLL R14--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBEF.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "..\..\Includes" /I "..\TrajectoryLib" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "TRAJECTORYMEX_EXPORTS" /U "MATLAB_R12" /Fo"TrajectoryMEX___Win32_ReleaseDLL_R14/" /Fd"TrajectoryMEX___Win32_ReleaseDLL_R14/" /FD /c 
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\Trajectory\TrajectoryMEX\TrajectoryMex.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBEF.tmp" 
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBF0.tmp" with contents
+[
+..\TrajectoryLib\Release\TrajectoryLib.lib libmex.lib libmx.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"TrajectoryMEX___Win32_ReleaseDLL_R14/TrajectoryMEX.pdb" /machine:I386 /out:"..\..\lib\win32\R14\TrajectoryMEX.dll" /implib:"TrajectoryMEX___Win32_ReleaseDLL_R14/TrajectoryMEX.lib" /export:mexFunction 
+".\TrajectoryMEX___Win32_ReleaseDLL_R14\TrajectoryMex.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBF0.tmp"
+<h3>Output Window</h3>
+Compiling...
+TrajectoryMex.cpp
+Linking...
+   Creating library TrajectoryMEX___Win32_ReleaseDLL_R14/TrajectoryMEX.lib and object TrajectoryMEX___Win32_ReleaseDLL_R14/TrajectoryMEX.exp
+<h3>
+--------------------Configuration: CommunicationsDLL - Win32 ReleaseDLL R14--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBF4.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "..\Includes" /I "..\Vehicle\VehicleDynamics" /I "..\Vehicle\VehicleDynamics\DATCOMTableLib" /D "NDEBUG" /D "EXTERNAL_VEHICLE" /D "MATLAB_MEX_FILE" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "CommunicationsDLL_EXPORTS" /U "MATLAB_R12" /Fo"CommunicationsDLL___Win32_ReleaseDLL_R14/" /Fd"CommunicationsDLL___Win32_ReleaseDLL_R14/" /FD /c 
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CommunicationsDLL\CommunicationsDLL.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBF4.tmp" 
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBF5.tmp" with contents
+[
+..\Vehicle\VehicleDynamics\DATCOMTableLib\release\DATCOMTableLib.lib libcpmt.lib libmex.lib libmx.lib libmex.lib libmx.lib kernel32.lib user32.lib gdi32.lib winspool.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"CommunicationsDLL___Win32_ReleaseDLL_R14/CommunicationsDLL.pdb" /machine:I386 /nodefaultlib:"libcpmt.lib" /out:"..\lib\win32\R14\CommunicationsDLL.dll" /implib:"CommunicationsDLL___Win32_ReleaseDLL_R14/CommunicationsDLL.lib" /export:mexFunction 
+".\CommunicationsDLL___Win32_ReleaseDLL_R14\CommunicationsDLL.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBF5.tmp"
+<h3>Output Window</h3>
+Compiling...
+CommunicationsDLL.cpp
+Linking...
+   Creating library CommunicationsDLL___Win32_ReleaseDLL_R14/CommunicationsDLL.lib and object CommunicationsDLL___Win32_ReleaseDLL_R14/CommunicationsDLL.exp
+<h3>
+--------------------Configuration: CapTranShipMex - Win32 ReleaseDLL R14--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBF9.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /I "..\\CapTranShipLib" /I "..\..\includes" /D "MATLAB_MEX_FILE" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "CapTranShipMex_EXPORTS" /U "MATLAB_R12" /Fp"CapTranShipMex___Win32_ReleaseDLL_R14/CapTranShipMex.pch" /YX /Fo"CapTranShipMex___Win32_ReleaseDLL_R14/" /Fd"CapTranShipMex___Win32_ReleaseDLL_R14/" /FD /c 
+"C:\Documents and Settings\rasmussj\Desktop\MultiUAV.PR\MultiUAV2\src\CapTranShip\CapTranShipMex\CapTranShipMex.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBF9.tmp" 
+Creating temporary file "C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBFA.tmp" with contents
+[
+..\CapTranShipLib\Release\CapTransShipLib.lib libmex.lib libmx.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"CapTranShipMex___Win32_ReleaseDLL_R14/CapTranShipMex.pdb" /machine:I386 /out:"..\..\lib\win32\R14\CapTranShipMex.dll" /implib:"CapTranShipMex___Win32_ReleaseDLL_R14/CapTranShipMex.lib" /export:mexFunction 
+".\CapTranShipMex___Win32_ReleaseDLL_R14\CapTranShipMex.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\rasmussj\LOCALS~1\Temp\RSPBFA.tmp"
+<h3>Output Window</h3>
+Compiling...
+CapTranShipMex.cpp
+Linking...
+   Creating library CapTranShipMex___Win32_ReleaseDLL_R14/CapTranShipMex.lib and object CapTranShipMex___Win32_ReleaseDLL_R14/CapTranShipMex.exp
+<h3>
+--------------------Configuration: Master - Win32 ReleaseDll R14--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+Master - 0 error(s), 6 warning(s)
+</pre>
+</body>
+</html>

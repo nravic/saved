@@ -1,0 +1,4091 @@
+Model {
+  Name			  "VehicleTest"
+  Version		  4.00
+  SampleTimeColors	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowStorageClass	  off
+  ExecutionOrder	  off
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks on
+  BrowserLookUnderMasks	  off
+  Created		  "Thu Apr 10 10:21:00 2003"
+  Creator		  "mitchejw"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "rasmussj"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Mon Apr 12 11:37:09 2004"
+  ModelVersionFormat	  "1.%<AutoIncrement:23>"
+  ConfigurationManager	  "None"
+  SimParamPage		  "Solver"
+  StartTime		  "0.0"
+  StopTime		  "GlobalStopTime"
+  SolverMode		  "Auto"
+  Solver		  "FixedStepDiscrete"
+  RelTol		  "1e-3"
+  AbsTol		  "auto"
+  Refine		  "1"
+  MaxStep		  "auto"
+  MinStep		  "auto"
+  MaxNumMinSteps	  "-1"
+  InitialStep		  "auto"
+  FixedStep		  "GlobalSampleTime"
+  MaxOrder		  5
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  SaveTime		  off
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  off
+  OutputSaveName	  "yout"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Array"
+  LimitDataPoints	  on
+  MaxDataPoints		  "1000"
+  Decimation		  "1"
+  AlgebraicLoopMsg	  "warning"
+  MinStepSizeMsg	  "warning"
+  UnconnectedInputMsg	  "warning"
+  UnconnectedOutputMsg	  "warning"
+  UnconnectedLineMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  SingleTaskRateTransMsg  "none"
+  MultiTaskRateTransMsg	  "error"
+  IntegerOverflowMsg	  "warning"
+  CheckForMatrixSingularity "none"
+  UnnecessaryDatatypeConvMsg "none"
+  Int32ToFloatConvMsg	  "warning"
+  InvalidFcnCallConnMsg	  "error"
+  SignalLabelMismatchMsg  "none"
+  LinearizationMsg	  "none"
+  VectorMatrixConversionMsg "none"
+  SfunCompatibilityCheckMsg "none"
+  BlockPriorityViolationMsg "warning"
+  ArrayBoundsChecking	  "none"
+  ConsistencyChecking	  "none"
+  ZeroCross		  on
+  Profile		  off
+  SimulationMode	  "normal"
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWInlineParameters	  off
+  RTWRetainRTWFile	  off
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  TLCProfiler		  off
+  TLCDebug		  off
+  TLCCoverage		  off
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock off
+  OptimizeBlockIOStorage  on
+  BufferReuse		  on
+  ParameterPooling	  on
+  BlockReductionOpt	  on
+  RTWExpressionDepthLimit 5
+  BooleanDataType	  off
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "VehicleTest"
+    Location		    [64, 124, 1324, 992]
+    Open		    off
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      BusCreator
+      Name		      "Bus\nCreator"
+      Ports		      [3, 1]
+      Position		      [1850, 619, 1855, 851]
+      ForegroundColor	      "blue"
+      ShowName		      off
+      Inputs		      "3"
+      DisplayOption	      "bar"
+      Port {
+	PortNumber		1
+	Name			"SimBus"
+	PropagatedSignals	"Targets, VehicleStatus, TargetStatus"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      BusSelector
+      Name		      "Bus\nSelector"
+      Ports		      [1, 6]
+      Position		      [1590, 860, 1595, 945]
+      ShowName		      off
+      OutputSignals	      "AC Dynamics.Position_x,AC Dynamics.Position_y,A"
+"C Dynamics.PsiFilteredDeg,AC Dynamics.SensorOn,TacticalManuevering.Rabbit Pos"
+"tion,TacticalManuevering.AssignedTarget"
+      MuxedOutput	      off
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      Port {
+	PortNumber		1
+	Name			"<Position_x>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		2
+	Name			"<Position_y>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		3
+	Name			"<PsiFilteredDeg>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		4
+	Name			"<SensorOn>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		5
+	Name			"<Rabbit Postion>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		6
+	Name			"<AssignedTarget>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      BusSelector
+      Name		      "Bus\nSelector3"
+      Ports		      [1, 37]
+      Position		      [885, 260, 895, 810]
+      ShowName		      off
+      OutputSignals	      "Position_x,Position_y,Altitude,V_true_kts,V_tru"
+"e_fps,Phi,Theta,Psi,Alpha,Beta,Mach_number,V North,V East,V Down,PsiFilteredD"
+"eg,SensorOn,CommandPower,CommandBank,CommandHeading,CommandAltitude,CommandMa"
+"ch,CommandCR,ModeAutopilot,CommandSpoiler,CommandBrake,CommandAfterBurner,TMA"
+"utothrottle,WayPointNumber,WaypointTypeCurrent,WaypointTypeLast,WaypointTarge"
+"tHandleCurrent,WaypointTargetHandleLast,RabbitNpos,RabbitEpos,RabbitHdg,Assig"
+"nedTarget,AssignedTask"
+      MuxedOutput	      off
+      Port {
+	PortNumber		1
+	Name			"<Position_x>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		2
+	Name			"<Position_y>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		3
+	Name			"<Altitude>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		4
+	Name			"<V_true_kts>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		5
+	Name			"<V_true_fps>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		6
+	Name			"<Phi>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		7
+	Name			"<Theta>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		8
+	Name			"<Psi>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		9
+	Name			"<Alpha>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		10
+	Name			"<Beta>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		11
+	Name			"<Mach_number>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		12
+	Name			"<V North>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		13
+	Name			"<V East>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		14
+	Name			"<V Down>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		15
+	Name			"<PsiFilteredDeg>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		16
+	Name			"<SensorOn>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		17
+	Name			"<CommandPower>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		18
+	Name			"<CommandBank>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		19
+	Name			"<CommandHeading>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		20
+	Name			"<CommandAltitude>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		21
+	Name			"<CommandMach>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		22
+	Name			"<CommandCR>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		23
+	Name			"<ModeAutopilot>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		24
+	Name			"<CommandSpoiler>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		25
+	Name			"<CommandBrake>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		26
+	Name			"<CommandAfterBurner>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		27
+	Name			"<TMAutothrottle>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		28
+	Name			"<WayPointNumber>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		29
+	Name			"<WaypointTypeCurrent>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		30
+	Name			"<WaypointTypeLast>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		31
+	Name			"<WaypointTargetHandleCurrent>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		32
+	Name			"<WaypointTargetHandleLast>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		33
+	Name			"<RabbitNpos>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		34
+	Name			"<RabbitEpos>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		35
+	Name			"<RabbitHdg>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		36
+	Name			"<AssignedTarget>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		37
+	Name			"<AssignedTask>"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "CommandedTurnRadius"
+      Position		      [65, 349, 120, 371]
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      Value		      "2200"
+      VectorParams1D	      on
+      Port {
+	PortNumber		1
+	Name			"CommandTurnRadius"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant"
+      Position		      [1550, 975, 1580, 1005]
+      Value		      "0"
+      VectorParams1D	      on
+      Port {
+	PortNumber		1
+	Name			"VehicleFinished"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Constant1"
+      Position		      [1360, 1036, 1695, 1074]
+      Value		      "TargetStates.StateClassifiedNotAttacked"
+      VectorParams1D	      on
+      Port {
+	PortNumber		1
+	Name			"TargetStatus"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "DataForPlotting"
+      Ports		      [1]
+      Position		      [1955, 636, 2040, 834]
+      BackgroundColor	      "red"
+      Priority		      "5"
+      ShowPortLabels	      on
+      TreatAsAtomicUnit	      off
+      RTWSystemCode	      "Auto"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      System {
+	Name			"DataForPlotting"
+	Location		[206, 201, 1124, 742]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "SimBusIn"
+	  Position		  [310, 198, 340, 212]
+	  ForegroundColor	  "blue"
+	  BackgroundColor	  "gray"
+	  Port			  "1"
+	  LatchInput		  off
+	  SampleTime		  "GlobalSampleTime"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  DigitalClock
+	  Name			  "Digital Clock"
+	  Position		  [105, 38, 170, 62]
+	  BackgroundColor	  "green"
+	  SampleTime		  "GlobalSampleTime"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Enable Data Saving"
+	  Position		  [165, 88, 275, 122]
+	  BackgroundColor	  "orange"
+	  Value			  "OptionSaveDataPlot"
+	  VectorParams1D	  on
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  Ports			  [2, 1]
+	  Position		  [320, 22, 355, 133]
+	  BackgroundColor	  "magenta"
+	  Operator		  "AND"
+	  Inputs		  "2"
+	}
+	Block {
+	  BlockType		  Fcn
+	  Name			  "NotAtZero"
+	  Position		  [210, 35, 270, 65]
+	  BackgroundColor	  "lightBlue"
+	  Expr			  "u(1) > 0"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Save Plot Data"
+	  Ports			  [1, 0, 1]
+	  Position		  [480, 114, 550, 296]
+	  BackgroundColor	  "darkGreen"
+	  ShowPortLabels	  on
+	  TreatAsAtomicUnit	  on
+	  RTWSystemCode		  "Auto"
+	  RTWFcnNameOpts	  "Auto"
+	  RTWFileNameOpts	  "Auto"
+	  System {
+	    Name		    "Save Plot Data"
+	    Location		    [313, 74, 1278, 939]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "SimBusIn"
+	      Position		      [100, 113, 130, 127]
+	      ForegroundColor	      "blue"
+	      BackgroundColor	      "gray"
+	      Port		      "1"
+	      LatchInput	      off
+	      SampleTime	      "GlobalSampleTime"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      EnablePort
+	      Name		      "Enable"
+	      Ports		      []
+	      Position		      [50, 20, 70, 40]
+	      BackgroundColor	      "red"
+	      StatesWhenEnabling      "held"
+	      ShowOutputPort	      off
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector"
+	      Ports		      [1, 1]
+	      Position		      [235, 146, 240, 184]
+	      ShowName		      off
+	      OutputSignals	      "Targets"
+	      MuxedOutput	      on
+	      Port {
+		PortNumber		1
+		Name			"<Targets>"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector1"
+	      Ports		      [1, 1]
+	      Position		      [245, 46, 250, 84]
+	      ShowName		      off
+	      OutputSignals	      "VehicleStatus"
+	      MuxedOutput	      on
+	      Port {
+		PortNumber		1
+		Name			"<VehicleStatus>"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector2"
+	      Ports		      [1, 1]
+	      Position		      [190, 205, 195, 245]
+	      ShowName		      off
+	      OutputSignals	      "TargetStatus"
+	      MuxedOutput	      on
+	      Port {
+		PortNumber		1
+		Name			"<TargetStatus>"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux2"
+	      Ports		      [2, 1]
+	      Position		      [325, 156, 330, 194]
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      ToFile
+	      Name		      "Save Target Data"
+	      Position		      [365, 159, 470, 191]
+	      BackgroundColor	      "cyan"
+	      Filename		      "SimTargetsOut.mat"
+	      MatrixName	      "TargetPositions"
+	      Decimation	      "1"
+	      SampleTime	      "GlobalSampleTime"
+	    }
+	    Block {
+	      BlockType		      ToFile
+	      Name		      "Save Vehicle Data"
+	      Position		      [340, 48, 460, 82]
+	      BackgroundColor	      "yellow"
+	      Filename		      "SimPositionsOut.mat"
+	      MatrixName	      "XYPositions"
+	      Decimation	      "1"
+	      SampleTime	      "GlobalSampleTime"
+	    }
+	    Block {
+	      BlockType		      MATLABFcn
+	      Name		      "TargetStatus\nfor display"
+	      Position		      [225, 210, 285, 240]
+	      BackgroundColor	      "lightBlue"
+	      MATLABFcn		      "TargetStatusCheck"
+	      OutputDimensions	      "-1"
+	      OutputSignalType	      "auto"
+	      Output1D		      on
+	    }
+	    Line {
+	      Name		      "<VehicleStatus>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      1
+	      DstBlock		      "Save Vehicle Data"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "SimBusIn"
+	      SrcPort		      1
+	      Points		      [30, 0]
+	      Branch {
+		Points			[0, 45]
+		Branch {
+		  DstBlock		  "Bus\nSelector"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, 60]
+		  DstBlock		  "Bus\nSelector2"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		Points			[0, -55]
+		DstBlock		"Bus\nSelector1"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "TargetStatus\nfor display"
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      DstBlock		      "Mux2"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "<TargetStatus>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector2"
+	      SrcPort		      1
+	      DstBlock		      "TargetStatus\nfor display"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<Targets>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      1
+	      DstBlock		      "Mux2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Mux2"
+	      SrcPort		      1
+	      DstBlock		      "Save Target Data"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      Position		      [163, 408]
+	      HorizontalAlignment     "left"
+	      BackgroundColor	      "yellow"
+	      Text		      "\nSavePlot Data\n\nPURPOSE: Saves vehic"
+"le and target state information to a text files for use \n     in post simula"
+"tion plotting. \n\n"
+	      DropShadow	      on
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "Digital Clock"
+	  SrcPort		  1
+	  DstBlock		  "NotAtZero"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "SimBusIn"
+	  SrcPort		  1
+	  DstBlock		  "Save Plot Data"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "NotAtZero"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Enable Data Saving"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [155, 0]
+	  DstBlock		  "Save Plot Data"
+	  DstPort		  enable
+	}
+	Annotation {
+	  Position		  [50, 399]
+	  HorizontalAlignment	  "left"
+	  BackgroundColor	  "yellow"
+	  Text			  "\nDataForPlotting\n\nPURPOSE: Save vehicle "
+"and target state information to text files for \n     post-simulation plottin"
+"g.\n\nIMPLEMENTATION: \n- Save Plot Data - when enabled, this subsystem saves"
+" the data.\n- NotAtZero - data saving is enabled when the simulation time is "
+"greater \n     than 0.0 to prevent unitialized data from being written to the"
+" file.\n- EnableDataSaving - reads the global array \"OptionSaveDataPlot\" to"
+"\n     enable/disable data saving.\n"
+	  DropShadow		  on
+	}
+      }
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux"
+      Ports		      [1, 2]
+      Position		      [620, 455, 630, 590]
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "[39 1]"
+      BusSelectionMode	      off
+      Port {
+	PortNumber		2
+	Name			"SensedTargets"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux1"
+      Ports		      [1, 39]
+      Position		      [685, 220, 695, 790]
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "39"
+      BusSelectionMode	      off
+      Port {
+	PortNumber		1
+	Name			"Position_x"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		2
+	Name			"Position_y"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		3
+	Name			"Altitude"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		4
+	Name			"V_true_kts"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		5
+	Name			"V_true_fps"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		6
+	Name			"Phi"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		7
+	Name			"Theta"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		8
+	Name			"Psi"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		9
+	Name			"Alpha"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		10
+	Name			"Beta"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		11
+	Name			"Mach_number"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		12
+	Name			"V North"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		13
+	Name			"V East"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		14
+	Name			"V Down"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		15
+	Name			"PsiFilteredDeg"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		16
+	Name			"Thrust"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		17
+	Name			"SensorOn"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		18
+	Name			"CommandPower"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		19
+	Name			"CommandBank"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		20
+	Name			"CommandHeading"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		21
+	Name			"CommandAltitude"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		22
+	Name			"CommandMach"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		23
+	Name			"CommandCR"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		24
+	Name			"ModeAutopilot"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		25
+	Name			"CommandSpoiler"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		26
+	Name			"CommandBrake"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		27
+	Name			"CommandAfterBurner"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		28
+	Name			"TMAutothrottle"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		29
+	Name			"WayPointNumber"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		30
+	Name			"WaypointTypeCurrent"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		31
+	Name			"WaypointTypeLast"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		32
+	Name			"WaypointTargetHandleCurrent"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		33
+	Name			"WaypointTargetHandleLast"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		34
+	Name			"RabbitNpos"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		35
+	Name			"RabbitEpos"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		36
+	Name			"RabbitHdg"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		37
+	Name			"TotalSearchTimeSeconds"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		38
+	Name			"AssignedTarget"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      Port {
+	PortNumber		39
+	Name			"AssignedTask"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      "S-Function"
+      Name		      "Initialization"
+      Ports		      []
+      Position		      [74, 690, 179, 729]
+      BackgroundColor	      "green"
+      ShowName		      off
+      FunctionName	      "InitFunctionsS"
+      PortCounts	      "[]"
+      SFunctionModules	      "''"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Initialization1"
+      Ports		      []
+      Position		      [1925, 853, 1976, 900]
+      BackgroundColor	      "green"
+      Priority		      "1"
+      ShowPortLabels	      on
+      TreatAsAtomicUnit	      off
+      RTWSystemCode	      "Auto"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      System {
+	Name			"Initialization1"
+	Location		[419, 114, 937, 576]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "Initialization"
+	  Ports			  []
+	  Position		  [65, 89, 200, 154]
+	  BackgroundColor	  "green"
+	  ShowName		  off
+	  FunctionName		  "InitFunctionsS"
+	  PortCounts		  "[]"
+	  SFunctionModules	  "''"
+	}
+	Annotation {
+	  Position		  [260, 192]
+	  HorizontalAlignment	  "left"
+	  BackgroundColor	  "yellow"
+	  Text			  "Initialization:\nPURPOSE: This block is use"
+"d to intialize global variables.\nIMPLEMENTATION: \n- Calls the M-Function \""
+"InitFunctions.m\" to do the initialization.\n- Only runs during simulation st"
+"art-up.\n\nSimulation Control:\nPURPOSE: This subsystem is used to invoke fun"
+"ctions that \nallow external control of the simulation."
+	  DropShadow		  on
+	  FontName		  "Arial"
+	}
+	Annotation {
+	  Position		  [100, 386]
+	  HorizontalAlignment	  "left"
+	  BackgroundColor	  "yellow"
+	  Text			  "Simulation Control:\n\nPURPOSE: This block "
+"is used to invoke functions that \nallow external control of the simulation."
+"\nIMPLEMENTATION: \n- The output of the function block  \"ControlTime\" set s"
+"et high when \nthe time is one sample time (GlobalSampleTime) less than the c"
+"ontrol \ntime set in the global variable \"GlobalStopTime\".\n- When the Cont"
+"rolTime ouput is high the functions in the \nblock \"SimControl\" are enabled"
+".\n"
+	  DropShadow		  on
+	}
+	Annotation {
+	  Position		  [330, 516]
+	  HorizontalAlignment	  "left"
+	  BackgroundColor	  "yellow"
+	  Text			  "Simulation Control:\n\nPURPOSE: This block "
+"is used to invoke functions that \nallow external control of the simulation."
+"\nIMPLEMENTATION: \n- When enabled this block calls the function \"Simulation"
+"Control.m\".\n"
+	  DropShadow		  on
+	}
+      }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux"
+      Ports		      [39, 1]
+      Position		      [835, 220, 845, 790]
+      ForegroundColor	      "cyan"
+      ShowName		      off
+      Inputs		      "[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  1 1 1"
+" 1 1 1 1 1 1 1  1 1 1 1 1 1 1 1 1]"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux1"
+      Ports		      [2, 1]
+      Position		      [410, 307, 415, 378]
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux2"
+      Ports		      [3, 1]
+      Position		      [990, 735, 995, 785]
+      ForegroundColor	      "green"
+      BackgroundColor	      "green"
+      ShowName		      off
+      Inputs		      "3"
+      DisplayOption	      "bar"
+      Port {
+	PortNumber		1
+	Name			"Rabbit Postion"
+	PropagatedSignals	"RabbitNpos, RabbitEpos, RabbitHdg"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux3"
+      Ports		      [2, 1]
+      Position		      [475, 506, 480, 544]
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux4"
+      Ports		      [3, 1]
+      Position		      [1220, 264, 1230, 946]
+      ShowName		      off
+      Inputs		      "3"
+      DisplayOption	      "bar"
+      Port {
+	PortNumber		1
+	Name			"Dynamics(com)"
+	PropagatedSignals	"AC Dynamics, TacticalManuevering, SensedTarge"
+"ts"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux5"
+      Ports		      [7, 1]
+      Position		      [1690, 860, 1700, 950]
+      ShowName		      off
+      Inputs		      "7"
+      DisplayOption	      "bar"
+      Port {
+	PortNumber		1
+	Name			"VehicleStatus"
+	PropagatedSignals	"Position_x, Position_y, PsiFilteredDeg, Senso"
+"rOn, Rabbit Postion, AssignedTarget, VehicleFinished"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux6"
+      Ports		      [16, 1]
+      Position		      [1125, 235, 1130, 520]
+      ForegroundColor	      "orange"
+      ShowName		      off
+      Inputs		      "16"
+      DisplayOption	      "bar"
+      Port {
+	PortNumber		1
+	Name			"AC Dynamics"
+	PropagatedSignals	"Position_x, Position_y, Altitude, V_true_kts,"
+" V_true_fps, Phi, Theta, Psi, Alpha, Beta, Mach_number, V North, V East, V Do"
+"wn, PsiFilteredDeg, SensorOn"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux7"
+      Ports		      [2, 1]
+      Position		      [1110, 733, 1115, 922]
+      ForegroundColor	      "blue"
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
+      Port {
+	PortNumber		1
+	Name			"SensedTargets"
+	PropagatedSignals	"PsiFilteredDeg, SensedTargets"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux8"
+      Ports		      [6, 1]
+      Position		      [190, 447, 195, 623]
+      ShowName		      off
+      Inputs		      "6"
+      DisplayOption	      "bar"
+      Port {
+	PortNumber		1
+	Name			"Target"
+	PropagatedSignals	"X Position, Y Position, Z Position, Type, Psi"
+", Alive"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux9"
+      Ports		      [20, 1]
+      Position		      [1040, 500, 1055, 795]
+      ForegroundColor	      "cyan"
+      ShowName		      off
+      Inputs		      "[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1]"
+      DisplayOption	      "bar"
+      Port {
+	PortNumber		1
+	Name			"TacticalManuevering"
+	PropagatedSignals	"CommandPower, CommandBank, CommandHeading, Co"
+"mmandAltitude, CommandMach, CommandCR, ModeAutopilot, CommandSpoiler, Command"
+"Brake, CommandAfterBurner, TMAutothrottle, WayPointNumber, WaypointTypeCurren"
+"t, WaypointTypeLast, WaypointTargetHandleCurrent, WaypointTargetHandleLast, R"
+"abbit Postion, CommandTurnRadius, AssignedTarget, AssignedTask"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "SaveAVDSData"
+      Ports		      [2]
+      Position		      [1315, 870, 1435, 930]
+      BackgroundColor	      "magenta"
+      ShowPortLabels	      on
+      TreatAsAtomicUnit	      off
+      RTWSystemCode	      "Auto"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      System {
+	Name			"SaveAVDSData"
+	Location		[441, 715, 955, 962]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "ID"
+	  Position		  [55, 113, 85, 127]
+	  ForegroundColor	  "green"
+	  BackgroundColor	  "gray"
+	  Port			  "1"
+	  LatchInput		  off
+	  SampleTime		  "GlobalSampleTime"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "ComBusLocalln"
+	  Position		  [40, 333, 70, 347]
+	  ForegroundColor	  "cyan"
+	  BackgroundColor	  "gray"
+	  Port			  "2"
+	  LatchInput		  off
+	  SampleTime		  "GlobalSampleTime"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Aircraft"
+	  Position		  [330, 405, 465, 425]
+	  BackgroundColor	  "magenta"
+	  Value			  "EntityTypes.Aircraft"
+	  VectorParams1D	  on
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector2"
+	  Ports			  [1, 1]
+	  Position		  [105, 312, 110, 368]
+	  ShowName		  off
+	  OutputSignals		  "AC Dynamics.Position_x,AC Dynamics.Position"
+"_y,AC Dynamics.Altitude,AC Dynamics.Phi,AC Dynamics.Theta,AC Dynamics.Psi,AC "
+"Dynamics.Alpha,AC Dynamics.Beta,AC Dynamics.V_true_fps,AC Dynamics.Mach_numbe"
+"r,TacticalManuevering.AssignedTarget,TacticalManuevering.AssignedTask,Tactica"
+"lManuevering.Rabbit Postion,TacticalManuevering.CommandAltitude,AC Dynamics.S"
+"ensorOn"
+	  MuxedOutput		  on
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Position_x, Position_y, Altitude, Phi, T"
+"heta, Psi, Alpha, Beta, V_true_fps, Mach_number, AssignedTarget, AssignedTask"
+", Rabbit Postion, CommandAltitude, SensorOn>"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	  }
+	}
+	Block {
+	  BlockType		  DigitalClock
+	  Name			  "Digital Clock"
+	  Position		  [180, 168, 245, 192]
+	  BackgroundColor	  "green"
+	  SampleTime		  "GlobalSampleTime"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "EnableDataSaving\n"
+	  Position		  [80, 43, 235, 77]
+	  BackgroundColor	  "orange"
+	  Value			  "OptionSaveDataAVDS"
+	  VectorParams1D	  on
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  Ports			  [3, 1]
+	  Position		  [470, 30, 505, 210]
+	  BackgroundColor	  "green"
+	  Operator		  "AND"
+	  Inputs		  "3"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux4"
+	  Ports			  [2, 1]
+	  Position		  [255, 322, 260, 398]
+	  ShowName		  off
+	  Inputs		  "2"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Fcn
+	  Name			  "NotAtZero"
+	  Position		  [295, 165, 355, 195]
+	  BackgroundColor	  "lightBlue"
+	  Expr			  "u(1) > GlobalSampleTime"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "SaveVehicleData\nfor AVDS"
+	  Ports			  [4, 0, 1]
+	  Position		  [565, 219, 645, 446]
+	  BackgroundColor	  "cyan"
+	  ShowPortLabels	  on
+	  TreatAsAtomicUnit	  on
+	  RTWSystemCode		  "Auto"
+	  RTWFcnNameOpts	  "Auto"
+	  RTWFileNameOpts	  "Auto"
+	  System {
+	    Name		    "SaveVehicleData\nfor AVDS"
+	    Location		    [309, 112, 1145, 879]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Time"
+	      Position		      [15, 128, 45, 142]
+	      BackgroundColor	      "gray"
+	      Port		      "1"
+	      LatchInput	      off
+	      SampleTime	      "GlobalSampleTime"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "ID"
+	      Position		      [15, 93, 45, 107]
+	      BackgroundColor	      "gray"
+	      Port		      "2"
+	      LatchInput	      off
+	      SampleTime	      "GlobalSampleTime"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Data"
+	      Position		      [15, 163, 45, 177]
+	      BackgroundColor	      "gray"
+	      Port		      "3"
+	      LatchInput	      off
+	      SampleTime	      "GlobalSampleTime"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Vehicle Type"
+	      Position		      [15, 198, 45, 212]
+	      BackgroundColor	      "gray"
+	      Port		      "4"
+	      LatchInput	      off
+	      SampleTime	      "GlobalSampleTime"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      EnablePort
+	      Name		      "Enable"
+	      Ports		      []
+	      Position		      [30, 15, 50, 35]
+	      BackgroundColor	      "red"
+	      StatesWhenEnabling      "held"
+	      ShowOutputPort	      off
+	    }
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      "AVDSData2WorkSpaceS"
+	      Ports		      [1]
+	      Position		      [490, 139, 625, 171]
+	      BackgroundColor	      "green"
+	      FunctionName	      "AVDSData2WorkSpaceS"
+	      PortCounts	      "[]"
+	      SFunctionModules	      "''"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux1"
+	      Ports		      [4, 1]
+	      Position		      [440, 86, 450, 219]
+	      ShowName		      off
+	      Inputs		      "4"
+	      DisplayOption	      "bar"
+	    }
+	    Line {
+	      SrcBlock		      "Mux1"
+	      SrcPort		      1
+	      DstBlock		      "AVDSData2WorkSpaceS"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Time"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "ID"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Data"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Vehicle Type"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      4
+	    }
+	    Annotation {
+	      Position		      [143, 473]
+	      HorizontalAlignment     "left"
+	      BackgroundColor	      "yellow"
+	      Text		      "\nSaveVehicleData for AVDS\n\nPURPOSE: "
+"Saves vehicle state information to a text file that is suitable \n     for pl"
+"ayback in AVDS.\nIMPLEMENTATION: \n- AVDSData2WorkSpace - calls the M-functio"
+"n \"AVDSData2WorkSpace\" \n     to save the data.\n"
+	      DropShadow	      on
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "temp"
+	  Position		  [140, 370, 165, 390]
+	  BackgroundColor	  "orange"
+	  Value			  "0"
+	  VectorParams1D	  on
+	  Port {
+	    PortNumber		    1
+	    Name		    "<Vehicle FinishedNoDelay>"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	  }
+	}
+	Line {
+	  SrcBlock		  "Mux4"
+	  SrcPort		  1
+	  DstBlock		  "SaveVehicleData\nfor AVDS"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "<Vehicle FinishedNoDelay>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "temp"
+	  SrcPort		  1
+	  DstBlock		  "Mux4"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<Position_x, Position_y, Altitude, Phi, The"
+"ta, Psi, Alpha, Beta, V_true_fps, Mach_number, AssignedTarget, AssignedTask, "
+"Rabbit Postion, CommandAltitude, SensorOn>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector2"
+	  SrcPort		  1
+	  DstBlock		  "Mux4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "EnableDataSaving\n"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [95, 0]
+	  DstBlock		  "SaveVehicleData\nfor AVDS"
+	  DstPort		  enable
+	}
+	Line {
+	  SrcBlock		  "ID"
+	  SrcPort		  1
+	  Points		  [0, 0; 55, 0]
+	  Branch {
+	    DstBlock		    "Logical\nOperator"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 185]
+	    DstBlock		    "SaveVehicleData\nfor AVDS"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "ComBusLocalln"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Digital Clock"
+	  SrcPort		  1
+	  Points		  [0, 0; 30, 0]
+	  Branch {
+	    DstBlock		    "NotAtZero"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [-15, 0; 0, 70]
+	    DstBlock		    "SaveVehicleData\nfor AVDS"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Aircraft"
+	  SrcPort		  1
+	  DstBlock		  "SaveVehicleData\nfor AVDS"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "NotAtZero"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  3
+	}
+	Annotation {
+	  Position		  [35, 624]
+	  HorizontalAlignment	  "left"
+	  BackgroundColor	  "yellow"
+	  Text			  "\nAVDS Data\n\nPURPOSE: Save vehicle state "
+"information to a \ntext file that is suitable for playback in AVDS.\n\nIMPLEM"
+"ENTATION: \n- SaveVehicleData for AVDS - calls the function \"AVDSData2WorkSp"
+"ace\" \n     to save the data.\n- NotAtZero - data saving is enabled when the"
+" simulation time is greater \n     than 0.0 to prevent unitialized data from "
+"being written to the file.\n-EnableDataSaving - reads the global array \"Opti"
+"onSaveDataAVDS\" to \n     enables/disables saving data forAVDS.\n"
+	  DropShadow		  on
+	}
+      }
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope"
+      Ports		      [6]
+      Position		      [865, 46, 910, 214]
+      Floating		      off
+      Location		      [5, 53, 1285, 974]
+      Open		      off
+      NumInputPorts	      "6"
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+	axes4			"%<SignalLabel>"
+	axes5			"%<SignalLabel>"
+	axes6			"%<SignalLabel>"
+      }
+      List {
+	ListType		SelectedSignals
+	axes1			""
+	axes2			""
+	axes3			""
+	axes4			""
+	axes5			""
+	axes6			""
+      }
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "0~-150~-1000~0~-125~-175"
+      YMax		      "2000~50~0~400~100~100"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      on
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope1"
+      Ports		      [6]
+      Position		      [985, 71, 1030, 239]
+      Floating		      off
+      Location		      [5, 53, 1285, 974]
+      Open		      off
+      NumInputPorts	      "6"
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "yonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+	axes4			"%<SignalLabel>"
+	axes5			"%<SignalLabel>"
+	axes6			"%<SignalLabel>"
+      }
+      List {
+	ListType		SelectedSignals
+	axes1			""
+	axes2			""
+	axes3			""
+	axes4			""
+	axes5			""
+	axes6			""
+      }
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "-10~-1~-1~-0.8~-0.4~0"
+      YMax		      "70~0.5~0.75~0.4~0.4~400"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData1"
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      on
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope2"
+      Ports		      [6]
+      Position		      [1105, 56, 1150, 224]
+      Floating		      off
+      Location		      [5, 53, 1285, 974]
+      Open		      off
+      NumInputPorts	      "6"
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "yonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+	axes4			"%<SignalLabel>"
+	axes5			"%<SignalLabel>"
+	axes6			"%<SignalLabel>"
+      }
+      List {
+	ListType		SelectedSignals
+	axes1			""
+	axes2			""
+	axes3			""
+	axes4			""
+	axes5			""
+	axes6			""
+      }
+      Grid		      "on"
+      TimeRange		      "auto"
+      YMin		      "-2500~-8000~-1.75~0~-6000~0"
+      YMax		      "25000~0~0~27500~500~200"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData2"
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      on
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Targets"
+      Ports		      [1, 1]
+      Position		      [1620, 638, 1765, 712]
+      BackgroundColor	      "yellow"
+      Priority		      "2"
+      ShowPortLabels	      on
+      TreatAsAtomicUnit	      on
+      RTWSystemCode	      "Auto"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      Port {
+	PortNumber		1
+	PropagatedSignals	"Targets"
+	ShowPropagatedSignals	"on"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+      System {
+	Name			"Targets"
+	Location		[313, 74, 959, 584]
+	Open			on
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "SimBusIn"
+	  Position		  [45, 253, 75, 267]
+	  ForegroundColor	  "blue"
+	  BackgroundColor	  "gray"
+	  Port			  "1"
+	  LatchInput		  off
+	  SampleTime		  "GlobalSampleTime"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "BombDrop"
+	  Position		  [90, 333, 170, 357]
+	  BackgroundColor	  "cyan"
+	  Value			  "zeros(4,1)"
+	  VectorParams1D	  on
+	  Port {
+	    PortNumber		    1
+	    Name		    "<BombDrop, BombDrop, BombDrop, BombDrop, "
+"BombDrop, BombDrop, BombDrop, BombDrop>"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	  }
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Bus\nCreator"
+	  Ports			  [1, 1]
+	  Position		  [630, 86, 635, 124]
+	  ShowName		  off
+	  Inputs		  "1"
+	  DisplayOption		  "bar"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Targets"
+	    PropagatedSignals	    "Target1"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	  }
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector1"
+	  Ports			  [1, 1]
+	  Position		  [140, 99, 145, 131]
+	  ShowName		  off
+	  OutputSignals		  "TargetStatus"
+	  MuxedOutput		  on
+	  Port {
+	    PortNumber		    1
+	    Name		    "<TargetStatus>"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	  }
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux"
+	  Ports			  [1, 1]
+	  Position		  [365, 52, 370, 78]
+	  ForegroundColor	  "magenta"
+	  BackgroundColor	  "magenta"
+	  ShowName		  off
+	  Outputs		  "1"
+	  BusSelectionMode	  off
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux1"
+	  Ports			  [1, 1]
+	  Position		  [315, 102, 320, 128]
+	  ForegroundColor	  "yellow"
+	  BackgroundColor	  "yellow"
+	  ShowName		  off
+	  Outputs		  "1"
+	  BusSelectionMode	  off
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Enable Targets"
+	  Position		  [35, 53, 115, 77]
+	  ForegroundColor	  "magenta"
+	  BackgroundColor	  "cyan"
+	  Value			  "g_EnableTarget"
+	  VectorParams1D	  on
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Target 1"
+	  Ports			  [2, 1, 1]
+	  Position		  [465, 83, 585, 127]
+	  BackgroundColor	  "lightBlue"
+	  AncestorBlock		  "cooperative/Target 1"
+	  ShowPortLabels	  on
+	  TreatAsAtomicUnit	  on
+	  RTWSystemCode		  "Auto"
+	  RTWFcnNameOpts	  "Auto"
+	  RTWFileNameOpts	  "Auto"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Target1"
+	    PropagatedSignals	    "Target(sim)"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	  }
+	  System {
+	    Name		    "Target 1"
+	    Location		    [376, 235, 1188, 842]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "BombLogIn"
+	      Position		      [40, 218, 70, 232]
+	      BackgroundColor	      "gray"
+	      Port		      "1"
+	      LatchInput	      off
+	      SampleTime	      "GlobalSampleTime"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "DisplayStatus"
+	      Position		      [50, 348, 80, 362]
+	      ForegroundColor	      "green"
+	      BackgroundColor	      "gray"
+	      Port		      "2"
+	      LatchInput	      off
+	      SampleTime	      "GlobalSampleTime"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      EnablePort
+	      Name		      "Enable"
+	      Ports		      [0, 1]
+	      Position		      [45, 115, 65, 135]
+	      BackgroundColor	      "red"
+	      StatesWhenEnabling      "reset"
+	      ShowOutputPort	      on
+	      Port {
+		PortNumber		1
+		Name			"Target ID"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "AVDS Data"
+	      Ports		      [3]
+	      Position		      [615, 241, 675, 439]
+	      BackgroundColor	      "yellow"
+	      ShowPortLabels	      on
+	      TreatAsAtomicUnit	      off
+	      RTWSystemCode	      "Auto"
+	      RTWFcnNameOpts	      "Auto"
+	      RTWFileNameOpts	      "Auto"
+	      System {
+		Name			"AVDS Data"
+		Location		[382, 317, 1186, 859]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "ID"
+		  Position		  [315, 268, 345, 282]
+		  BackgroundColor	  "gray"
+		  Port			  "1"
+		  LatchInput		  off
+		  SampleTime		  "GlobalSampleTime"
+		  Interpolate		  on
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Data"
+		  Position		  [315, 303, 345, 317]
+		  BackgroundColor	  "gray"
+		  Port			  "2"
+		  LatchInput		  off
+		  SampleTime		  "GlobalSampleTime"
+		  Interpolate		  on
+		}
+		Block {
+		  BlockType		  Inport
+		  Name			  "Vehicle\nType"
+		  Position		  [315, 338, 345, 352]
+		  BackgroundColor	  "gray"
+		  Port			  "3"
+		  LatchInput		  off
+		  SampleTime		  "GlobalSampleTime"
+		  Interpolate		  on
+		}
+		Block {
+		  BlockType		  DigitalClock
+		  Name			  "Digital Clock"
+		  Position		  [80, 158, 145, 182]
+		  BackgroundColor	  "green"
+		  SampleTime		  "GlobalSampleTime"
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "EnableDataSaving"
+		  Position		  [55, 98, 190, 132]
+		  BackgroundColor	  "orange"
+		  Value			  "OptionSaveDataAVDS"
+		  VectorParams1D	  on
+		}
+		Block {
+		  BlockType		  Logic
+		  Name			  "Logical\nOperator"
+		  Ports			  [2, 1]
+		  Position		  [320, 87, 355, 198]
+		  BackgroundColor	  "magenta"
+		  Operator		  "AND"
+		  Inputs		  "2"
+		}
+		Block {
+		  BlockType		  Fcn
+		  Name			  "NotAtZero"
+		  Position		  [220, 155, 280, 185]
+		  BackgroundColor	  "lightBlue"
+		  Expr			  "u(1) > 0"
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "SaveTarget \nData for AVDS"
+		  Ports			  [4, 0, 1]
+		  Position		  [435, 224, 515, 361]
+		  BackgroundColor	  "darkGreen"
+		  ShowPortLabels	  on
+		  TreatAsAtomicUnit	  on
+		  RTWSystemCode		  "Auto"
+		  RTWFcnNameOpts	  "Auto"
+		  RTWFileNameOpts	  "Auto"
+		  System {
+		    Name		    "SaveTarget \nData for AVDS"
+		    Location		    [336, 172, 1144, 860]
+		    Open		    off
+		    ModelBrowserVisibility  off
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Time"
+		    Position		    [15, 128, 45, 142]
+		    BackgroundColor	    "gray"
+		    Port		    "1"
+		    LatchInput		    off
+		    SampleTime		    "GlobalSampleTime"
+		    Interpolate		    on
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "ID"
+		    Position		    [15, 93, 45, 107]
+		    BackgroundColor	    "gray"
+		    Port		    "2"
+		    LatchInput		    off
+		    SampleTime		    "GlobalSampleTime"
+		    Interpolate		    on
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Data"
+		    Position		    [15, 163, 45, 177]
+		    BackgroundColor	    "gray"
+		    Port		    "3"
+		    LatchInput		    off
+		    SampleTime		    "GlobalSampleTime"
+		    Interpolate		    on
+		    }
+		    Block {
+		    BlockType		    Inport
+		    Name		    "Vehicle Type"
+		    Position		    [15, 198, 45, 212]
+		    BackgroundColor	    "gray"
+		    Port		    "4"
+		    LatchInput		    off
+		    SampleTime		    "GlobalSampleTime"
+		    Interpolate		    on
+		    }
+		    Block {
+		    BlockType		    EnablePort
+		    Name		    "Enable"
+		    Ports		    []
+		    Position		    [30, 15, 50, 35]
+		    BackgroundColor	    "red"
+		    StatesWhenEnabling	    "held"
+		    ShowOutputPort	    off
+		    }
+		    Block {
+		    BlockType		    "S-Function"
+		    Name		    "AVDSData2WorkSpaceS"
+		    Ports		    [1]
+		    Position		    [195, 139, 330, 171]
+		    BackgroundColor	    "green"
+		    FunctionName	    "AVDSData2WorkSpaceS"
+		    PortCounts		    "[]"
+		    SFunctionModules	    "''"
+		    }
+		    Block {
+		    BlockType		    Mux
+		    Name		    "Mux1"
+		    Ports		    [4, 1]
+		    Position		    [90, 86, 100, 219]
+		    ShowName		    off
+		    Inputs		    "4"
+		    DisplayOption	    "bar"
+		    }
+		    Line {
+		    SrcBlock		    "Mux1"
+		    SrcPort		    1
+		    DstBlock		    "AVDSData2WorkSpaceS"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Time"
+		    SrcPort		    1
+		    DstBlock		    "Mux1"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "ID"
+		    SrcPort		    1
+		    DstBlock		    "Mux1"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Data"
+		    SrcPort		    1
+		    DstBlock		    "Mux1"
+		    DstPort		    3
+		    }
+		    Line {
+		    SrcBlock		    "Vehicle Type"
+		    SrcPort		    1
+		    DstBlock		    "Mux1"
+		    DstPort		    4
+		    }
+		    Annotation {
+		    Position		    [98, 323]
+		    HorizontalAlignment	    "left"
+		    BackgroundColor	    "yellow"
+		    Text		    "\nSaveTargetData for AVDS\n\nPURP"
+"OSE: Saves target state information to a text file that is suitable \n     fo"
+"r playback in AVDS.\nIMPLEMENTATION: \n- AVDSData2WorkSpace - calls the M-fun"
+"ction \"AVDSData2WorkSpace\" \n     to save the data.\n"
+		    DropShadow		    on
+		    }
+		  }
+		}
+		Line {
+		  SrcBlock		  "ID"
+		  SrcPort		  1
+		  DstBlock		  "SaveTarget \nData for AVDS"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Data"
+		  SrcPort		  1
+		  DstBlock		  "SaveTarget \nData for AVDS"
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "Digital Clock"
+		  SrcPort		  1
+		  Points		  [0, 0; 25, 0]
+		  Branch {
+		    DstBlock		    "NotAtZero"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [0, 70]
+		    DstBlock		    "SaveTarget \nData for AVDS"
+		    DstPort		    1
+		  }
+		}
+		Line {
+		  SrcBlock		  "Vehicle\nType"
+		  SrcPort		  1
+		  DstBlock		  "SaveTarget \nData for AVDS"
+		  DstPort		  4
+		}
+		Line {
+		  SrcBlock		  "NotAtZero"
+		  SrcPort		  1
+		  DstBlock		  "Logical\nOperator"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Logical\nOperator"
+		  SrcPort		  1
+		  Points		  [115, 0]
+		  DstBlock		  "SaveTarget \nData for AVDS"
+		  DstPort		  enable
+		}
+		Line {
+		  SrcBlock		  "EnableDataSaving"
+		  SrcPort		  1
+		  DstBlock		  "Logical\nOperator"
+		  DstPort		  1
+		}
+		Annotation {
+		  Position		  [50, 489]
+		  HorizontalAlignment	  "left"
+		  BackgroundColor	  "yellow"
+		  Text			  "\nAVDS Data\n\nPURPOSE: Save target"
+" state information to a text file that is suitable \n     for playback in AVD"
+"S.\n\nIMPLEMENTATION: \n- Save Target Data for AVDS - calls the function \"AV"
+"DSData2WorkSpace\" \n     to save the data.\n- NotAtZero - data saving is ena"
+"bled when the simulation time is greater \n     than 0.0 to prevent unitializ"
+"ed data from being written to the file.\n- EnableDataSaving - reads the globa"
+"l array \"OptionSaveDataAVDS\" to\n     enable/disable data saving.\n"
+		  DropShadow		  on
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector1"
+	      Ports		      [1, 1]
+	      Position		      [460, 306, 465, 344]
+	      ShowName		      off
+	      OutputSignals	      "X Position,Y Position,Z Position,Type,P"
+"si"
+	      MuxedOutput	      on
+	      Port {
+		PortNumber		1
+		Name			"<X Position, Y Position, Z Position, "
+"Type, Psi>"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux"
+	      Ports		      [1, 5]
+	      Position		      [300, 47, 305, 203]
+	      BackgroundColor	      "black"
+	      ShowName		      off
+	      Outputs		      "5"
+	      BusSelectionMode	      off
+	      Port {
+		PortNumber		1
+		Name			"X Position"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	      Port {
+		PortNumber		2
+		Name			"Y Position"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	      Port {
+		PortNumber		3
+		Name			"Z Position"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	      Port {
+		PortNumber		4
+		Name			"Type"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	      Port {
+		PortNumber		5
+		Name			"Psi"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux"
+	      Ports		      [6, 1]
+	      Position		      [370, 52, 375, 228]
+	      ShowName		      off
+	      Inputs		      "6"
+	      DisplayOption	      "bar"
+	      Port {
+		PortNumber		1
+		Name			"Target(sim)"
+		PropagatedSignals	"X Position, Y Position, Z Position, T"
+"ype, Psi, Alive"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux1"
+	      Ports		      [2, 1]
+	      Position		      [190, 196, 195, 234]
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux2"
+	      Ports		      [2, 1]
+	      Position		      [565, 311, 570, 369]
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Target"
+	      Position		      [415, 391, 535, 419]
+	      BackgroundColor	      "orange"
+	      Value		      "EntityTypes.Target"
+	      VectorParams1D	      on
+	    }
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      "TargetBombed"
+	      Ports		      [1, 1]
+	      Position		      [215, 200, 295, 230]
+	      BackgroundColor	      "lightBlue"
+	      ShowName		      off
+	      FunctionName	      "TargetBombedS"
+	      PortCounts	      "[]"
+	      SFunctionModules	      "''"
+	      Port {
+		PortNumber		1
+		Name			"Alive"
+		TestPoint		off
+		LinearAnalysisOutput	off
+		LinearAnalysisInput	off
+		RTWStorageClass		"Auto"
+	      }
+	    }
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      "TargetPosition"
+	      Ports		      [1, 1]
+	      Position		      [185, 109, 275, 141]
+	      BackgroundColor	      "green"
+	      ShowName		      off
+	      FunctionName	      "TargetPositionS"
+	      PortCounts	      "[]"
+	      SFunctionModules	      "''"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "SimBusOut"
+	      Position		      [530, 133, 560, 147]
+	      BackgroundColor	      "gray"
+	      Port		      "1"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[1e7 1e7 0 1 -1 -1]"
+	    }
+	    Line {
+	      Name		      "Target ID"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Enable"
+	      SrcPort		      1
+	      Points		      [0, 0; 70, 0]
+	      Branch {
+		Points			[0, 150]
+		DstBlock		"AVDS Data"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[30, 0]
+		Branch {
+		  Points		  [0, 80]
+		  DstBlock		  "Mux1"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "TargetPosition"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "TargetPosition"
+	      SrcPort		      1
+	      DstBlock		      "Demux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Target"
+	      SrcPort		      1
+	      DstBlock		      "AVDS Data"
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "<X Position, Y Position, Z Position, Ty"
+"pe, Psi>"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector1"
+	      SrcPort		      1
+	      DstBlock		      "Mux2"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "X Position"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Demux"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "Y Position"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Demux"
+	      SrcPort		      2
+	      DstBlock		      "Mux"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "Z Position"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Demux"
+	      SrcPort		      3
+	      DstBlock		      "Mux"
+	      DstPort		      3
+	    }
+	    Line {
+	      Name		      "Target(sim)"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Mux"
+	      SrcPort		      1
+	      Points		      [60, 0]
+	      Branch {
+		Labels			[1, 0]
+		DstBlock		"SimBusOut"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 185]
+		DstBlock		"Bus\nSelector1"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      Name		      "Psi"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Demux"
+	      SrcPort		      5
+	      DstBlock		      "Mux"
+	      DstPort		      5
+	    }
+	    Line {
+	      SrcBlock		      "BombLogIn"
+	      SrcPort		      1
+	      DstBlock		      "Mux1"
+	      DstPort		      2
+	    }
+	    Line {
+	      Name		      "Type"
+	      Labels		      [0, 0]
+	      SrcBlock		      "Demux"
+	      SrcPort		      4
+	      DstBlock		      "Mux"
+	      DstPort		      4
+	    }
+	    Line {
+	      Name		      "Alive"
+	      Labels		      [0, 0]
+	      SrcBlock		      "TargetBombed"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      6
+	    }
+	    Line {
+	      SrcBlock		      "Mux1"
+	      SrcPort		      1
+	      DstBlock		      "TargetBombed"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Mux2"
+	      SrcPort		      1
+	      DstBlock		      "AVDS Data"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "DisplayStatus"
+	      SrcPort		      1
+	      DstBlock		      "Mux2"
+	      DstPort		      2
+	    }
+	    Annotation {
+	      Position		      [52, 533]
+	      HorizontalAlignment     "left"
+	      BackgroundColor	      "yellow"
+	      Text		      "Target 1\n\nPURPOSE: This susbsystem co"
+"ntains blocks to simulate one target, \n\nIMPLEMENTATION: \nTargetPosition - "
+"calls the function \"TargetPosition\" to compute the target's postion, \n    "
+" orientation and type. \nTargetBombed - calls the function, \"TargetBombed\" "
+"to calculate whether or not this \n     target has been bombed and if so what"
+" the damage was.\n     managers on the vehicle.\nSaveAVDSData - contains subb"
+"locks to save data from this target for use\n    in an AVDS playback.\n\n"
+	      DropShadow	      on
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "TargetBombLog"
+	  Ports			  [1, 1]
+	  Position		  [190, 234, 300, 286]
+	  BackgroundColor	  "orange"
+	  FunctionName		  "TargetBombLogS"
+	  PortCounts		  "[]"
+	  SFunctionModules	  "''"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "TargetStatusCheck"
+	  Ports			  [1, 1]
+	  Position		  [170, 82, 280, 148]
+	  BackgroundColor	  "lightBlue"
+	  FunctionName		  "TargetStatusCheckS"
+	  PortCounts		  "[]"
+	  SFunctionModules	  "''"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "SimBusOut"
+	  Position		  [810, 98, 840, 112]
+	  BackgroundColor	  "gray"
+	  Port			  "1"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Line {
+	  SrcBlock		  "SimBusIn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -145]
+	  DstBlock		  "Bus\nSelector1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Targets"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nCreator"
+	  SrcPort		  1
+	  DstBlock		  "SimBusOut"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Target1"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Target 1"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nCreator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Enable Targets"
+	  SrcPort		  1
+	  DstBlock		  "Demux"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<BombDrop, BombDrop, BombDrop, BombDrop, Bo"
+"mbDrop, BombDrop, BombDrop, BombDrop>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "BombDrop"
+	  SrcPort		  1
+	  DstBlock		  "TargetBombLog"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "TargetBombLog"
+	  SrcPort		  1
+	  Points		  [75, 0; 0, -165]
+	  DstBlock		  "Target 1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<TargetStatus>"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  1
+	  DstBlock		  "TargetStatusCheck"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "TargetStatusCheck"
+	  SrcPort		  1
+	  DstBlock		  "Demux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  1
+	  DstBlock		  "Target 1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  Points		  [65, 0; 0, 3]
+	  DstBlock		  "Target 1"
+	  DstPort		  enable
+	}
+      }
+    }
+    Block {
+      BlockType		      "S-Function"
+      Name		      "Vehicle & Tactical Maneuvering \nDynamics"
+      Ports		      [1, 1]
+      Position		      [505, 463, 595, 587]
+      BackgroundColor	      "green"
+      FunctionName	      "TacticalVehicle"
+      Parameters	      "0,1,GSensorRollLimitDeg,WaypointDefinitions.Num"
+"berEntries,g_VehicleInputFiles"
+      PortCounts	      "[]"
+      SFunctionModules	      "''"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "VehicleID"
+      Position		      [65, 314, 120, 336]
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      Value		      "1"
+      VectorParams1D	      on
+      Port {
+	PortNumber		1
+	Name			"VehicleID"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "VehicleID1"
+      Position		      [70, 449, 120, 471]
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      Value		      "-100000"
+      VectorParams1D	      on
+      Port {
+	PortNumber		1
+	Name			"X Position"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "VehicleID2"
+      Position		      [70, 479, 120, 501]
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      Value		      "-100000"
+      VectorParams1D	      on
+      Port {
+	PortNumber		1
+	Name			"Y Position"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "VehicleID3"
+      Position		      [70, 509, 120, 531]
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      Value		      "0"
+      VectorParams1D	      on
+      Port {
+	PortNumber		1
+	Name			"Z Position"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "VehicleID4"
+      Position		      [70, 539, 120, 561]
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      Value		      "1"
+      VectorParams1D	      on
+      Port {
+	PortNumber		1
+	Name			"Type"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "VehicleID6"
+      Position		      [70, 569, 120, 591]
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      Value		      "0"
+      VectorParams1D	      on
+      Port {
+	PortNumber		1
+	Name			"Psi"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "VehicleID7"
+      Position		      [70, 599, 120, 621]
+      BackgroundColor	      "yellow"
+      ShowName		      off
+      Value		      "1"
+      VectorParams1D	      on
+      Port {
+	PortNumber		1
+	Name			"Alive"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+      }
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "ComBusOut"
+      Position		      [1390, 598, 1420, 612]
+      ForegroundColor	      "green"
+      BackgroundColor	      "gray"
+      Port		      "1"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Line {
+      SrcBlock		      "Mux3"
+      SrcPort		      1
+      DstBlock		      "Vehicle & Tactical Maneuvering \nDynamics"
+      DstPort		      1
+    }
+    Line {
+      Name		      "Target"
+      Labels		      [0, 0]
+      SrcBlock		      "Mux8"
+      SrcPort		      1
+      DstBlock		      "Mux3"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Mux1"
+      SrcPort		      1
+      Points		      [25, 0; 0, 170]
+      DstBlock		      "Mux3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Vehicle & Tactical Maneuvering \nDynamics"
+      SrcPort		      1
+      DstBlock		      "Demux"
+      DstPort		      1
+    }
+    Line {
+      Name		      "VehicleID"
+      Labels		      [0, 0]
+      SrcBlock		      "VehicleID"
+      SrcPort		      1
+      Points		      [250, 0]
+      Branch {
+	DstBlock		"Mux1"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 560]
+	DstBlock		"SaveAVDSData"
+	DstPort			1
+      }
+    }
+    Line {
+      Name		      "CommandTurnRadius"
+      Labels		      [0, 0]
+      SrcBlock		      "CommandedTurnRadius"
+      SrcPort		      1
+      Points		      [135, 0]
+      Branch {
+	DstBlock		"Mux1"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, 480; 755, 0; 0, -80]
+	DstBlock		"Mux9"
+	DstPort			18
+      }
+    }
+    Line {
+      Name		      "Dynamics(com)"
+      SrcBlock		      "Mux4"
+      SrcPort		      1
+      Points		      [40, 0]
+      Branch {
+	Labels			[1, 0]
+	DstBlock		"ComBusOut"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 90]
+	Branch {
+	  Points		  [0, 220]
+	  DstBlock		  "SaveAVDSData"
+	  DstPort		  2
+	}
+	Branch {
+	  Labels		  [-1, 0]
+	  Points		  [230, 0; 0, 210]
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+      }
+    }
+    Line {
+      Name		      "SensedTargets"
+      Labels		      [0, 0]
+      SrcBlock		      "Mux7"
+      SrcPort		      1
+      DstBlock		      "Mux4"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      1
+      Points		      [35, 0]
+      DstBlock		      "Demux1"
+      DstPort		      1
+    }
+    Line {
+      Name		      "SensedTargets"
+      Labels		      [3, 1]
+      SrcBlock		      "Demux"
+      SrcPort		      2
+      Points		      [35, 0; 0, 320]
+      DstBlock		      "Mux7"
+      DstPort		      2
+    }
+    Line {
+      Name		      "Altitude"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      3
+      Points		      [75, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			3
+      }
+      Branch {
+	Points			[0, -135]
+	DstBlock		"Scope"
+	DstPort			3
+      }
+    }
+    Line {
+      Name		      "Position_x"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      1
+      Points		      [45, 0]
+      Branch {
+	Points			[20, 0]
+	Branch {
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, -165]
+	  DstBlock		  "Scope"
+	  DstPort		  1
+	}
+      }
+      Branch {
+	Points			[0, -65]
+	DstBlock		"Scope2"
+	DstPort			4
+      }
+    }
+    Line {
+      Name		      "Position_y"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      2
+      Points		      [55, 0]
+      Branch {
+	Points			[15, 0]
+	Branch {
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Branch {
+	  Points		  [0, -150]
+	  DstBlock		  "Scope"
+	  DstPort		  2
+	}
+      }
+      Branch {
+	Points			[0, -50]
+	DstBlock		"Scope2"
+	DstPort			5
+      }
+    }
+    Line {
+      Name		      "V_true_kts"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      4
+      DstBlock		      "Mux"
+      DstPort		      4
+    }
+    Line {
+      Name		      "V_true_fps"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      5
+      DstBlock		      "Mux"
+      DstPort		      5
+    }
+    Line {
+      Name		      "Phi"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      6
+      Points		      [105, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			6
+      }
+      Branch {
+	Points			[0, -215]
+	DstBlock		"Scope1"
+	DstPort			1
+      }
+    }
+    Line {
+      Name		      "Theta"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      7
+      Points		      [105, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			7
+      }
+      Branch {
+	Labels			[2, 0]
+	Points			[0, -200]
+	DstBlock		"Scope1"
+	DstPort			2
+      }
+    }
+    Line {
+      Name		      "Psi"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      8
+      Points		      [40, 0]
+      Branch {
+	Points			[65, 0]
+	Branch {
+	  DstBlock		  "Mux"
+	  DstPort		  8
+	}
+	Branch {
+	  Points		  [0, -185]
+	  DstBlock		  "Scope1"
+	  DstPort		  3
+	}
+      }
+      Branch {
+	Points			[0, -110]
+	DstBlock		"Scope2"
+	DstPort			6
+      }
+    }
+    Line {
+      Name		      "Alpha"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      9
+      Points		      [110, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			9
+      }
+      Branch {
+	Points			[0, -140]
+	DstBlock		"Scope1"
+	DstPort			5
+      }
+    }
+    Line {
+      Name		      "Beta"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      10
+      Points		      [115, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			10
+      }
+      Branch {
+	Points			[0, -125]
+	DstBlock		"Scope1"
+	DstPort			6
+      }
+    }
+    Line {
+      Name		      "Mach_number"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      11
+      DstBlock		      "Mux"
+      DstPort		      11
+    }
+    Line {
+      Name		      "V North"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      12
+      Points		      [85, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			12
+      }
+      Branch {
+	Points			[0, -240]
+	DstBlock		"Scope"
+	DstPort			4
+      }
+    }
+    Line {
+      Name		      "V East"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      13
+      Points		      [90, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			13
+      }
+      Branch {
+	Points			[0, -225]
+	DstBlock		"Scope"
+	DstPort			5
+      }
+    }
+    Line {
+      Name		      "V Down"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      14
+      Points		      [95, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			14
+      }
+      Branch {
+	Points			[0, -210]
+	DstBlock		"Scope"
+	DstPort			6
+      }
+    }
+    Line {
+      Name		      "PsiFilteredDeg"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      15
+      DstBlock		      "Mux"
+      DstPort		      15
+    }
+    Line {
+      Name		      "Thrust"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      16
+      DstBlock		      "Mux"
+      DstPort		      16
+    }
+    Line {
+      Name		      "SensorOn"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      17
+      DstBlock		      "Mux"
+      DstPort		      17
+    }
+    Line {
+      Name		      "CommandPower"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      18
+      DstBlock		      "Mux"
+      DstPort		      18
+    }
+    Line {
+      Name		      "CommandBank"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      19
+      DstBlock		      "Mux"
+      DstPort		      19
+    }
+    Line {
+      Name		      "CommandHeading"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      20
+      Points		      [110, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			20
+      }
+      Branch {
+	Points			[0, -335]
+	DstBlock		"Scope1"
+	DstPort			4
+      }
+    }
+    Line {
+      Name		      "CommandAltitude"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      21
+      DstBlock		      "Mux"
+      DstPort		      21
+    }
+    Line {
+      Name		      "CommandMach"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      22
+      DstBlock		      "Mux"
+      DstPort		      22
+    }
+    Line {
+      Name		      "CommandCR"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      23
+      DstBlock		      "Mux"
+      DstPort		      23
+    }
+    Line {
+      Name		      "ModeAutopilot"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      24
+      DstBlock		      "Mux"
+      DstPort		      24
+    }
+    Line {
+      Name		      "CommandSpoiler"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      25
+      DstBlock		      "Mux"
+      DstPort		      25
+    }
+    Line {
+      Name		      "CommandBrake"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      26
+      DstBlock		      "Mux"
+      DstPort		      26
+    }
+    Line {
+      Name		      "CommandAfterBurner"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      27
+      DstBlock		      "Mux"
+      DstPort		      27
+    }
+    Line {
+      Name		      "TMAutothrottle"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      28
+      DstBlock		      "Mux"
+      DstPort		      28
+    }
+    Line {
+      Name		      "WayPointNumber"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      29
+      DstBlock		      "Mux"
+      DstPort		      29
+    }
+    Line {
+      Name		      "<Position_x>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      1
+      DstBlock		      "Mux6"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<Position_y>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      2
+      DstBlock		      "Mux6"
+      DstPort		      2
+    }
+    Line {
+      Name		      "<Altitude>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      3
+      DstBlock		      "Mux6"
+      DstPort		      3
+    }
+    Line {
+      Name		      "<V_true_kts>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      4
+      DstBlock		      "Mux6"
+      DstPort		      4
+    }
+    Line {
+      Name		      "<V_true_fps>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      5
+      DstBlock		      "Mux6"
+      DstPort		      5
+    }
+    Line {
+      Name		      "<Phi>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      6
+      DstBlock		      "Mux6"
+      DstPort		      6
+    }
+    Line {
+      Name		      "<Theta>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      7
+      DstBlock		      "Mux6"
+      DstPort		      7
+    }
+    Line {
+      Name		      "<Psi>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      8
+      DstBlock		      "Mux6"
+      DstPort		      8
+    }
+    Line {
+      Name		      "<Alpha>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      9
+      DstBlock		      "Mux6"
+      DstPort		      9
+    }
+    Line {
+      Name		      "<Beta>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      10
+      DstBlock		      "Mux6"
+      DstPort		      10
+    }
+    Line {
+      Name		      "<Mach_number>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      11
+      DstBlock		      "Mux6"
+      DstPort		      11
+    }
+    Line {
+      Name		      "<V North>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      12
+      DstBlock		      "Mux6"
+      DstPort		      12
+    }
+    Line {
+      Name		      "<V East>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      13
+      DstBlock		      "Mux6"
+      DstPort		      13
+    }
+    Line {
+      Name		      "<V Down>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      14
+      DstBlock		      "Mux6"
+      DstPort		      14
+    }
+    Line {
+      Name		      "<PsiFilteredDeg>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      15
+      Points		      [0, 0; 60, 0]
+      Branch {
+	DstBlock		"Mux6"
+	DstPort			15
+      }
+      Branch {
+	Points			[125, 0; 0, 305]
+	DstBlock		"Mux7"
+	DstPort			1
+      }
+    }
+    Line {
+      Name		      "AC Dynamics"
+      Labels		      [1, 0]
+      SrcBlock		      "Mux6"
+      SrcPort		      1
+      DstBlock		      "Mux4"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<SensorOn>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      16
+      DstBlock		      "Mux6"
+      DstPort		      16
+    }
+    Line {
+      SrcBlock		      "Mux"
+      SrcPort		      1
+      Points		      [10, 0; 0, 30]
+      DstBlock		      "Bus\nSelector3"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<CommandPower>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      17
+      DstBlock		      "Mux9"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<CommandBank>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      18
+      DstBlock		      "Mux9"
+      DstPort		      2
+    }
+    Line {
+      Name		      "<CommandHeading>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      19
+      DstBlock		      "Mux9"
+      DstPort		      3
+    }
+    Line {
+      Name		      "<CommandAltitude>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      20
+      DstBlock		      "Mux9"
+      DstPort		      4
+    }
+    Line {
+      Name		      "<CommandMach>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      21
+      DstBlock		      "Mux9"
+      DstPort		      5
+    }
+    Line {
+      Name		      "<CommandCR>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      22
+      DstBlock		      "Mux9"
+      DstPort		      6
+    }
+    Line {
+      Name		      "<ModeAutopilot>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      23
+      DstBlock		      "Mux9"
+      DstPort		      7
+    }
+    Line {
+      Name		      "<CommandSpoiler>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      24
+      DstBlock		      "Mux9"
+      DstPort		      8
+    }
+    Line {
+      Name		      "<CommandBrake>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      25
+      DstBlock		      "Mux9"
+      DstPort		      9
+    }
+    Line {
+      Name		      "<CommandAfterBurner>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      26
+      DstBlock		      "Mux9"
+      DstPort		      10
+    }
+    Line {
+      Name		      "<TMAutothrottle>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      27
+      DstBlock		      "Mux9"
+      DstPort		      11
+    }
+    Line {
+      Name		      "<WayPointNumber>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      28
+      DstBlock		      "Mux9"
+      DstPort		      12
+    }
+    Line {
+      Name		      "TacticalManuevering"
+      Labels		      [0, 0]
+      SrcBlock		      "Mux9"
+      SrcPort		      1
+      Points		      [95, 0; 0, -45]
+      DstBlock		      "Mux4"
+      DstPort		      2
+    }
+    Line {
+      Name		      "RabbitNpos"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      34
+      Points		      [95, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			34
+      }
+      Branch {
+	Points			[0, -650]
+	DstBlock		"Scope2"
+	DstPort			1
+      }
+    }
+    Line {
+      Name		      "WaypointTypeCurrent"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      30
+      DstBlock		      "Mux"
+      DstPort		      30
+    }
+    Line {
+      Name		      "WaypointTypeLast"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      31
+      DstBlock		      "Mux"
+      DstPort		      31
+    }
+    Line {
+      Name		      "WaypointTargetHandleCurrent"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      32
+      DstBlock		      "Mux"
+      DstPort		      32
+    }
+    Line {
+      Name		      "WaypointTargetHandleLast"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      33
+      DstBlock		      "Mux"
+      DstPort		      33
+    }
+    Line {
+      Name		      "<WaypointTypeCurrent>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      29
+      DstBlock		      "Mux9"
+      DstPort		      13
+    }
+    Line {
+      Name		      "<WaypointTypeLast>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      30
+      DstBlock		      "Mux9"
+      DstPort		      14
+    }
+    Line {
+      Name		      "RabbitEpos"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      35
+      Points		      [95, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			35
+      }
+      Branch {
+	Points			[0, -635]
+	DstBlock		"Scope2"
+	DstPort			2
+      }
+    }
+    Line {
+      Name		      "RabbitHdg"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      36
+      Points		      [100, 0]
+      Branch {
+	DstBlock		"Mux"
+	DstPort			36
+      }
+      Branch {
+	Points			[0, -620]
+	DstBlock		"Scope2"
+	DstPort			3
+      }
+    }
+    Line {
+      Name		      "Rabbit Postion"
+      Labels		      [0, 0]
+      SrcBlock		      "Mux2"
+      SrcPort		      1
+      Points		      [10, 0; 0, -15]
+      DstBlock		      "Mux9"
+      DstPort		      17
+    }
+    Line {
+      Name		      "<RabbitHdg>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      35
+      DstBlock		      "Mux2"
+      DstPort		      3
+    }
+    Line {
+      Name		      "<RabbitEpos>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      34
+      DstBlock		      "Mux2"
+      DstPort		      2
+    }
+    Line {
+      Name		      "<RabbitNpos>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      33
+      DstBlock		      "Mux2"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<WaypointTargetHandleLast>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      32
+      DstBlock		      "Mux9"
+      DstPort		      16
+    }
+    Line {
+      Name		      "<WaypointTargetHandleCurrent>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      31
+      DstBlock		      "Mux9"
+      DstPort		      15
+    }
+    Line {
+      Name		      "TotalSearchTimeSeconds"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      37
+      DstBlock		      "Mux"
+      DstPort		      37
+    }
+    Line {
+      Name		      "AssignedTarget"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      38
+      DstBlock		      "Mux"
+      DstPort		      38
+    }
+    Line {
+      Name		      "AssignedTask"
+      Labels		      [0, 0]
+      SrcBlock		      "Demux1"
+      SrcPort		      39
+      DstBlock		      "Mux"
+      DstPort		      39
+    }
+    Line {
+      Name		      "<AssignedTask>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      37
+      Points		      [125, 0]
+      DstBlock		      "Mux9"
+      DstPort		      20
+    }
+    Line {
+      Name		      "<AssignedTarget>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector3"
+      SrcPort		      36
+      Points		      [120, 0; 0, -15]
+      DstBlock		      "Mux9"
+      DstPort		      19
+    }
+    Line {
+      Name		      "X Position"
+      Labels		      [0, 0]
+      SrcBlock		      "VehicleID1"
+      SrcPort		      1
+      DstBlock		      "Mux8"
+      DstPort		      1
+    }
+    Line {
+      Name		      "Y Position"
+      Labels		      [0, 0]
+      SrcBlock		      "VehicleID2"
+      SrcPort		      1
+      DstBlock		      "Mux8"
+      DstPort		      2
+    }
+    Line {
+      Name		      "Z Position"
+      Labels		      [0, 0]
+      SrcBlock		      "VehicleID3"
+      SrcPort		      1
+      DstBlock		      "Mux8"
+      DstPort		      3
+    }
+    Line {
+      Name		      "Psi"
+      Labels		      [0, 0]
+      SrcBlock		      "VehicleID6"
+      SrcPort		      1
+      DstBlock		      "Mux8"
+      DstPort		      5
+    }
+    Line {
+      Name		      "Type"
+      Labels		      [0, 0]
+      SrcBlock		      "VehicleID4"
+      SrcPort		      1
+      DstBlock		      "Mux8"
+      DstPort		      4
+    }
+    Line {
+      Name		      "Alive"
+      Labels		      [0, 0]
+      SrcBlock		      "VehicleID7"
+      SrcPort		      1
+      DstBlock		      "Mux8"
+      DstPort		      6
+    }
+    Line {
+      Labels		      [0, 0]
+      SrcBlock		      "Targets"
+      SrcPort		      1
+      Points		      [65, 0]
+      DstBlock		      "Bus\nCreator"
+      DstPort		      1
+    }
+    Line {
+      Name		      "SimBus"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nCreator"
+      SrcPort		      1
+      Points		      [25, 0; 0, -15]
+      Branch {
+	Points			[0, -125; -295, 0; 0, 80]
+	DstBlock		"Targets"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 15]
+	DstBlock		"DataForPlotting"
+	DstPort			1
+      }
+    }
+    Line {
+      Name		      "<Position_x>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector"
+      SrcPort		      1
+      Points		      [75, 0]
+      DstBlock		      "Mux5"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<Position_y>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector"
+      SrcPort		      2
+      Points		      [75, 0]
+      DstBlock		      "Mux5"
+      DstPort		      2
+    }
+    Line {
+      Name		      "<PsiFilteredDeg>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector"
+      SrcPort		      3
+      DstBlock		      "Mux5"
+      DstPort		      3
+    }
+    Line {
+      Name		      "<SensorOn>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector"
+      SrcPort		      4
+      Points		      [75, 0]
+      DstBlock		      "Mux5"
+      DstPort		      4
+    }
+    Line {
+      Name		      "<Rabbit Postion>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector"
+      SrcPort		      5
+      Points		      [75, 0]
+      DstBlock		      "Mux5"
+      DstPort		      5
+    }
+    Line {
+      Name		      "<AssignedTarget>"
+      Labels		      [0, 0]
+      SrcBlock		      "Bus\nSelector"
+      SrcPort		      6
+      Points		      [75, 0]
+      DstBlock		      "Mux5"
+      DstPort		      6
+    }
+    Line {
+      Name		      "VehicleStatus"
+      Labels		      [0, 0]
+      SrcBlock		      "Mux5"
+      SrcPort		      1
+      Points		      [75, 0; 0, -170]
+      DstBlock		      "Bus\nCreator"
+      DstPort		      2
+    }
+    Line {
+      Name		      "VehicleFinished"
+      Labels		      [0, 0]
+      SrcBlock		      "Constant"
+      SrcPort		      1
+      Points		      [90, 0]
+      DstBlock		      "Mux5"
+      DstPort		      7
+    }
+    Line {
+      Name		      "TargetStatus"
+      Labels		      [0, 0]
+      SrcBlock		      "Constant1"
+      SrcPort		      1
+      Points		      [135, 0]
+      DstBlock		      "Bus\nCreator"
+      DstPort		      3
+    }
+  }
+}

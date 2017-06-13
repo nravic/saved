@@ -1,0 +1,2 @@
+- Set your environment options in make.env and your desired compilation and
+  linking options in make.opts

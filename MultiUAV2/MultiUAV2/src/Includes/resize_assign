@@ -1,0 +1,197 @@
+//=========================================================================
+// THIS SOFTWARE AND ANY ACCOMPANYING DOCUMENTATION IS RELEASED "AS IS."
+// THE U.S.GOVERNMENT MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+// CONCERNING THIS SOFTWARE AND ANY ACCOMPANYING DOCUMENTATION, INCLUDING,
+// WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A
+// PARTICULAR PURPOSE. IN NO EVENT WILL THE U.S. GOVERNMENT BE LIABLE FOR
+// ANY DAMAGES, INCLUDING ANY LOST PROFITS, LOST SAVINGS OR OTHER
+// INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE, OR
+// INABILITY TO USE, THIS SOFTWARE OR ANY ACCOMPANYING DOCUMENTATION, EVEN
+// IF INFORMED IN ADVANCE OF THE POSSIBILITY OF SUCH DAMAGES.
+//=========================================================================
+// 2003/09/22  jwm  To deal with differing size assignments to
+//                  vectors/valarrays; MSVC++6 silently tries to resize
+//                  and assign, while the standard specifies no check.
+// 2003/10/20  jwm  Compile/function verify for MSVC++6 and gcc 3.1.
+//=========================================================================
+
+//=========================================================================
+//  NOTE: 0. Requires size() and operator[](), and contiguous memory;
+//        1. template feature madness controlled by preprocessor
+//           directives;
+//        2. boost concept checking used where available;
+//=========================================================================
+
+#ifndef RESIZE_ASSIGN_HEADER
+#define RESIZE_ASSIGN_HEADER
+
+#include <cassert>
+#include <algorithm>
+#include <limits>
+#include <valarray>
+#include <vector>
+
+#if defined(__GNUC__) && defined( __cplusplus )
+# define _HAVE_GNUCXX 1
+#endif
+
+#ifdef _HAVE_GNUCXX
+// use boot library directly to avoid stupid difficulties
+# include <bits/boost_concept_check.h>
+  using namespace __gnu_cxx;
+#endif
+
+namespace
+{
+	using namespace std;
+
+# ifdef _HAVE_GNUCXX
+
+	// if we're not using the craptabulous MSVC++, we do it right:
+
+	// NOTE:  contiguous array storage required!
+	template <typename V1, typename V2> 
+	inline void resize_assign_array( const V1& r, V2& l )
+	{
+		typedef typename V1::value_type S1;
+		typedef typename V2::value_type S2;
+		__function_requires<_SameTypeConcept<S1,S2> >();
+		__function_requires<_AssignableConcept<V2> >();
+		__function_requires<_AssignableConcept<S2> >();
+		
+		assert( &r[0] != 0x0 );
+		assert( r.size() > 0 );
+		
+		if( l.size() != r.size() )
+			l.resize( r.size() );
+		copy( &r[0], &r[ r.size() ], &l[0] );
+	}
+
+	// this is a quick fix to handle GCC's valarray expression templates
+	template <typename _Tp, class _Dom, typename V2> 
+	inline void resize_assign_array( const _Expr<_Dom, _Tp>& exptmpl, V2& l )
+	{
+		// in theory, this temporary should be optimized away...
+		resize_assign_array( valarray<_Tp>( exptmpl ), l);
+	}
+	
+
+	template <typename S, typename V> 
+	inline void resize_assign_scalar( const S& val, size_t sz, V& r )
+	{
+		typedef typename V::value_type S1;
+		__function_requires<_SameTypeConcept<S,S1> >();
+		__function_requires<_AssignableConcept<V> >();
+		__function_requires<_AssignableConcept<S1> >();
+
+		if( r.size() != sz )
+			r.resize(sz);
+		fill( &r[0], &r[ r.size() ], val );
+	}
+
+# elif _MSC_VER == 1200
+	//NOTE: we just realized were're stuck with MSVC++6. *sighs heavily*
+
+	// NOTE:  contiguous array still storage required!
+	template <typename V1, typename V2> 
+	inline void resize_assign_array( const V1& r, V2& l )
+	{
+		// this is necessary because, for some reason, the magnificant
+		// MSVC++6 complains about the lack of an l-value for &r[], could it
+		// be broken?  *ghasps, w/ both hands to side of face*
+		const typename V1::value_type* pr_start = &const_cast<V1&>(r)[0];
+		const typename V1::value_type* pr_end   = &const_cast<V1&>(r)[ r.size() ];
+		
+		assert( pr_start != 0x0 );
+		assert( r.size() > 0 );
+		
+		if( l.size() != r.size() ) l.resize( r.size() );
+		
+		typename V2::value_type* pl_start = &l[0];
+
+		copy( pr_start, pr_end, pl_start );
+	}
+	
+	template <typename T, typename V> 
+	inline void resize_assign_scalar( const T& val, size_t sz, V& r )
+	{
+		if( r.size() != sz )
+			r.resize(sz);
+		fill( &r[0], &r[ r.size() ], val );
+	}
+
+# else
+  // NOTE: we've found ourselves on some other craptastic compiler, so moan and dump.
+
+	template <typename V1, typename V2> 
+	inline void resize_assign_array( const V1& r, V2& l )
+  { x.unrecognized_compiler_version__verify_supported_template_features(); }
+
+	template <typename T, typename V> 
+	inline void resize_assign_scalar( const T& val, size_t sz, V& r )
+  { x.unrecognized_compiler_version__verify_supported_template_features(); }
+
+# endif
+}
+#endif
+#undef _HAVE_GNUGXX
+
+// ROUNDING_CAST_HEADER
+
+// BEGIN:SAMPLE TEST PROGRAM
+// #include <iostream>
+// #include <resize_assign>
+//
+// template <typename V>
+// void show( const V& v, const char* label )
+// {
+// 	using namespace std;
+//	
+// 	cout << label << " = {";
+// 	copy( &v[0], &v[v.size()], ostream_iterator<int>(cout, ", ") );
+// 	cout << "}" << endl;
+//	
+// }
+//
+// int main()
+// {
+// 	using namespace std;
+//
+// 	const size_t sz = 2;
+// 	int _a[] = {1, 2};
+// 	int _p[] = {3, 4};
+//	
+// 	valarray<int> p(_p,sz), q, r;
+//
+// 	vector<int> a(sz), b, c;
+// 	copy( &_a[0], &_a[sz], &a[0] );
+//
+// 	show( a, "vec:a" );
+// 	show( p, "val:p" );
+//
+// 	cout << endl;
+//	
+// 	resize_assign_array( p, q );
+// 	show(q, "val:q");
+//	
+// 	resize_assign_array( a, b );
+// 	show(b, "vec:b");
+//
+// 	resize_assign_array( a, r );
+// 	show(r, "(from vec:a) val:r");
+//
+// 	resize_assign_array( p, c );
+// 	show(c, "(from val:p) vec:c");
+//
+// 	const int new_value = 0;
+// 	const size_t new_size = 7;
+// 	resize_assign_scalar( new_value, new_size, c );
+// 	show(c, "(from scalar:0) vec:c");
+//
+// 	return( 0 );
+// }
+// END:SAMPLE TEST PROGRAM
+
+// Local Variables:
+// mode:C++
+// End:

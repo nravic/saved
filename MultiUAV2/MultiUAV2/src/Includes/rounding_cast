@@ -1,0 +1,131 @@
+//=========================================================================
+// THIS SOFTWARE AND ANY ACCOMPANYING DOCUMENTATION IS RELEASED "AS IS."
+// THE U.S.GOVERNMENT MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+// CONCERNING THIS SOFTWARE AND ANY ACCOMPANYING DOCUMENTATION, INCLUDING,
+// WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A
+// PARTICULAR PURPOSE. IN NO EVENT WILL THE U.S. GOVERNMENT BE LIABLE FOR
+// ANY DAMAGES, INCLUDING ANY LOST PROFITS, LOST SAVINGS OR OTHER
+// INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE, OR
+// INABILITY TO USE, THIS SOFTWARE OR ANY ACCOMPANYING DOCUMENTATION, EVEN
+// IF INFORMED IN ADVANCE OF THE POSSIBILITY OF SUCH DAMAGES.
+//=========================================================================
+// 2003/06/25  jwm  To deal with matlab and rounding in mex/s-funcs
+//                   and elsewhere.
+//=========================================================================
+
+//=========================================================================
+// Notes: 
+//   - WARNING: There is no checking for under/overflow of any kind!
+//   - C9X: The lround function rounds its argument to the nearest integer
+//     value, rounding halfway cases away from zero, regardless of the
+//     current rounding direction. If the rounded value is outside the
+//     range of long int, the numeric result is unspecified. A range error
+//     may occur if the magnitude of x is too large.
+//=========================================================================
+
+#ifndef ROUNDING_CAST_HEADER
+#define ROUNDING_CAST_HEADER
+
+#include <cassert>
+#include <cmath>
+#include <limits>
+
+namespace
+{
+  // this is necessary because ISO says no template-ids can appear in
+  // using-directive (ISO/IEC \S 7.3.3.5, pg 116)
+  using namespace std;
+
+  typedef double scalar_t;
+  typedef int int_t;
+  typedef unsigned int uint_t;
+  typedef long int lint_t;
+  typedef unsigned long int ulint_t;
+
+# if !defined(_MSC_VER)
+
+  // if we are using a sane compiler then we do it properly...
+  template <typename R, typename T>
+  inline R rounding_cast( T x ) 
+  { x.no_explicit_specialization_found(); }
+
+
+// avoid issues of partial specialization support; use explict only.
+#  if (defined(__c99) || defined(__USE_ISOC99))
+
+	template <> inline int_t rounding_cast( scalar_t x ) 
+	{ return( static_cast<int_t>(lround(x)) ); }
+
+	template <> inline lint_t rounding_cast( scalar_t x ) 
+	{ return( static_cast<lint_t>(lround(x)) ); }
+
+	template <> inline uint_t rounding_cast( scalar_t x ) 
+	{ return( static_cast<uint_t>(lround(x)) ); }
+
+	template <> inline ulint_t rounding_cast( scalar_t x ) 
+	{ return( static_cast<ulint_t>(lround(x)) ); }
+
+#  else
+
+#  error "We're not using an ISOC99 compiler!"
+
+	// manually round away from zero regardless of current rounding
+	// direction.
+
+	template <> inline int_t rounding_cast( scalar_t x ) 
+	{ return( static_cast<int_t>(copysign(numeric_limits<scalar_t>::round_error(),x)+x)); }
+
+	template <> inline lint_t rounding_cast( scalar_t x ) 
+	{ return( static_cast<lint_t>(copysign(numeric_limits<scalar_t>::round_error(),x)+x)); }
+
+	template <> inline uint_t rounding_cast( scalar_t x ) 
+	{ 
+		assert( x >= scalar_t(0) );
+		return( static_cast<uint_t>(copysign(numeric_limits<scalar_t>::round_error(),x)+x)); 
+	}
+
+	template <> inline ulint_t rounding_cast( scalar_t x ) 
+	{ 
+		assert( x >= scalar_t(0) );
+		return( static_cast<ulint_t>(copysign(numeric_limits<scalar_t>::round_error(),x)+x) ); 
+	}
+
+#  endif
+
+# elif _MSC_VER == 1200
+	// we must be saddled with the craptacular M$VC++6, so here goes the wacky hacking!
+	// (WARNING:  this is unsafe because we do not restrict unsigned to be positive!
+	template <typename I> inline I rounding_cast( scalar_t x, I dummy = I(0) ) 
+	{ return( static_cast<I>(_copysign(numeric_limits<scalar_t>::round_error(),x)+x)); }
+
+# else
+
+  // we've found ourselves on some other craptastic MSVC++ compiler, so moan and dump.
+  template <typename R, typename T>
+  inline R rounding_cast( T x ) 
+  { x.unrecognized_MSVCXX_compiler_version__verify_supported_template_features(); }
+
+# endif
+
+}
+
+#endif
+
+// simple test program
+// #include <cmath>
+// #include <cstdio>
+// #include "rounding_cast"
+// int main(int argc, char* argv[])
+// {
+// 	using namespace std;
+// 	double d = 0.999999;
+// 	int i = rounding_cast<int>(d);
+// 	printf( " d:% .8f  i:% d\n", d, i );
+// 	int j = rounding_cast<int>(-d);
+// 	printf( "-d:% .8f  j:% d\n", -d, j );
+// 	return( 0 );
+// }
+
+// Local Variables:
+// mode:C++
+// End:

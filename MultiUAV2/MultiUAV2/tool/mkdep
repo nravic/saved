@@ -1,0 +1,123 @@
+#!/bin/sh
+#===============================================================================
+#    $Id: mkdep,v 2.0 2004/01/22 20:54:58 mitchejw Exp $
+#
+#    Tue Dec 03 13:40:05 PST 1991
+#    this script was derived by Stephen C. Woods <scw@seas.ucla.edu>
+#    it has only been minimally tested (on the nslookup directory)
+#    from the following pieces of code 
+#    from the BSD 4.3 release on the IBM RT/PC (AOS)
+#	@(#)mkdep.sh	1.7	(Berkeley)	10/13/87
+#
+#    from the Perl 4.000  release by Larry Wall
+#    Revision 4.0  91/03/20  01:27:04  lwall 
+#    4.0 baseline.
+#
+#    Name:   Jason Wm. Mitchell
+#    Date:   28-Sep-94
+#    Comments: Cabbaged above for my own usuage and modified it 
+#              a little to suit my tastes.
+#
+#    Name:   Jason Wm. Mitchell
+#    Date:   04-Dec-95
+#    Comments: added stuff for YACC. 
+#
+#    Name:   Jason Wm. Mitchell
+#    Date:   17-Feb-99
+#    Comments: generalized script a bit more, note that preprocessing
+#              is performed by that preprocessor to which /lib/cpp points.
+#
+#
+#  Example make target:
+#
+#	depend dep:
+#		mkdep -I/usr/include ${INCLUDES} ${SRCS}
+#
+#
+#===============================================================================
+PATH=/bin:/usr/bin:/usr/ucb
+export PATH
+
+CPP=/lib/cpp
+
+if [ $# = 0 ] ; then
+	echo 'usage: mkdep [-p] [-f makefile] [flags] file ...'
+	exit 1
+fi
+
+#MAKE=Makefile			# default makefile name is "Makefile"
+MAKE=makefile			# default makefile name is "makefile"
+case $1 in
+	# -f allows you to select a makefile name
+	-f)
+		MAKE=$2
+		shift; shift ;;
+
+	# the -p flag produces "program: program.c" style dependencies
+	# so .o's don't get produced
+	-p)
+		SED='-e s;\.o;;'
+		shift ;;
+esac
+
+if [ ! -w $MAKE ]; then
+	echo "mkdep: no writeable file \"$MAKE\""
+	exit 1
+fi
+
+TMP=/tmp/mkdep$$
+
+trap 'rm -f $TMP ; exit 1' 1 2 3 13 15
+
+cp $MAKE ${MAKE}.bak
+
+sed -e '/DO NOT DELETE THIS LINE/,$d' < $MAKE > $TMP
+
+cat << _EOF_ >> $TMP
+# DO NOT DELETE THIS LINE -- mkdep uses it.
+# DO NOT PUT ANYTHING AFTER THIS LINE, IT WILL GO AWAY.
+
+_EOF_
+for f in $@ ; do
+  case $f in
+    -O) ;;
+    -*) flags="$flags $f";;
+     *) files="$files $f";;
+  esac
+done
+
+for file in $files; do
+  case "$file" in
+    *.C)   filebase=`basename $file .C` ;;
+    *.cc)  filebase=`basename $file .cc` ;;
+    *.cxx) filebase=`basename $file .cxx` ;;
+    *.cpp) filebase=`basename $file .cpp` ;;
+    *.c)   filebase=`basename $file .c` ;;
+    *.y)   filebase=`basename $file .y` ;;
+    *.f)   filebase=`basename $file .f` ;;
+  esac
+  echo "Finding dependencies for $filebase.o."
+  if [ -r $file ] ; then
+    sed -n <$file \
+	-e "/^${filebase}_init(/q" \
+	-e '/^#/{' \
+	-e 's|/\*.*$||' \
+	-e 's|\\$||' \
+	-e p \
+	-e '}'| ${CPP} $flags 2>/dev/null | \
+    sed \
+        -e '/^# [0-9] "<built-in>"$/d' \
+        -e '/^# [0-9] "<command line>"$/d' \
+        -e '/^# [0-9]* "<stdin>".*$/d' \
+	-e '/^# *[0-9]/!d' \
+	-e 's/^.*"\(.*\)".*$/'$filebase'.o: \1/' \
+	-e 's|: \./|: |' \
+	-e 's|\.c\.c|.c|' | \
+    egrep -v "\/usr\/include\/|\/usr\/lib\/|\/opt\/" | \
+    uniq | sort | uniq >> $TMP
+  fi
+done
+# copy to preserve permissions
+cp $TMP $MAKE
+rm -f ${MAKE}.bak $TMP
+exit 0

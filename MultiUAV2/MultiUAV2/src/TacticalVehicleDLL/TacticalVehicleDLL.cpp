@@ -1,0 +1,1063 @@
+//
+//	THIS SOFTWARE AND ANY ACCOMPANYING DOCUMENTATION IS RELEASED "AS IS." THE
+//	U.S.GOVERNMENT MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, CONCERNING
+//	THIS SOFTWARE AND ANY ACCOMPANYING DOCUMENTATION, INCLUDING, WITHOUT LIMITATION,
+//	ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT
+//	WILL THE U.S. GOVERNMENT BE LIABLE FOR ANY DAMAGES, INCLUDING ANY LOST PROFITS,
+//	LOST SAVINGS OR OTHER INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE,
+//	OR INABILITY TO USE, THIS SOFTWARE OR ANY ACCOMPANYING DOCUMENTATION, EVEN IF
+//	INFORMED IN ADVANCE OF THE POSSIBILITY OF SUCH DAMAGES.
+//
+//
+// TacticalVehicleDLL.cpp
+//
+//////////////////////////////////////////////////////////////////////
+
+
+// April 2002 - change to allow target positon update - RAS
+
+#pragma warning(disable:4786)
+
+#define S_FUNCTION_NAME TacticalVehicle
+#define S_FUNCTION_LEVEL 2
+
+#define NAME_S_FUNCTION "TacticalVehicle"
+
+//#define U(element) (*uPtrs[element])  /* Pointer to Input Port0 */
+#define GetU(array,element) (*array[element])  /* array is a Pointer to a selected Input Port */
+
+
+
+#include <mex.h>
+#include <simstruc.h>
+
+#include <sstream>
+#include <string>
+#include <valarray>
+#include <limits>
+
+#include <GlobalDefines.h>
+#include <SSDebugDefine.h>
+#include <rounding_cast>
+#include <MaxPathLen.h>
+
+#include "TacticalVehicle.h"
+
+// anonymous name space
+namespace
+{
+	typedef class CVehicleSimulation<VAL_DOUBLE_t,V_PDOUBLE_t,V_DOUBLE_t,double> CVEHICLESIMULATION_t;
+	typedef class CTacticalVehicle CTACTICALVEHICLE_t;
+	typedef CTACTICALVEHICLE_t::enCommandTypes enCommandTypes;
+	typedef CTACTICALVEHICLE_t::enCommandsVelocityHeadingAltitude enCommandsVelocityHeadingAltitude;
+
+//PROTOTYPES
+void ResetVehicleDynamics(SimStruct *S,CTacticalVehicle* ptacticalvehicleInterface,int iID);
+void ResetTargetPositions(SimStruct *S,CTacticalVehicle* ptacticalvehicleInterface,int iID);
+
+
+#define NAME_VEHICLE_MEMORY_STRUCT_ARRAY "g_VehicleMemory"
+
+#define SAMPLE_TIME 0.0
+
+#define NAME_WAYPOINT_FLAGS "g_WaypointFlags"
+#define NAME_WAYPOINT_STARTING_INDEX "g_WaypointStartingIndex"
+#define NAME_WAYPOINT_CELL_ARRAY "g_WaypointCells"
+enum enWaypointDefinitions	//this must be coordinated with entries in "CreateStructure.m"
+{
+	enwayPositionNorth,
+	enwayPositionEast,
+	enwayPositionZ,
+	enwayMachCommand,
+	enwayMachCommandFlag,
+	enwaySegmentLength,
+	enwayTurnCenterX,
+	enwayTurnCenterY,
+	enwayTurnDirection,
+	enwayWaypointType,
+	enwayTargetHandle,
+	enwayResetVehiclePosition,
+	enwayNumberEntries
+};
+
+#define U(element) (*uPtrs[element])  /* Pointer to Input Port0 */
+
+
+enum enVehicleParameters 
+{	
+	paramStandAloneFlag,
+	paramNumberTargets,
+	paramSensorRollTolerance,
+	paramWaypointNumberEntries,
+	paramG_VehicleInputFiles,
+	paramTotalParameters 
+};
+
+enum enVehicleParametersSO 
+{	
+	paramSOStandAloneFlag,
+	paramSOVTrueFPSInit,
+	paramSOPsiDegInit,
+	paramSOPositionXFeetInit,
+	paramSOPositionYFeetInit,
+	paramSOPositionZFeetInit,
+	paramSONumberBombsInit,
+	paramSOFuelLB,
+	paramSOTotalParameters 
+};
+
+enum enVehicleInputs 
+{	
+	inVehicleID,
+	inTurnRadiusCmd,
+#ifdef STEVETEST
+	inSensorOffsetX_ft,
+	inSensorOffsetY_ft,
+#endif	//STEVETEST
+	inCommandType,		//enCommandTypes
+	inCommandInputFirst,
+	inCommandInputVelocity_fps = inCommandInputFirst,
+	inCommandInputHeading_rad,
+	inCommandInputAltitude_ft,
+	inCommandInputLast = inCommandInputAltitude_ft,
+	inTotalInputsMinusTargets 
+};
+
+enum enInputPorts
+{
+	inportIDCommands,
+	inportTargets,
+	inportTotal
+};
+
+enum enVehicleInputsExternalCommands 
+{	
+	incmdVehicleID,	// make sure not to change order of this entry
+	incmdTurnRadiusCmd,	// make sure not to change order of this entry
+	incmdCmd_power,
+	incmdBank_cmd,
+	incmdHeading_cmd,
+	incmdAlt_cmd,
+	incmdMach_cmd,
+	incmdCR_cmd,
+	incmdAutopilot_mode,
+	incmdSpoiler_cmd,
+	incmdBrake_cmd,
+	incmdAfterburner_cmd,
+	incmdTM_autothrottle,
+	incmdTotalInputsMinusTargets 
+};
+
+#define NUMBER_TARGET_ELEMENTS 6	//x, y, alt, type alive, psi
+//#define TARGET_FIRST_INDEX inTotalInputsMinusTargets
+#define TARGET_FIRST_INDEX 0
+
+enum enVehicleOutputs 
+{
+	outPosition_x,outPosition_y,outAltitude,outV_true_kts,outV_true_fps,
+	outPhi,outTheta,outPsi,outAlpha,outBeta,outMach_number,outV_north,
+	outV_east,outV_down,
+	outThrust,
+	outSensorOn,
+	outCommandHeading,outCommandAltitude,outCommandVelocity,
+	outWayPointNumber,outWayPointTypeCurrent,outWayPointTypeLast,
+	outWayPointTargetHandleCurrent,outWayPointTargetHandleLast,
+	outRabbitNpos,
+	outRabbitEpos,
+	outRabbitHdg,
+	outTotalSearchTimeSeconds,
+	outAssignedTarget,
+	outAssignedTask,
+	outTotalOutputsMinusTargets 
+};
+
+#define TARGET_ATR_INDEX_FIRST outTotalOutputsMinusTargets
+
+// local support functions
+const mxArray* GetInputFileStruct( SimStruct* S );
+const mxArray* GetDATCOMFileStruct( SimStruct* S );
+const mxArray* GetParamsFileStruct( SimStruct* S );
+bool GetIsSubtractBaseTables( SimStruct* S );
+string GetDATCOMFileName( SimStruct* S );
+string GetParamsFileName( SimStruct* S );
+
+//Need a persistent error variable for returning error messages
+static stringstream sstrErrorMessage;
+
+// extern "C"
+// {
+// 	void mdlStart(SimStruct *S);
+// 	void mdlInitializeSizes(SimStruct *S);
+// 	void mdlInitializeSampleTimes(SimStruct *S);
+// 	void mdlInitializeConditions(SimStruct *S);
+// 	void mdlOutputs(SimStruct *S, int_T tid);
+// 	void mdlUpdate(SimStruct *S, int_T tid);
+// 	void mdlTerminate(SimStruct *S);
+// 	void mdlCheckParameters(SimStruct *S);
+// }
+
+/*====================*
+ * S-function methods *
+ *====================*/
+
+#define MDL_CHECK_PARAMETERS
+#if defined(MDL_CHECK_PARAMETERS) && defined(MATLAB_MEX_FILE)
+  /* Function: mdlCheckParameters =============================================
+   * Abstract:
+   *    Validate our parameters to verify they are okay.
+   */
+  void mdlCheckParameters(SimStruct *S)
+  {
+	  int iParameterNumber = 1;
+      /* Check parameter: external commands */
+      {
+          if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+		  {
+			  char caMessage[1024];
+			  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be the External Command flag",iParameterNumber);
+              ssSetErrorStatus(S,(char*)&caMessage);
+              return;
+          }
+      }
+	  iParameterNumber++;
+		BOOL bStandAlone = rounding_cast<BOOL>(*mxGetPr(ssGetSFcnParam(S,paramStandAloneFlag)));
+	  if(bStandAlone)
+	  {
+		  /* Check parameter: TrueFPSInit */
+		  {
+			  if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be TrueFPSInit",iParameterNumber);
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+		  }
+		  iParameterNumber++;
+		  /* Check parameter: PsiDegInit */
+		  {
+			  if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be PsiDegInit",iParameterNumber);
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+		  }
+		  iParameterNumber++;
+		  /* Check parameter: PositionXFeetInit */
+		  {
+			  if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be PositionXFeetInit",iParameterNumber);
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+		  }
+		  iParameterNumber++;
+		  /* Check parameter: PositionYFeetInit */
+		  {
+			  if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be PositionYFeetInit",iParameterNumber);
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+		  }
+		  iParameterNumber++;
+		  /* Check parameter: PositionZFeetInit */
+		  {
+			  if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be PositionZFeetInit",iParameterNumber);
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+		  }
+		  iParameterNumber++;
+		  /* Check parameter: NumberBombsInit */
+		  {
+			  if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be NumberBombsInit",iParameterNumber);
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+		  }
+		  iParameterNumber++;
+		  /* Check parameter: FuelLB */
+		  {
+			  if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be FuelLB",iParameterNumber);
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+		  }
+		  iParameterNumber++;
+	  }
+	  else
+	  {
+		  /* Check parameter: number of targets */
+		  {
+			  if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be the number of targets",iParameterNumber);
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+		  }
+		  iParameterNumber++;
+		  /* Check parameter: sensor roll tolerance */
+		  {
+			  if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be the tolerance of sensor to roll angle",iParameterNumber);
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+		  }
+		  iParameterNumber++;
+		  /* Check parameter: number of entries in a waypoint */
+		  {
+			  if (!mxIsDouble(ssGetSFcnParam(S,iParameterNumber-1)) || mxGetNumberOfElements(ssGetSFcnParam(S,iParameterNumber-1)) != 1) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must be the number of entries in a waypoint",iParameterNumber);
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+			}
+		  iParameterNumber++;
+		  // Check parameter: g_VehicleInputFiles info; currently requires 2 fields 
+		  {
+				const int InputFileFields = 2;
+			  if( !mxIsStruct(ssGetSFcnParam(S,iParameterNumber-1)) || 
+						mxGetNumberOfFields(ssGetSFcnParam(S,iParameterNumber-1)) != InputFileFields ) 
+			  {
+				  char caMessage[1024];
+				  sprintf((char*)&caMessage,"Parameter Number #%d to the vehicle S-function must contain the vehicle input file information; check InitializeGlobals.m for g_VehicleInputFiles",iParameterNumber);
+					mexPrintf(static_cast<char*>(&caMessage[0]));
+				  ssSetErrorStatus(S,(char*)&caMessage);
+				  return;
+			  }
+			}
+		  iParameterNumber++;
+	  }
+  }
+#endif /* MDL_CHECK_PARAMETERS */
+
+
+/* Function: mdlInitializeSizes ===============================================
+ * Abstract:
+ *    The sizes information is used by Simulink to determine the S-function
+ *    block's characteristics (number of inputs, outputs, states, etc.).
+ */
+void mdlInitializeSizes(SimStruct *S)
+{
+	BOOL bStandAlone = rounding_cast<BOOL>(*mxGetPr(ssGetSFcnParam(S,paramStandAloneFlag)));
+	if(bStandAlone)
+	{
+		ssSetNumSFcnParams(S, paramSOTotalParameters);  /* Number of expected parameters */
+	}
+	else
+	{
+		ssSetNumSFcnParams(S, paramTotalParameters);  /* Number of expected parameters */
+	}
+#if defined(MATLAB_MEX_FILE)
+    if (ssGetNumSFcnParams(S) == ssGetSFcnParamsCount(S)) {
+        mdlCheckParameters(S);
+        if (ssGetErrorStatus(S) != NULL) {
+            return;
+        }
+    } else {
+        return; /* Parameter mismatch will be reported by Simulink */
+    }
+#endif
+
+    ssSetNumContStates(S, 0);	// number continuous
+    ssSetNumDiscStates(S, 0);	// number discrete states
+
+    if (!ssSetNumInputPorts(S, inportTotal)) 
+		return;
+
+	int iNumberTargets = 0;
+
+	if(!bStandAlone)
+	{
+		iNumberTargets = rounding_cast<int>(*mxGetPr(ssGetSFcnParam(S,paramNumberTargets)));
+		ssSetInputPortWidth(S, inportIDCommands,inTotalInputsMinusTargets);
+		ssSetInputPortWidth(S, inportTargets, (iNumberTargets*NUMBER_TARGET_ELEMENTS));
+	}
+	else
+	{
+		ssSetInputPortWidth(S, inportIDCommands, incmdTotalInputsMinusTargets);
+		ssSetInputPortWidth(S, inportTargets, (iNumberTargets*NUMBER_TARGET_ELEMENTS));
+	}
+    ssSetInputPortDirectFeedThrough(S, inportIDCommands, 0);
+    ssSetInputPortDirectFeedThrough(S, inportTargets, 0);
+
+    if (!ssSetNumOutputPorts(S, 1)) 
+		return;
+    ssSetOutputPortWidth(S, 0, (outTotalOutputsMinusTargets + iNumberTargets));
+
+    ssSetNumSampleTimes(S, 1);
+    ssSetNumRWork(S, 0);
+    ssSetNumIWork(S, 0);
+    ssSetNumPWork(S, 0);
+    ssSetNumModes(S, 0);
+    ssSetNumNonsampledZCs(S, 0);
+
+    /* Take care when specifying exception free code - see sfuntmpl.doc */
+    ssSetOptions(S, SS_OPTION_EXCEPTION_FREE_CODE);
+}
+
+
+
+/* Function: mdlInitializeSampleTimes =========================================
+ * Abstract:
+ *    Specifiy that we inherit our sample time from the driving block.
+ */
+void mdlInitializeSampleTimes(SimStruct *S)
+{
+    ssSetSampleTime(S, 0, SAMPLE_TIME);
+    ssSetOffsetTime(S, 0, 0.0);
+}
+
+
+
+#define MDL_INITIALIZE_CONDITIONS
+/* Function: mdlInitializeConditions ========================================
+ * Abstract:
+ *    Initialize both continuous states to zero.
+ */
+void mdlInitializeConditions(SimStruct *S)
+{
+//    real_T *x0 = ssGetRealDiscStates(S);
+//    int_T  lp;
+
+//    for (lp=0;lp<2;lp++) { 
+//        *x0++=1.0; 
+//    }
+}
+
+#define MDL_START  /* Change to #undef to remove function */
+#if defined(MDL_START) 
+  /* Function: mdlStart =======================================================
+   * Abstract:
+   *    This function is called once at start of model execution. If you
+   *    have states that should be initialized once, this is the place
+   *    to do it.
+   */
+void mdlStart(SimStruct *S)
+{
+	// extract parameters to construct a TacticalVehicle:
+	const bool& sbt = GetIsSubtractBaseTables(S);
+	const string datcom = GetDATCOMFileName(S);
+	const string params = GetParamsFileName(S);
+	
+	CTacticalVehicle* ptacticalvehicleInterface = new CTacticalVehicle( sbt,params.c_str(),datcom.c_str(),sstrErrorMessage );
+	ssSetUserData(S,(void*)ptacticalvehicleInterface);
+	 
+	ptacticalvehicleInterface->sensorGetFootprint().dGetTargetSensorTolerance() = 
+								*mxGetPr(ssGetSFcnParam(S,paramSensorRollTolerance))*_DEG_TO_RAD;
+}
+#endif /*  MDL_START */
+
+
+/* Function: mdlOutputs =======================================================
+ * Abstract:
+ *      y = Cx + Du 
+ */
+void mdlOutputs(SimStruct *S, int_T tid)
+{
+	SSDEBUG_TIME(ssGetT(S));
+	
+	real_T* prealOutputs = ssGetOutputPortRealSignal(S,0);
+	CTacticalVehicle* ptacticalvehicleInterface = static_cast<CTacticalVehicle*>(ssGetUserData(S));
+	if(ptacticalvehicleInterface->iGetVehicleID() < 0)
+	{
+		return;
+	}
+
+	prealOutputs[outPosition_x] = ptacticalvehicleInterface->dGetVehicleState(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateX_Feet);
+	prealOutputs[outPosition_y] = ptacticalvehicleInterface->dGetVehicleState(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateY_Feet);
+	prealOutputs[outAltitude] = -ptacticalvehicleInterface->dGetVehicleState(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateZ_Feet);
+	prealOutputs[outPhi] = _RAD_TO_DEG*ptacticalvehicleInterface->dGetVehicleState(CTacticalVehicle::CVEHICLEDYNAMICS_t::statePhi_Rad);
+	prealOutputs[outTheta] = _RAD_TO_DEG*ptacticalvehicleInterface->dGetVehicleState(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateTheta_Rad);
+	prealOutputs[outPsi] = _RAD_TO_DEG*(ptacticalvehicleInterface->dGetVehicleState(CTacticalVehicle::CVEHICLEDYNAMICS_t::statePsi_Rad));
+	prealOutputs[outV_north] = ptacticalvehicleInterface->dGetVehicleState(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateU_FeetPerSec);	//TODO:: are these velocities correct???
+	prealOutputs[outV_east] = ptacticalvehicleInterface->dGetVehicleState(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateV_FeetPerSec);
+	prealOutputs[outV_down] = ptacticalvehicleInterface->dGetVehicleState(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateW_FeetPerSec);
+	prealOutputs[outThrust] = ptacticalvehicleInterface->dGetEngineState(CTacticalVehicle::CENGINE1STORDER_t::statePowerLevel_pct);
+	prealOutputs[outV_true_fps] = ptacticalvehicleInterface->dGetVehicleOutput(CTacticalVehicle::CVEHICLEDYNAMICS_t::outputVt_ftpersec);
+	prealOutputs[outV_true_kts] = prealOutputs[outV_true_fps]*_FPS_TO_KNOTS;
+	prealOutputs[outAlpha] = ptacticalvehicleInterface->dGetVehicleOutput(CTacticalVehicle::CVEHICLEDYNAMICS_t::outputAlpha_rad);
+	prealOutputs[outBeta] = ptacticalvehicleInterface->dGetVehicleOutput(CTacticalVehicle::CVEHICLEDYNAMICS_t::outputBeta_rad);
+	prealOutputs[outMach_number] = ptacticalvehicleInterface->dGetVehicleOutput(CTacticalVehicle::CVEHICLEDYNAMICS_t::outputMach);
+
+	prealOutputs[outSensorOn] = ptacticalvehicleInterface->sensorGetFootprint().bGetSensorOn();
+
+	prealOutputs[outCommandHeading] = ptacticalvehicleInterface->waypointGetGuidance().dGetCommandHeading();
+	prealOutputs[outCommandAltitude] = ptacticalvehicleInterface->waypointGetGuidance().dGetCommandAltitude();
+	prealOutputs[outCommandVelocity] = ptacticalvehicleInterface->waypointGetGuidance().dGetCommandVelocity();
+
+	prealOutputs[outWayPointNumber] = ptacticalvehicleInterface->waypointGetGuidance().szGetWaypointIndex();
+	prealOutputs[outWayPointTypeCurrent] = ptacticalvehicleInterface->waypointGetGuidance().iGetWaypointTypeCurrent();
+	prealOutputs[outWayPointTypeLast] =  ptacticalvehicleInterface->waypointGetGuidance().iGetWaypointTypeLast();
+	prealOutputs[outWayPointTargetHandleCurrent] = ptacticalvehicleInterface->waypointGetGuidance().iGetWaypointTargetHandleCurrent();
+	prealOutputs[outWayPointTargetHandleLast] = ptacticalvehicleInterface->waypointGetGuidance().iGetWaypointTargetHandleLast();
+
+	prealOutputs[outRabbitNpos] = ptacticalvehicleInterface->waypointGetGuidance().dGetRabbitN();
+	prealOutputs[outRabbitEpos] = ptacticalvehicleInterface->waypointGetGuidance().dGetRabbitE();
+	prealOutputs[outRabbitHdg] = ptacticalvehicleInterface->waypointGetGuidance().dGetRabbitPsi();
+
+	prealOutputs[outTotalSearchTimeSeconds] = ptacticalvehicleInterface->waypointGetGuidance().dGetTotalSearchTime();
+
+	int iCurrentAssignedTarget = -1;
+	int iCurrentAssignedTask = -1;
+	ptacticalvehicleInterface->waypointGetGuidance().GetCurrentAssignment(iCurrentAssignedTarget,iCurrentAssignedTask);
+	prealOutputs[outAssignedTarget] = iCurrentAssignedTarget;
+	prealOutputs[outAssignedTask] = iCurrentAssignedTask;
+
+	int iCount = TARGET_ATR_INDEX_FIRST;
+	for(CSensorFootprint::V_TARGETS_t::iterator itTarget = ptacticalvehicleInterface->sensorGetFootprint().itGetTargetsBegin();
+					itTarget != ptacticalvehicleInterface->sensorGetFootprint().itGetTargetsEnd();itTarget++,iCount++)
+	{
+		prealOutputs[iCount] = ptacticalvehicleInterface->sensorGetFootprint().vGetTargets()[iCount-TARGET_ATR_INDEX_FIRST].bGetInSensorFootprint();
+	}
+
+	SSDEBUG_TIME(ssGetT(S));
+}
+
+
+
+#define MDL_UPDATE
+/* Function: mdlUpdate ======================================================
+ * Abstract:
+ *      xdot = Ax + Bu
+ */
+void mdlUpdate(SimStruct *S, int_T tid)
+{
+	InputRealPtrsType uIDCommands = ssGetInputPortRealSignalPtrs(S,inportIDCommands);
+	CTacticalVehicle* ptacticalvehicleInterface = (CTacticalVehicle*)ssGetUserData(S);
+
+	int iID = rounding_cast<int>(GetU(uIDCommands,inVehicleID));	// must be 0 or greater to  be valid (since matlab uses zero-based index the valid ID number start at 1)
+	BOOL bFirstTime =FALSE;
+	if(ptacticalvehicleInterface->iGetVehicleID() < 0)
+	{
+		ptacticalvehicleInterface->iGetVehicleID() = iID;
+
+		bFirstTime = TRUE;
+	}
+	ResetTargetPositions(S,ptacticalvehicleInterface,iID);	// this continually updates the target positions;
+
+	double* pdWaypointFlag = NULL;
+#ifdef MATLAB_R12
+	mxArray* pmxaWaypointFlag = (mxArray *)mexGetArray(NAME_WAYPOINT_FLAGS, "global");
+#else	//#ifdef MATLAB_R12
+	mxArray* pmxaWaypointFlag = (mxArray *)mexGetVariable("global",NAME_WAYPOINT_FLAGS);
+#endif	//#ifdef MATLAB_R12
+	if(pmxaWaypointFlag ==  NULL)	
+	{
+		char pcTemp[256];
+		sprintf(pcTemp,"ERROR: Unable to find new waypoint flag array: \"%s\" !!!",NAME_WAYPOINT_FLAGS);
+		ssSetErrorStatus(S,pcTemp);
+		return;
+	}
+	pdWaypointFlag = mxGetPr(pmxaWaypointFlag);
+
+	int iNewWaypoints = rounding_cast<int>(pdWaypointFlag[ptacticalvehicleInterface->iGetVehicleID()-1]);
+	if(bFirstTime)
+	{
+		iNewWaypoints = 1;
+	}
+	if(iNewWaypoints)
+	{
+		int iWaypointIndex = 0;
+		mxArray* pmxaWaypointIndex = NULL;
+		double* pdWaypointIndex = NULL;
+#ifdef MATLAB_R12
+		pmxaWaypointIndex = (mxArray *)mexGetArray(NAME_WAYPOINT_STARTING_INDEX, "global");
+#else	//#ifdef MATLAB_R12
+		pmxaWaypointIndex = (mxArray *)mexGetVariable("global",NAME_WAYPOINT_STARTING_INDEX);
+#endif	//#ifdef MATLAB_R12
+		if(pmxaWaypointIndex !=  NULL)	
+		{
+			pdWaypointIndex = mxGetPr(pmxaWaypointIndex);
+			iWaypointIndex = rounding_cast<int>(pdWaypointIndex[ptacticalvehicleInterface->iGetVehicleID()-1]);
+			pdWaypointIndex[ptacticalvehicleInterface->iGetVehicleID()-1] = 1;
+		}
+
+#ifdef MATLAB_R12
+		mxArray* pmxaWaypointCells = (mxArray *)mexGetArray(NAME_WAYPOINT_CELL_ARRAY, "global");
+#else	//#ifdef MATLAB_R12
+		mxArray* pmxaWaypointCells = (mxArray *)mexGetVariable("global",NAME_WAYPOINT_CELL_ARRAY);
+#endif	//#ifdef MATLAB_R12
+		if(pmxaWaypointCells ==  NULL)
+		{
+			//TODO:: This is an error condition
+			char pcTemp[256];
+			sprintf(pcTemp,"ERROR: Unable to find waypoint cell array: \"%s\" !!!",NAME_WAYPOINT_CELL_ARRAY);
+			ssSetErrorStatus(S,pcTemp);
+			mxDestroyArray(pmxaWaypointFlag);	/* Destroy array */
+			return;
+		}
+		if(!mxIsCell(pmxaWaypointCells))
+		{
+			//TODO:: This is an error condition
+			char pcTemp[256];
+			sprintf(pcTemp,"ERROR: Waypoint array is not in the form of a cell array: \"%s\" !!!",NAME_WAYPOINT_CELL_ARRAY);
+			mxDestroyArray(pmxaWaypointFlag);	/* Destroy array */
+			ssSetErrorStatus(S,pcTemp);
+			return;
+		};
+		if(ptacticalvehicleInterface->iGetVehicleID() > mxGetNumberOfElements(pmxaWaypointCells))
+		{
+			//TODO:: This is an error condition
+			char pcTemp[256];
+			sprintf(pcTemp,"ERROR: There are not enough cells in the waypoint cell array for this vehicle ID:Waypoint array is not in the form of a cell array: ID:%d \"%s\" !!!",
+											ptacticalvehicleInterface->iGetVehicleID(), NAME_WAYPOINT_CELL_ARRAY);
+			ssSetErrorStatus(S,pcTemp);
+			mxDestroyArray(pmxaWaypointFlag);	/* Destroy array */
+			return;
+		}
+		mxArray* array_ptr = (mxArray *)mxGetCell(pmxaWaypointCells, ptacticalvehicleInterface->iGetVehicleID()-1);
+		if(array_ptr ==  NULL)
+		{
+			//TODO:: This is an error condition
+			char pcTemp[256];
+			sprintf(pcTemp,"ERROR: Waypoint array cell points to NULL value: ID:%d \"%s\" !!!",
+											ptacticalvehicleInterface->iGetVehicleID(), NAME_WAYPOINT_CELL_ARRAY);
+			ssSetErrorStatus(S,pcTemp);
+			mxDestroyArray(pmxaWaypointFlag);	/* Destroy array */
+			return;
+		}
+		double* pdTemp = mxGetPr(array_ptr);
+		int iNumDimensions = mxGetNumberOfDimensions(array_ptr);
+		if(iNumDimensions !=  2)	// assume waypoints in a two dimensional array
+		{
+			//TODO:: This is an error condition
+			char pcTemp[256];
+			sprintf(pcTemp,"\"%s\" Waypoint array cell must be defined as a two dimensional array: ID:%d \"%s\" !!!",
+											ptacticalvehicleInterface->iGetVehicleID(), NAME_WAYPOINT_CELL_ARRAY);
+			ssSetErrorStatus(S,pcTemp);
+			mxDestroyArray(pmxaWaypointFlag);	/* Destroy array */
+			return;
+		}
+		const int* piDimensions = mxGetDimensions(array_ptr);
+		const int iWaypointDimension = rounding_cast<int>(*mxGetPr(ssGetSFcnParam(S,paramWaypointNumberEntries)));
+		if((piDimensions[1]!=iWaypointDimension))
+		{
+			//TODO:: This is an error condition
+			char pcTemp[256];
+			sprintf(pcTemp,"Wrong number of columns in waypoint array! (should be %d): ID:%d \"%s\" !!!",
+										iWaypointDimension,ptacticalvehicleInterface->iGetVehicleID(), 
+										NAME_WAYPOINT_CELL_ARRAY);
+			ssSetErrorStatus(S,pcTemp);
+			mxDestroyArray(pmxaWaypointFlag);	/* Destroy array */
+			return;
+		}
+		ptacticalvehicleInterface->waypointGetGuidance().NewWaypointsReset(iWaypointIndex);
+		for(int iIndex=0;iIndex<piDimensions[0];iIndex++)
+		{
+			CWaypoint wayTemp;
+			wayTemp.dGetPositionNorth() = pdTemp[iIndex+enwayPositionNorth*piDimensions[0]];
+			wayTemp.dGetPositionEast() = pdTemp[iIndex+enwayPositionEast*piDimensions[0]];
+			wayTemp.dGetPositionDown() = -pdTemp[iIndex+enwayPositionZ*piDimensions[0]];
+			wayTemp.dGetTurnCenterNorth() = pdTemp[iIndex+enwayTurnCenterX*piDimensions[0]];
+			wayTemp.dGetTurnCenterEast() = pdTemp[iIndex+enwayTurnCenterY*piDimensions[0]];
+			wayTemp.dGetSegmentLength() = pdTemp[iIndex+enwaySegmentLength*piDimensions[0]];
+			wayTemp.iGetTurnDirection() = rounding_cast<int>(pdTemp[iIndex+enwayTurnDirection*piDimensions[0]]);
+			wayTemp.iGetType() = rounding_cast<int>(pdTemp[iIndex+enwayWaypointType*piDimensions[0]]);
+			wayTemp.iGetTargetHandle() = rounding_cast<int>(pdTemp[iIndex+enwayTargetHandle*piDimensions[0]]);
+
+			wayTemp.dGetVelocity() = 0.0;
+			if(pdTemp[iIndex+enwayMachCommandFlag*piDimensions[0]])	// if the column contains mach number convert to feet/sec 
+			{
+				//TODO:: CHECK THIS ALTITUDE FOR DIRECTION????
+				double dVelocityFPS = 0.0;
+				ptacticalvehicleInterface->ConvertMachToFPS(pdTemp[iIndex+enwayMachCommand*piDimensions[0]],
+																					-wayTemp.dGetPositionDown(),dVelocityFPS);
+				wayTemp.dGetVelocity() = dVelocityFPS;
+			}
+			else
+			{
+				wayTemp.dGetVelocity() = pdTemp[iIndex+enwayMachCommand*piDimensions[0]];
+			}
+			ptacticalvehicleInterface->waypointGetGuidance().vGetWaypoints().push_back(wayTemp);
+		}
+		if(pdTemp[enwayResetVehiclePosition*piDimensions[0]])
+		{
+			ResetVehicleDynamics(S,ptacticalvehicleInterface,iID);
+		}
+		pdWaypointFlag[ptacticalvehicleInterface->iGetVehicleID()-1] = 0;
+	/* Put variable in MATLAB global workspace */
+#ifdef MATLAB_R12
+	int status=mexPutArray(pmxaWaypointFlag,"global");
+#else	//#ifdef MATLAB_R12
+	int status=mexPutVariable("global",NAME_WAYPOINT_FLAGS,pmxaWaypointFlag);
+#endif	//#ifdef MATLAB_R12
+	if (status==1)
+	{
+		char pcTemp[256];
+		sprintf(pcTemp,"ERROR: Could not update new waypoint flag array in global workspace: \"%s\" !!!",NAME_WAYPOINT_FLAGS);
+		ssSetErrorStatus(S,pcTemp);
+		mxDestroyArray(pmxaWaypointFlag);	/* Destroy array */
+		return;
+	}
+	/* Destroy array */
+	mxDestroyArray(pmxaWaypointFlag);	/* Destroy array */
+	}	//if(iNewWaypoints)
+
+
+#ifdef STEVETEST
+//TODO::	ptacticalvehicleInterface->m_pvehicleInterface->pcsimSimulation->dGetTargetSensorOffsetX() = U(inSensorOffsetX_ft);
+//TODO::	ptacticalvehicleInterface->m_pvehicleInterface->pcsimSimulation->dGetTargetSensorOffsetY() = U(inSensorOffsetY_ft);
+#endif	//STEVETEST
+
+	switch((enCommandTypes)rounding_cast<int>(GetU(uIDCommands,inCommandType)))
+	{
+	default:
+	case CTACTICALVEHICLE_t::cmdWaypoints:
+		ptacticalvehicleInterface->cmdGetType() = CTACTICALVEHICLE_t::cmdWaypoints;
+		break;
+	case CTACTICALVEHICLE_t::cmdVelocityHeadingAltitude:
+		ptacticalvehicleInterface->cmdGetType() = CTACTICALVEHICLE_t::cmdVelocityHeadingAltitude;
+		ptacticalvehicleInterface->vdGetCommands()[CTACTICALVEHICLE_t::cmdvahVelocity_fps] = GetU(uIDCommands,inCommandInputVelocity_fps);
+		ptacticalvehicleInterface->vdGetCommands()[CTACTICALVEHICLE_t::cmdvahHeading_rad] = GetU(uIDCommands,inCommandInputHeading_rad);
+		ptacticalvehicleInterface->vdGetCommands()[CTACTICALVEHICLE_t::cmdvahAltitude_ft] = GetU(uIDCommands,inCommandInputAltitude_ft);
+		break;
+	}
+
+
+	double dElapsedTimeSec = ssGetT(S);	// this is the elapsed simulation time
+	stringstream sstrMessage;
+	ptacticalvehicleInterface->UpdateDynamics(dElapsedTimeSec,sstrMessage);
+	sstrMessage << ends;
+	mexPrintf("%s",sstrMessage.str().c_str());
+}	//static void mdlUpdate(SimStruct *S, int_T tid)
+
+
+/* Function: mdlTerminate =====================================================
+ * Abstract:
+ *    delete class instance
+ */
+void mdlTerminate(SimStruct *S)
+{
+	CTacticalVehicle* ptacticalvehicleInterface = static_cast<CTacticalVehicle*>(ssGetUserData(S));
+	delete 	ptacticalvehicleInterface;
+	ptacticalvehicleInterface = 0;
+}
+
+
+void ResetVehicleDynamics(SimStruct *S,CTacticalVehicle* ptacticalvehicleInterface,int iID)
+{
+	VAL_DOUBLE_t valdInitialState(0.0,ptacticalvehicleInterface->szGetNumberStates());
+	//%%%%%%%%%%%%%%%%%%%%%%%%% Vehicle Dynamics Memory %%%%%%%%%%%%%%%%%%%%%%%%%%%
+	//case 'Dynamics'		% new structure to be used as storage by the vehicle dynamics model
+	//   NewStructure = struct('VTrueFPSInit',470.0,'PsiDegInit',0.0,'PositionXFeetInit',0.0, ...
+	//   	'PositionYFeetInit',0.0,'PositionZFeetInit',DefaultWaypointAltitude,'NumberBombsInit',1.0, ...
+	//  	'FuelLB',15000.0);
+#ifdef MATLAB_R12
+	mxArray* pmxaVehicleMemoryArray = (mxArray *)mexGetArrayPtr(NAME_VEHICLE_MEMORY_STRUCT_ARRAY, "global");
+#else	//#ifdef MATLAB_R12
+	mxArray* pmxaVehicleMemoryArray = (mxArray *)mexGetVariablePtr("global",NAME_VEHICLE_MEMORY_STRUCT_ARRAY);
+#endif	//#ifdef MATLAB_R12
+	if(pmxaVehicleMemoryArray ==  NULL)
+	{
+		stringstream sstrError;
+		sstrError << "ERROR: Unable to find structure array: \""  NAME_VEHICLE_MEMORY_STRUCT_ARRAY  
+																							"\" !!!";
+		ssSetErrorStatus(S,sstrError.str().c_str());
+		return;
+	}
+
+	mxArray* pmxaTempDynamics = mxGetField(pmxaVehicleMemoryArray,iID-1,"Dynamics");
+	if(pmxaTempDynamics ==  NULL)
+	{
+		stringstream sstrError;
+		sstrError << "ERROR: Unable to find structure array: \""  NAME_VEHICLE_MEMORY_STRUCT_ARRAY  
+													"."  "Dynamics" "\" !!!";
+		ssSetErrorStatus(S,sstrError.str().c_str());
+		return;
+	}
+
+	mxArray* pmxaTemp = mxGetField(pmxaTempDynamics,0,"VTrueFPSInit");
+	if(pmxaTemp ==  NULL)
+	{
+		stringstream sstrError;
+		sstrError << "ERROR: Unable to find structure array: \""  NAME_VEHICLE_MEMORY_STRUCT_ARRAY  
+													"."  "Dynamics"  "."  "VTrueFPSInit" "\" !!!";
+		ssSetErrorStatus(S,sstrError.str().c_str());
+		return;
+	}
+	double* pdTemp = mxGetPr(pmxaTemp);
+	valdInitialState[ptacticalvehicleInterface->szGetVehicleStateIndex(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateU_FeetPerSec)] = *pdTemp;
+
+	pmxaTemp = mxGetField(pmxaTempDynamics,0,"PsiDegInit");
+	if(pmxaTemp ==  NULL)
+	{
+		stringstream sstrError;
+		sstrError << "ERROR: Unable to find structure array: \""  NAME_VEHICLE_MEMORY_STRUCT_ARRAY  
+													"."  "Dynamics"  "."  "PsiDegInit" "\" !!!";
+		ssSetErrorStatus(S,sstrError.str().c_str());
+		return;
+	}
+	pdTemp = mxGetPr(pmxaTemp);
+	valdInitialState[ptacticalvehicleInterface->szGetVehicleStateIndex(CTacticalVehicle::CVEHICLEDYNAMICS_t::statePsi_Rad)] = *pdTemp;
+
+	pmxaTemp = mxGetField(pmxaTempDynamics,0,"PositionXFeetInit");
+	if(pmxaTemp ==  NULL)
+	{
+		stringstream sstrError;
+		sstrError << "ERROR: Unable to find structure array: \""  NAME_VEHICLE_MEMORY_STRUCT_ARRAY  
+													"."  "Dynamics"  "."  "PositionXFeetInit" "\" !!!";
+		ssSetErrorStatus(S,sstrError.str().c_str());
+		return;
+	}
+	pdTemp = mxGetPr(pmxaTemp);
+	valdInitialState[ptacticalvehicleInterface->szGetVehicleStateIndex(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateX_Feet)] = *pdTemp;
+
+	pmxaTemp = mxGetField(pmxaTempDynamics,0,"PositionYFeetInit");
+	if(pmxaTemp ==  NULL)
+	{
+		stringstream sstrError;
+		sstrError << "ERROR: Unable to find structure array: \"" NAME_VEHICLE_MEMORY_STRUCT_ARRAY 
+													"." "Dynamics" "." "PositionYFeetInit" "\" !!!";
+		ssSetErrorStatus(S,sstrError.str().c_str());
+		return;
+	}
+	pdTemp = mxGetPr(pmxaTemp);
+	valdInitialState[ptacticalvehicleInterface->szGetVehicleStateIndex(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateY_Feet)] = *pdTemp;
+
+	pmxaTemp = mxGetField(pmxaTempDynamics,0,"PositionZFeetInit");
+	if(pmxaTemp ==  NULL)
+	{
+		stringstream sstrError;
+		sstrError << "ERROR: Unable to find structure array: \"" NAME_VEHICLE_MEMORY_STRUCT_ARRAY 
+													"." "Dynamics" "." "PositionZFeetInit" "\" !!!";
+		ssSetErrorStatus(S,sstrError.str().c_str());
+		return;
+	}
+	pdTemp = mxGetPr(pmxaTemp);
+	valdInitialState[ptacticalvehicleInterface->szGetVehicleStateIndex(CTacticalVehicle::CVEHICLEDYNAMICS_t::stateZ_Feet)] = -*pdTemp;	//stateZ_Feet is down
+
+	pmxaTemp = mxGetField(pmxaTempDynamics,0,"NumberBombsInit");
+	if(pmxaTemp ==  NULL)
+	{
+		stringstream sstrError;
+		sstrError << "ERROR: Unable to find structure array: \"" NAME_VEHICLE_MEMORY_STRUCT_ARRAY 
+													"." "Dynamics" "." "NumberBombsInit" "\" !!!";
+		ssSetErrorStatus(S,sstrError.str().c_str());
+		return;
+	}
+	//pdTemp = mxGetPr(pmxaTemp);
+	//ptacticalvehicleInterface->m_vehinitStartup.iNumberBombs = *pdTemp;
+
+	pmxaTemp = mxGetField(pmxaTempDynamics,0,"FuelLB");
+	if(pmxaTemp ==  NULL)
+	{
+		stringstream sstrError;
+		sstrError << "ERROR: Unable to find structure array: \"" NAME_VEHICLE_MEMORY_STRUCT_ARRAY 
+													"." "Dynamics" "." "FuelLB" "\" !!!";
+		ssSetErrorStatus(S,sstrError.str().c_str());
+		return;
+	}
+	//pdTemp = mxGetPr(pmxaTemp);
+	//ptacticalvehicleInterface->m_vehinitStartup.Fuel_mass_lb = *pdTemp;
+	stringstream sstrError;
+	ptacticalvehicleInterface->InitializeDynamics(valdInitialState,sstrError);
+	if(sstrError.str().size()!=0)
+	{
+		ssSetErrorStatus(S,sstrError.str().c_str());
+		return;
+	}
+}
+
+void ResetTargetPositions(SimStruct *S,CTacticalVehicle* ptacticalvehicleInterface,int iID)
+{
+	InputRealPtrsType uTargets = ssGetInputPortRealSignalPtrs(S,inportTargets);
+
+	int iNumberTargets = rounding_cast<int>(*mxGetPr(ssGetSFcnParam(S,paramNumberTargets)));
+	CSensorFootprint::V_TARGETS_t& vTargets = ptacticalvehicleInterface->sensorGetFootprint().vGetTargets();
+	vTargets.resize(iNumberTargets);	//this allows for changing number of targets, doesn't do anything if number does not change
+
+	int iInputIndex = TARGET_FIRST_INDEX;
+	for(int iCountTargets=0;iCountTargets<iNumberTargets;iCountTargets++)
+	{
+		if(vTargets[iCountTargets].iGetID() != iCountTargets+1)
+		{
+			// if this is not the same target at this location need to reset the in sensor flag
+			vTargets[iCountTargets].bGetInSensorFootprint() = FALSE;
+		}
+		vTargets[iCountTargets].iGetID() = iCountTargets+1;
+		vTargets[iCountTargets].dGetPositionNorth() = GetU(uTargets,iInputIndex);
+		iInputIndex++;
+		vTargets[iCountTargets].dGetPositionEast() = GetU(uTargets,iInputIndex);
+		iInputIndex++;
+		iInputIndex++;	// skip altitude - value
+		iInputIndex++;	// skip type - value
+		iInputIndex++;	// skip alive - value
+		vTargets[iCountTargets].dGetHeading() = GetU(uTargets,iInputIndex);
+		iInputIndex++;	// psi - value
+	}
+}
+
+const mxArray* GetInputFileStruct( SimStruct* S )
+{
+	ostringstream oss;
+	const mxArray* ps = ssGetSFcnParam(S,paramG_VehicleInputFiles);
+	if( ps == 0x0 )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": Unable to find vehicle input file structure!" 
+				<< endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+	if( !mxIsStruct(ps) )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": vehicle input file info not a structure!" << endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+	
+	return( ps );
+}
+
+const mxArray* GetDATCOMFileStruct( SimStruct* S )
+{
+	ostringstream oss;
+	const mxArray* ps = mxGetField(GetInputFileStruct(S), 0, "datcom");
+	if( ps == 0x0 )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": Unable to find datcom file structure!" 
+				<< endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+	if( !mxIsStruct(ps) )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": datcom file info not a structure!" << endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+
+	return( ps );
+}
+
+const mxArray* GetParamsFileStruct( SimStruct* S )
+{
+	ostringstream oss;
+	const mxArray* ps = mxGetField(GetInputFileStruct(S), 0, "params");
+	if( ps == 0x0 )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": Unable to find params file structure!" 
+				<< endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+	if( !mxIsStruct(ps) )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": params file info not a structure!" << endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+
+	return( ps );
+}
+
+bool GetIsSubtractBaseTables( SimStruct* S )
+{
+	ostringstream oss;
+	const mxArray* ps = mxGetField(GetDATCOMFileStruct(S), 0, "isSubtractBaseTables");
+	if( ps == 0x0 )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION 
+				<< ": datcom struct: field 'isSubtractBaseTables' not found!" << endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+	if( !mxIsDouble(ps) )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION 
+				<< ": datcom struct: isSubstractBaseTables is not a double!" << endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+
+	const double val = *mxGetPr( ps );
+	bool ret = true;
+	
+	if( *mxGetPr( ps ) < numeric_limits<double>::epsilon() )
+		ret = false;
+
+	return( ret );
+}
+
+
+string GetDATCOMFileName( SimStruct* S )
+{
+	ostringstream oss;
+	const mxArray* ps = mxGetField(GetDATCOMFileStruct(S), 0, "name");
+	if( ps == 0x0 )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": datcom struct: field 'name' not found!" 
+				<< endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+	if( !mxIsChar(ps) )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": datcom struct: field 'name' is not a string!" 
+				<< endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+
+	char filename[max_path_len];
+	if( mxGetString(ps, static_cast<char*>(&filename[0]), max_path_len) )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": datcom struct: mxGetString() failed!" 
+				<< endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+
+	return( string( filename ) );
+}
+
+string GetParamsFileName( SimStruct* S )
+{
+	ostringstream oss;
+	const mxArray* ps = mxGetField(GetParamsFileStruct(S), 0, "name");
+	if( ps == 0x0 )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": params struct: field 'name' not found!" 
+				<< endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+	if( !mxIsChar(ps) )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": params struct: field 'name' is not a string!" 
+				<< endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+
+	char filename[max_path_len];
+	if( mxGetString(ps, static_cast<char*>(&filename[0]), max_path_len) )
+	{
+		oss << "ERROR:" << NAME_S_FUNCTION << ": params struct: mxGetString() failed!" 
+				<< endl;
+		ssSetErrorStatus(S,oss.str().c_str());
+	}
+
+	return( string( filename ) );
+}
+
+ 
+} // anonymous namespace
+
+#ifdef  MATLAB_MEX_FILE    /* Is this file being compiled as a MEX-file? */
+#include "simulink.c"      /* MEX-file interface mechanism */
+#else
+#include "cg_sfun.h"       /* Code generation registration function */
+#endif
+
+

@@ -1,0 +1,61 @@
+#!/bin/bash
+#
+# cvs must be in your path!!!!
+
+META_REPO=$HOME/repository
+
+chkstat()
+{
+  if [ $1 -ne 0 ]; then
+    echo "failed!"
+    exit 1;
+  else
+    echo "done. (successful)"
+	fi
+}
+
+case $# in
+	1|3)
+	  ;;
+	*)
+    echo "usage: ${0##*/} [options] name"
+    echo " Options:"
+    echo "     -d dir  or  --directory dir"
+	  echo "         Use 'dir' as the root directory pathname of the"
+	  echo "         master project(s) repository.  This overrides the"
+	  echo "         default value: '$HOME/repository'."
+	  echo "         This value should be specified as an absolute path."
+	  echo " Purpose:"
+	  echo "     This script will allow you to aggregate CVS controlled"
+	  echo "     projects in one REPOSITORY, while keeping the CVS"
+	  echo "     administration files for each project separate.  Of"
+	  echo "     course, you can still have various modules within a"
+	  echo "     given project."
+	  echo " Example:"
+	  echo "     $ mkrepo -d \$HOME/repository project0"
+	  echo "     $ export CVSROOT=\$HOME/repository/project0"
+		echo "     $ cvs init       # initialize repository admin files"
+	  echo "     $ cd /path/to/project0"
+	  echo "     $ cvs import -m \"Imported project0\" project0 vendor-tag init"
+	  echo "     $ cd .."
+	  echo "     $ cvs checkout project0"
+	  exit 1
+esac
+
+if [ $# -eq 3 ]; then
+	case $1 in
+		-d|--directory)
+		  META_REPO=$2;
+			shift; shift;;
+	esac
+fi
+
+REPO=$META_REPO/$1
+echo -n "making project repository project directory..."
+mkdir -p $REPO
+chkstat $?
+
+echo -n "cvs initializing the repository..."
+cvs -d $REPO init
+chkstat $?
+

@@ -1,0 +1,4 @@
+OBJS += mexversion.o
+
+mexversion.o:
+	${CXX} ${CXXFLAGS} -c ${TMW_ROOT}/extern/src/mexversion.c

@@ -1,0 +1,42 @@
+SenRectBlack|SenRect (black):\
+
+# angle between views
+	:av#30.0:\
+# control type
+	:cn=pilot:\
+# pilot's position
+	:pp# -2.00  21.00  4.00:\
+# Warhead
+	:wh#10000.0:\
+# weight - used for crash detection
+	:we#16483.0:\
+# Ixx - used for crash detection
+	:ix#53876.3:\
+# Iyy - used for crash detection
+	:iy#10033.4:\
+# Izz - used for crash detection
+	:iz#61278.4:\
+# center of mass
+	:cm# 0.00   00.0   0.00:\
+# Distance > 0 ft
+	:d0:\
+
+# Double sided polygons
+	:DS# 1.0:\
+# Shadow
+	:SH# 0.0:\
+
+# Flight Path Color - Black
+	:EC# 0.000  0.000  0.000:\
+
+# Structure Color - Black
+	:co# 0 0 0:\
+
+# Rectangle
+:pt# -984.250 -410.100 0.000 :pt# -984.250 410.100 0.000 :pt# 0.000 410.100 0.000:cl:\
+:pt# -984.250 410.100 0.000 :pt# 984.250 410.100 0.000 :pt# 0.000 410.100 0.000:cl:\
+:pt# 984.250 410.100 0.000 :pt# 984.250 -410.100 0.000 :pt# 0.000 410.100 0.000:cl:\
+:pt# 984.250 -410.100 0.000 :pt# -984.250 -410.100 0.000 :pt# 0.000 410.100 0.000:cl:\
+
+:co#    0.0    0.0    0.0:
+

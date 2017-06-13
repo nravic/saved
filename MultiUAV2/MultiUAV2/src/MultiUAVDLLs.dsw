@@ -1,0 +1,251 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "CapTranShip"=.\CapTranShip\CapTranShip.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name CapTransShipLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "CapTranShipDll"=.\CapTranShip\CapTranShipDll\CapTranShipDll.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name CapTransShipLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "CapTranShipMex"=.\CapTranShip\CapTranShipMex\CapTranShipMex.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name CapTransShipLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "CapTransShipLib"=.\CapTranShip\CapTranShipLib\CapTransShipLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "CommunicationsDLL"=.\CommunicationsDLL\CommunicationsDLL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name DATCOMTableLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "DATCOMTableLib"=.\Vehicle\VehicleDynamics\DATCOMTableLib\DATCOMTableLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "DATCOMTableMex"=.\Vehicle\VehicleDynamics\DATCOMTableLib\DATCOMTableMex\DATCOMTableMex.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name DATCOMTableLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "DATCOMTest"=.\Vehicle\VehicleDynamics\DATCOMTableLib\DATCOMTest\DATCOMTest.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name DATCOMTableLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "EuminxdLib"=.\Vehicle\VehicleDynamics\EuminxdLib\EuminxdLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Master"=.\Master\Master.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name CapTranShipDll
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TacticalVehicleDLL
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name VehicleDynamics
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name TrajectoryMEX
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name CommunicationsDLL
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name CapTranShipMex
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "TacticalVehicleDLL"=.\TacticalVehicleDLL\TacticalVehicleDLL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name VehicleDynamics
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name DATCOMTableLib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name EuminxdLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "TrajectoryLib"=.\Trajectory\TrajectoryLib\TrajectoryLib.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "TrajectoryMEX"=.\Trajectory\TrajectoryMEX\TrajectoryMEX.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name TrajectoryLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "VehicleDynamics"=.\Vehicle\VehicleDynamics\VehicleDynamics.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "VehicleDynamicsMex"=.\Vehicle\VehicleDynamicsMex\VehicleDynamicsMex.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name DATCOMTableLib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name EuminxdLib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

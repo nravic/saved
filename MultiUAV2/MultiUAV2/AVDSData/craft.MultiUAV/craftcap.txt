@@ -1,0 +1,24 @@
+#vehicle index 0
+#include "UCAV.Black.txt"
+include "locaas.black.txt"
+#vehicle index 1
+include "SensorRectangle.Black.txt"
+#vehicle index 2
+include "Marker.Black.txt"
+#vehicle index 3
+include "Invisible.NoFlightPath.txt"
+#vehicle index 4
+include "SATrailerUp.Black.txt"
+#vehicle index 5
+include "SATrailerDown.Black.txt"
+#vehicle index 6
+include "RadarUp.Black.txt"
+#vehicle index 7
+include "RadarDown.Black.txt"
+#vehicle index 8
+include "NonTarget.Black.txt"
+#vehicle index 9
+include "ball.black.txt"
+
+#include "MonsterRabbit.txt"
+#include "Rabbit.txt"

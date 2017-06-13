@@ -1,0 +1,83 @@
+# expects make.env to be loaded
+# 
+# Note(s): 
+#   0. (Regarding versioned symbols w/ gcc>=3.1 shared/dynamic libraries)
+#      If you are seeing errors messages that have a signature like:
+#         /usr/bin/ld: libt.so: undefined versioned symbol name
+#         std::basic_stringbuf<char, std::char_traits<char>, 
+#         std::allocator<char> >::~basic_stringbuf [in-charge]()@@GLIBCPP_3.1
+#         /usr/bin/ld: failed to set dynamic section sizes: Bad value
+#      or
+#         undefined symbol: __gxx_personality_v0 ??? Invalid MEX-file
+#
+#      You may be suffering from 'versioned symbol' madness.  This
+#      condition is caused by a combination of incorrect linker
+#      invocation (g++ v.  c++, ld v. g++, or ld v. c++) resulting in
+#      missing (or incorrectly versioned) library symbols in the link
+#      process.  You will either need to change the link invocation; add
+#      -lstdc++, -lg++, -lgcc, -lm, or -lc to the link line; or possibly
+#      remove -lstdc++, -lg++, -lgcc, -lm, or -lc from the link line.  It
+#      seems to be mostly random for now, and is a royal pain in the bum
+#      (God save the Queen).
+#
+#   1. If you require IEEE floating-point error handling, remember that
+#      -lieee _MUST_ preceed -lm in the link so that the ieee fp eh is
+#      activated.
+#
+# $Id: make.opts,v 2.2 2004/03/23 16:33:02 mitchejw Exp $
+#=============================================================================
+
+# MATLAB specific information
+MAT_RPATH = -Wl,-rpath=${MLIB_DIR},-rpath=${MBIN_DIR}
+MAT_MEX_VER = -Wl,--version-script,${MLIB_DIR}/mexFunction.map
+MAT_LIBS = -L${MBIN_DIR} -lmx -lmex
+MAT_DEFS = -DMATLAB_MEX_FILE -D_GNU_SOURCE
+MAT_INCS = -I${MINC_DIR} -I${SIM_DIR}
+
+# this next line is _required_ to get the mex code to build under linux
+# MATLAB 6.5; wow, linux 6.5 is broken very, very badly...
+#MAT_DEFS += -DV5_COMPAT 
+
+STRICT_OPT = -ansi --no-rtti
+
+SO_COMP_OPT = -fPIC -pthread 
+#SO_COMP_OPT = -fPIC 
+
+#DEBUG_COMPILE_FLAGS = -g3 -v
+#DEBUG_COMPILE_FLAGS = -pipe -g3 -DJWM_VECTOR_DEBUG -DJWM_VALARRAY_DEBUG 
+DEBUG_COMPILE_FLAGS = -pipe -g3 
+
+DEBUG_COMPILE_FLAGS += ${SO_COMP_OPT} ${STRICT_OPT}
+
+GCC_ARCH = -march=athlon-xp -mcpu=athlon-xp
+
+#FP_OPT = -O6 -mfpmath=sse -mmmx -msse -m3dnow -malign-double 
+#FP_OPT = -O6 -mfpmath=sse,387 -msse -mmmx -m3dnow -malign-double
+#FP_OPT = -O6 -mfpmath=sse,387 -msse -mmmx -m3dnow 
+FP_OPT = -O3 -mfpmath=sse,387 -msse -mmmx -m3dnow 
+
+#CG_OPT = -funroll-loops -fstrict-aliasing -fomit-frame-pointer \
+#         -fforce-addr -fno-strength-reduce -frerun-loop-opt 
+
+CG_OPT = -funroll-loops -fstrict-aliasing -fomit-frame-pointer
+
+OPTIMIZE_COMPILE_FLAGS = -pipe ${GCC_ARCH} ${SO_COMP_OPT} ${STRICT_OPT} \
+                         ${FP_OPT} ${CG_OPT}
+
+#COMPILE_FLAGS = ${DEBUG_COMPILE_FLAGS}
+COMPILE_FLAGS = ${OPTIMIZE_COMPILE_FLAGS}
+
+LINK_FLAGS = -L${LIB_DIR_LONG}
+
+# versioned symbol additions for convenience
+LD_ADD_LM = -lm
+LD_ADD_LC = -lc
+LD_ADD_LGCC = -lgcc
+LD_ADD_LGXX = -lg++
+LD_ADD_LSTDCXX = -lstdc++
+
+# need to enable symvers in shared/dynamic libs for MATLAB
+SO_FLAGS = -shared -rdynamic --enable-symvers 
+#DEFINES  = -DDEBUG
+DEFINES  = -DNDEBUG
+INCLUDES = 
