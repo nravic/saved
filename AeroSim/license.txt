@@ -1,0 +1,32 @@
+AEROSIM BLOCKSET LICENSE AGREEMENT FOR ACADEMIC / NON-COMMERCIAL USE 
+
+The AEROSIM BLOCKSET ("the Software") can be downloaded and used free 
+of charge by academic users in course-related or not-for-profit work. 
+
+The Software can also be downloaded and used free of charge by non-
+commercial home users in course-related or not-for-profit work. 
+
+All other users are allowed to install and use the Software only by 
+purchasing a commercial license.
+ 
+The academic users mentioned above include students, faculty and staff 
+members of an educational institution (K-12, junior college, college 
+or university). 
+
+The home users mentioned above include anyone whose use of the Software 
+is at home, for non-commercial purposes. 
+
+DISCLAIMER OF WARRANTY. Free of charge Software is provided on an "AS IS" 
+basis, without warranty of any kind, including without limitation the 
+warranties of merchantability, fitness for a particular purpose and non-
+infringement. The entire risk as to the quality and performance of the 
+Software is borne by you. Should the Software prove defective, you and 
+not UNMANNED DYNAMICS LLC assume the entire cost of any service and repair. 
+This disclaimer of warranty constitutes an essential part of the agreement. 
+SOME JURISDICTIONS DO NOT ALLOW EXCLUSIONS OF AN IMPLIED WARRANTY, SO THIS 
+DISCLAIMER MAY NOT APPLY TO YOU AND YOU MAY HAVE OTHER LEGAL RIGHTS THAT 
+VARY BY JURISDICTION. 
+
+By clicking on the "Accept" button you are consenting to be bound by this 
+agreement. If you do not accept all of the terms of this agreement, press 
+the "Do Not Accept" button.
