@@ -1,0 +1,3159 @@
+Model {
+  Name			  "aerosonde_trim"
+  Version		  4.0
+  SampleTimeColors	  on
+  LibraryLinkDisplay	  "none"
+  WideLines		  on
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  on
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  BlockNameDataTip	  on
+  BlockParametersDataTip  on
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks on
+  BrowserLookUnderMasks	  on
+  Created		  "Thu Sep 26 09:57:43 2002"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "mariusn"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Sat Jul 31 12:20:27 2004"
+  ModelVersionFormat	  "1.%<AutoIncrement:32>"
+  ConfigurationManager	  "None"
+  SimParamPage		  "Diagnostics"
+  LinearizationMsg	  "none"
+  Profile		  off
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeLogAll		  on
+  BufferReuse		  on
+  SimulationMode	  "normal"
+  Solver		  "ode4"
+  SolverMode		  "SingleTasking"
+  StartTime		  "0.0"
+  StopTime		  "TrimParam.FinalTime"
+  MaxOrder		  5
+  MaxStep		  "auto"
+  MinStep		  "auto"
+  MaxNumMinSteps	  "-1"
+  InitialStep		  "auto"
+  FixedStep		  "TrimParam.SampleTime"
+  RelTol		  "1e-3"
+  AbsTol		  "auto"
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  Refine		  "1"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveTime		  off
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  off
+  OutputSaveName	  "yout"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Array"
+  Decimation		  "1"
+  LimitDataPoints	  off
+  MaxDataPoints		  "1000"
+  ConsistencyChecking	  "none"
+  ArrayBoundsChecking	  "none"
+  AlgebraicLoopMsg	  "warning"
+  BlockPriorityViolationMsg "warning"
+  MinStepSizeMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  MultiTaskRateTransMsg	  "error"
+  SingleTaskRateTransMsg  "none"
+  CheckForMatrixSingularity "none"
+  IntegerOverflowMsg	  "warning"
+  Int32ToFloatConvMsg	  "warning"
+  UnnecessaryDatatypeConvMsg "none"
+  VectorMatrixConversionMsg "none"
+  SignalLabelMismatchMsg  "none"
+  UnconnectedInputMsg	  "none"
+  UnconnectedOutputMsg	  "none"
+  UnconnectedLineMsg	  "none"
+  SfunCompatibilityCheckMsg "none"
+  RTWInlineParameters	  off
+  BlockReductionOpt	  on
+  BooleanDataType	  on
+  ParameterPooling	  on
+  OptimizeBlockIOStorage  on
+  ZeroCross		  on
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  RTWRetainRTWFile	  off
+  TLCProfiler		  off
+  TLCDebug		  off
+  TLCCoverage		  off
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "tp202650"
+    Location		    [484, 282, 1094, 798]
+    Open		    off
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    212
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      Inport
+      Name		      "Elevator"
+      Position		      [25, 78, 55, 92]
+      Port		      "1"
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      DataType		      "auto"
+      SignalType	      "auto"
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "Aileron"
+      Position		      [25, 108, 55, 122]
+      Port		      "2"
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      DataType		      "auto"
+      SignalType	      "auto"
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "Rudder"
+      Position		      [25, 138, 55, 152]
+      Port		      "3"
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      DataType		      "auto"
+      SignalType	      "auto"
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "Throttle"
+      Position		      [25, 168, 55, 182]
+      Port		      "4"
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      DataType		      "auto"
+      SignalType	      "auto"
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Aerosonde UAV\n(Euler-angle kinematics)"
+      Ports		      [3, 14]
+      Position		      [205, 62, 320, 358]
+      BackgroundColor	      "lightBlue"
+      DropShadow	      on
+      ShowPortLabels	      on
+      Permissions	      "ReadWrite"
+      TreatAsAtomicUnit	      off
+      RTWSystemCode	      "Auto"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      SimViewingDevice	      off
+      MaskType		      "6-DOF Aircraft Model"
+      MaskDescription	      "Nonlinear 6-DOF aircraft model with equations o"
+"f motion in body frame."
+      MaskHelp		      "The block implements the 6-DOF nonlinear aircra"
+"ft model using AeroSim blocks. Velocities are computed in body frame.\n<P><B>"
+"Inputs:</B>\n<LI>Controls = the 7x1 vector of aircraft controls [flap elevato"
+"r aileron rudder throttle mixture ignition]. Aerodynamic controls are in radi"
+"ans, throttle is from 0 to 1, mixture is fraction air/fuel flow, ignition is "
+"0 (engine off) or 1 (engine on).</LI>\n<LI>Winds = the 3x1 vector of backgrou"
+"nd wind speed components in navigation frame [North East Down]</LI>\n<LI>RST "
+"= the integrator reset flag (0 or 1, all integrators on rising edge)\n</P>\n<"
+"P><B>Outputs:</B> \n<LI>States = the 15x1 aircraft state vector [Velocities, "
+"Angular rates, Quaternions, Position, Fuel mass, Engine speed].</LI>\n<LI>Sen"
+"sors = the 18x1 vector of sensor outputs [GPS Position, GPS Groundspeed, Acce"
+"lerometers, Gyros, Air data, Magnetometer].</LI>\n<LI>VelW = the 3x1 vector o"
+"f aircraft velocity in wind axes [Airspeed, sideslip, angle of attack]</LI>\n"
+"<LI>Mach = the Mach number</LI>\n<LI>Ang Acc = the 3x1 vector of angular acce"
+"lerations\n<LI>Euler = the 3x1 vector of Euler angles (roll, pitch, yaw)</LI>"
+"\n<LI>AeroCoeff = the 6x1 vector of aerodynamic coefficients [CD CY CL Cl Cm "
+"Cn]</LI>\n<LI>PropCoeff = the 3x1 vector of propeller coefficients [J CT CP]<"
+"/LI>\n<LI>EngCoeff = the 5x1 vector of engine coefficients [MAP Airflow Fuelf"
+"low BSFC Power]</LI>\n<LI>Mass = the current aircraft mass</LI>\n<LI>ECEF = 3"
+"x1 vector of position of the aircraft in the Earth-centered, Earth-fixed fram"
+"e</LI>\n<LI>MSL = the aircraft altitude above mean-sea-level</LI>\n<LI>AGL = "
+"the aircraft altitude above terrain</LI>\n<LI>REarth = the Earth equivalent r"
+"adius at current location\n<LI>AConGnd = the aircraft-on-ground flag (0 if ai"
+"rcraft above ground, 1 if aircraft on the ground)</LI>\n</P>\n<P><B>Parameter"
+"s:</B>\n<LI>Aircraft configuration file = the MAT-file with aircraft data</LI"
+">\n<LI>Initial velocities = the 3x1 vector of initial aircraft velocities in "
+"body axes [u v w]</LI>\n<LI>Initial angular rates = the 3x1 vector of initial"
+" angular rates [p q r]</LI>\n<LI>Initial attitude = the 4x1 vector of initial"
+" quaternions [e0 ex ey ez]</LI>\n<LI>Initial position = the 3x1 vector of ini"
+"tial aircraft location [Lat Lon Alt]</LI>\n<LI>Initial fuel mass = the initia"
+"l quantity of fuel on-board the aircraft</LI>\n<LI>Initial engine speed = the"
+" initial engine rotation speed</LI>\n<LI>Ground altitude = the ground altitud"
+"e at aircraft location</LI>\n<LI>WMM coefficient file = the path to the magne"
+"tic model coefficient file</LI>\n<LI>Simulation date = the date to be used fo"
+"r the magnetic model [day month year]</LI>\n<LI>Sample time = the aircraft mo"
+"del sample time.</LI>\n</P>"
+      MaskPromptString	      "Aircraft configuration file:|Initial velocities"
+":|Initial angular rates:|Initial attitude:|Initial position:|Initial fuel mas"
+"s:|Initial engine speed:|Ground altitude:|WMM coefficient file:|Simulation da"
+"te:|Sample time:"
+      MaskStyleString	      "edit,edit,edit,edit,edit,edit,edit,edit,edit,ed"
+"it,edit"
+      MaskTunableValueString  "on,on,on,on,on,on,on,on,on,on,on"
+      MaskCallbackString      "||||||||||"
+      MaskEnableString	      "on,on,on,on,on,on,on,on,on,on,on"
+      MaskVisibilityString    "on,on,on,on,on,on,on,on,on,on,on"
+      MaskToolTipString	      "on,on,on,on,on,on,on,on,on,on,on"
+      MaskVariables	      "aircraftcfg=@1;VelocitiesIni=@2;RatesIni=@3;Eul"
+"erIni=@4;PositionIni=@5;FuelIni=@6;OmegaIni=@7;GndAlt=@8;wmmfile=@9;dmy=@10;t"
+"samp=@11;"
+      MaskInitialization      "load(aircraftcfg);"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskIconUnits	      "autoscale"
+      MaskValueString	      "'aerosondecfg.mat'|TrimParam.VelocitiesIni|Trim"
+"Param.RatesIni|TrimParam.AttitudeIni|TrimParam.PositionIni|TrimParam.FuelIni|"
+"TrimParam.EngineSpeedIni|0|'C:\\Program Files\\AeroSim\\wmm.cof'|[08 01 2004]"
+"|TrimParam.SampleTime"
+      System {
+	Name			"Aerosonde UAV\n(Euler-angle kinematics)"
+	Location		[44, 108, 1162, 902]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "Controls"
+	  Position		  [15, 153, 45, 167]
+	  Port			  "1"
+	  PortDimensions	  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Winds"
+	  Position		  [365, 533, 395, 547]
+	  Port			  "2"
+	  PortDimensions	  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "RST"
+	  Position		  [70, 418, 100, 432]
+	  Port			  "3"
+	  PortDimensions	  "-1"
+	  SampleTime		  "-1"
+	  DataType		  "auto"
+	  SignalType		  "auto"
+	  Interpolate		  on
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Aerodynamics"
+	  Ports			  [7, 6]
+	  Position		  [180, 36, 280, 184]
+	  ShowPortLabels	  on
+	  Permissions		  "ReadWrite"
+	  TreatAsAtomicUnit	  off
+	  RTWSystemCode		  "Auto"
+	  RTWFcnNameOpts	  "Auto"
+	  RTWFileNameOpts	  "Auto"
+	  SimViewingDevice	  off
+	  System {
+	    Name		    "Aerodynamics"
+	    Location		    [312, 142, 1054, 942]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "VelB"
+	      Position		      [20, 58, 50, 72]
+	      Port		      "1"
+	      PortDimensions	      "[3 1]"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "WindB"
+	      Position		      [20, 88, 50, 102]
+	      Port		      "2"
+	      PortDimensions	      "[3 1]"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Rates"
+	      Position		      [20, 258, 50, 272]
+	      Port		      "3"
+	      PortDimensions	      "[3 1]"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "WindRates"
+	      Position		      [20, 288, 50, 302]
+	      Port		      "4"
+	      PortDimensions	      "[3 1]"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "AeroCon"
+	      Position		      [20, 168, 50, 182]
+	      Port		      "5"
+	      PortDimensions	      "[4 1]"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "rho"
+	      Position		      [20, 198, 50, 212]
+	      Port		      "6"
+	      PortDimensions	      "1"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "a"
+	      Position		      [20, 228, 50, 242]
+	      Port		      "7"
+	      PortDimensions	      "1"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Aerodynamic\nForce"
+	      Ports		      [5, 1]
+	      Position		      [515, 53, 615, 157]
+	      SourceBlock	      "aerosimlib/Aerodynamics/Aerodynamic\nFo"
+"rce"
+	      SourceType	      "Aerodynamic force"
+	      S			      "S"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Aerodynamic\nMoment"
+	      Ports		      [4, 1]
+	      Position		      [515, 199, 615, 281]
+	      SourceBlock	      "aerosimlib/Aerodynamics/Aerodynamic\nMo"
+"ment"
+	      SourceType	      "Aerodynamic moment"
+	      c			      "MAC"
+	      b			      "b"
+	      S			      "S"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Drag Coefficient"
+	      Ports		      [4, 1]
+	      Position		      [300, 211, 400, 289]
+	      SourceBlock	      "aerosimlib/Aerodynamics/Drag Coefficien"
+"t"
+	      SourceType	      "Drag coefficient"
+	      CL0		      "CLmind"
+	      CD0		      "CDmin"
+	      CDdf		      "CDdf"
+	      CDde		      "CDde"
+	      CDda		      "CDda"
+	      CDdr		      "CDdr"
+	      CDM		      "CDM"
+	      e			      "osw"
+	      b			      "b"
+	      S			      "S"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Dynamic Pressure"
+	      Ports		      [2, 1]
+	      Position		      [115, 187, 200, 238]
+	      SourceBlock	      "aerosimlib/Aerodynamics/Dynamic Pressur"
+"e"
+	      SourceType	      "Dynamic pressure"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Lift Coefficient"
+	      Ports		      [5, 1]
+	      Position		      [300, 52, 400, 158]
+	      SourceBlock	      "aerosimlib/Aerodynamics/Lift Coefficien"
+"t"
+	      SourceType	      "Lift coefficient"
+	      CL0		      "CL0"
+	      CLalpha		      "CLa"
+	      CLdf		      "CLdf"
+	      CLde		      "CLde"
+	      CLalphadot	      "CLalphadot"
+	      CLq		      "CLq"
+	      CLM		      "CLM"
+	      c			      "MAC"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux"
+	      Ports		      [6, 1]
+	      Position		      [515, 322, 520, 438]
+	      ShowName		      off
+	      Inputs		      "6"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Pitch Moment\nCoefficient"
+	      Ports		      [5, 1]
+	      Position		      [300, 423, 400, 527]
+	      SourceBlock	      "aerosimlib/Aerodynamics/Pitch Moment\nC"
+"oefficient"
+	      SourceType	      "Pitch moment coefficient"
+	      Cm0		      "Cm0"
+	      Cma		      "Cma"
+	      Cmdf		      "Cmdf"
+	      Cmde		      "Cmde"
+	      Cmalphadot	      "Cmalphadot"
+	      Cmq		      "Cmq"
+	      CmM		      "CmM"
+	      c			      "MAC"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Roll Moment\nCoefficient"
+	      Ports		      [3, 1]
+	      Position		      [300, 560, 400, 640]
+	      SourceBlock	      "aerosimlib/Aerodynamics/Roll Moment\nCo"
+"efficient"
+	      SourceType	      "Roll moment coefficient"
+	      Clbeta		      "Clbeta"
+	      Clda		      "Clda"
+	      Cldr		      "Cldr"
+	      Clp		      "Clp"
+	      Clr		      "Clr"
+	      b			      "b"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Side Force Coefficient"
+	      Ports		      [3, 1]
+	      Position		      [300, 321, 400, 399]
+	      SourceBlock	      "aerosimlib/Aerodynamics/Side Force Coef"
+"ficient"
+	      SourceType	      "Side force coefficient"
+	      CYbeta		      "CYbeta"
+	      CYda		      "CYda"
+	      CYdr		      "CYdr"
+	      CYp		      "CYp"
+	      CYr		      "CYr"
+	      b			      "b"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      Ports		      [2, 1]
+	      Position		      [75, 255, 95, 275]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|+-"
+	      SaturateOnIntegerOverflow	on
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Wind-axes Velocities"
+	      Ports		      [3, 3]
+	      Position		      [110, 52, 210, 128]
+	      SourceBlock	      "aerosimlib/Aerodynamics/Wind-axes Veloc"
+"ities"
+	      SourceType	      "Wind-axes velocities"
+	      Vabnd		      "VaBnd"
+	      betabnd		      "BetaBnd"
+	      alphabnd		      "AlphaBnd"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Yaw Moment\nCoefficient"
+	      Ports		      [3, 1]
+	      Position		      [300, 675, 400, 755]
+	      SourceBlock	      "aerosimlib/Aerodynamics/Yaw Moment\nCoe"
+"fficient"
+	      SourceType	      "Yaw moment coefficient"
+	      Cnbeta		      "Cnbeta"
+	      Cnda		      "Cnda"
+	      Cndr		      "Cndr"
+	      Cnp		      "Cnp"
+	      Cnr		      "Cnr"
+	      b			      "b"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Faero"
+	      Position		      [680, 98, 710, 112]
+	      Port		      "1"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Maero"
+	      Position		      [680, 128, 710, 142]
+	      Port		      "2"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "AeroCoeff"
+	      Position		      [680, 158, 710, 172]
+	      Port		      "3"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "VelW"
+	      Position		      [680, 188, 710, 202]
+	      Port		      "4"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Mach"
+	      Position		      [680, 218, 710, 232]
+	      Port		      "5"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "pdyn"
+	      Position		      [680, 248, 710, 262]
+	      Port		      "6"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      Points		      [135, 0]
+	      Branch {
+		Points			[0, 120]
+		Branch {
+		  Points		  [0, 110]
+		  Branch {
+		    Points		    [0, 130]
+		    Branch {
+		    DstBlock		    "Roll Moment\nCoefficient"
+		    DstPort		    3
+		    }
+		    Branch {
+		    Points		    [0, 115]
+		    DstBlock		    "Yaw Moment\nCoefficient"
+		    DstPort		    3
+		    }
+		  }
+		  Branch {
+		    DstBlock		    "Pitch Moment\nCoefficient"
+		    DstPort		    4
+		  }
+		}
+		Branch {
+		  DstBlock		  "Side Force Coefficient"
+		  DstPort		  3
+		}
+	      }
+	      Branch {
+		Points			[0, -140]
+		DstBlock		"Lift Coefficient"
+		DstPort			4
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "WindRates"
+	      SrcPort		      1
+	      Points		      [30, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Rates"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Mux"
+	      SrcPort		      1
+	      Points		      [120, 0; 0, -215]
+	      DstBlock		      "AeroCoeff"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Aerodynamic\nMoment"
+	      SrcPort		      1
+	      Points		      [15, 0; 0, -105]
+	      DstBlock		      "Maero"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Aerodynamic\nForce"
+	      SrcPort		      1
+	      DstBlock		      "Faero"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Yaw Moment\nCoefficient"
+	      SrcPort		      1
+	      Points		      [90, 0; 0, -285]
+	      Branch {
+		DstBlock		"Mux"
+		DstPort			6
+	      }
+	      Branch {
+		Points			[0, -180]
+		DstBlock		"Aerodynamic\nMoment"
+		DstPort			3
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Pitch Moment\nCoefficient"
+	      SrcPort		      1
+	      Points		      [80, 0; 0, -65]
+	      Branch {
+		DstBlock		"Mux"
+		DstPort			5
+	      }
+	      Branch {
+		Points			[0, -180]
+		DstBlock		"Aerodynamic\nMoment"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Roll Moment\nCoefficient"
+	      SrcPort		      1
+	      Points		      [70, 0; 0, -210]
+	      Branch {
+		DstBlock		"Mux"
+		DstPort			4
+	      }
+	      Branch {
+		Points			[0, -180]
+		DstBlock		"Aerodynamic\nMoment"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Dynamic Pressure"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, 95; 240, 0]
+	      Branch {
+		Points			[200, 0; 0, -55]
+		DstBlock		"pdyn"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -40]
+		Branch {
+		  DstBlock		  "Aerodynamic\nMoment"
+		  DstPort		  4
+		}
+		Branch {
+		  Points		  [0, -145]
+		  DstBlock		  "Aerodynamic\nForce"
+		  DstPort		  4
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Side Force Coefficient"
+	      SrcPort		      1
+	      Points		      [40, 0; 0, -10]
+	      Branch {
+		DstBlock		"Mux"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, -265]
+		DstBlock		"Aerodynamic\nForce"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Drag Coefficient"
+	      SrcPort		      1
+	      Points		      [0, 0; 30, 0]
+	      Branch {
+		Points			[0, 80]
+		DstBlock		"Mux"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -185]
+		DstBlock		"Aerodynamic\nForce"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Lift Coefficient"
+	      SrcPort		      1
+	      Points		      [0, 0; 20, 0]
+	      Branch {
+		Points			[0, 95]
+		Branch {
+		  Points		  [0, 170]
+		  DstBlock		  "Mux"
+		  DstPort		  3
+		}
+		Branch {
+		  Points		  [-150, 0; 0, 60]
+		  DstBlock		  "Drag Coefficient"
+		  DstPort		  3
+		}
+	      }
+	      Branch {
+		DstBlock		"Aerodynamic\nForce"
+		DstPort			3
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Wind-axes Velocities"
+	      SrcPort		      3
+	      Points		      [30, 0; 0, 30]
+	      Branch {
+		Points			[30, 0]
+		Branch {
+		  Points		  [0, 35; 380, 0; 0, 45]
+		  DstBlock		  "Mach"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Lift Coefficient"
+		  DstPort		  5
+		}
+	      }
+	      Branch {
+		Points			[0, 135]
+		Branch {
+		  Points		  [0, 235]
+		  DstBlock		  "Pitch Moment\nCoefficient"
+		  DstPort		  5
+		}
+		Branch {
+		  DstBlock		  "Drag Coefficient"
+		  DstPort		  4
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Wind-axes Velocities"
+	      SrcPort		      2
+	      Points		      [10, 0; 0, 15]
+	      Branch {
+		Points			[0, 370]
+		DstBlock		"Pitch Moment\nCoefficient"
+		DstPort			3
+	      }
+	      Branch {
+		DstBlock		"Lift Coefficient"
+		DstPort			3
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "AeroCon"
+	      SrcPort		      1
+	      Points		      [0, 0; 210, 0]
+	      Branch {
+		Points			[0, 65]
+		Branch {
+		  Points		  [0, 120]
+		  Branch {
+		    Points		    [0, 95]
+		    Branch {
+		    Points		    [0, 145]
+		    Branch {
+		    Points		    [0, 115]
+		    DstBlock		    "Yaw Moment\nCoefficient"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "Roll Moment\nCoefficient"
+		    DstPort		    2
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Pitch Moment\nCoefficient"
+		    DstPort		    2
+		    }
+		  }
+		  Branch {
+		    DstBlock		    "Side Force Coefficient"
+		    DstPort		    2
+		  }
+		}
+		Branch {
+		  DstBlock		  "Drag Coefficient"
+		  DstPort		  2
+		}
+	      }
+	      Branch {
+		Points			[0, -90]
+		DstBlock		"Lift Coefficient"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "rho"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 20]
+	      DstBlock		      "Dynamic Pressure"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Wind-axes Velocities"
+	      SrcPort		      1
+	      Points		      [0, 0; 40, 0]
+	      Branch {
+		Points			[0, 95]
+		Branch {
+		  Points		  [0, 30]
+		  Branch {
+		    Points		    [210, 0]
+		    Branch {
+		    Points		    [200, 0]
+		    DstBlock		    "VelW"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [0, -45]
+		    DstBlock		    "Aerodynamic\nForce"
+		    DstPort		    5
+		    }
+		  }
+		  Branch {
+		    Points		    [0, 30]
+		    Branch {
+		    Points		    [0, 115]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 140]
+		    Branch {
+		    Points		    [0, 115]
+		    DstBlock		    "Yaw Moment\nCoefficient"
+		    DstPort		    1
+		    }
+		    Branch {
+		    DstBlock		    "Roll Moment\nCoefficient"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Pitch Moment\nCoefficient"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Side Force Coefficient"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Drag Coefficient"
+		    DstPort		    1
+		    }
+		  }
+		}
+		Branch {
+		  Points		  [-160, 0; 0, 40]
+		  DstBlock		  "Dynamic Pressure"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		DstBlock		"Lift Coefficient"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "a"
+	      SrcPort		      1
+	      Points		      [30, 0; 0, -120]
+	      DstBlock		      "Wind-axes Velocities"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "WindB"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, -5]
+	      DstBlock		      "Wind-axes Velocities"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "VelB"
+	      SrcPort		      1
+	      DstBlock		      "Wind-axes Velocities"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      Text		      "Inputs"
+	      Position		      [37, 26]
+	    }
+	    Annotation {
+	      Text		      "Outputs"
+	      Position		      [695, 82]
+	    }
+	    Annotation {
+	      Text		      "Aerodynamic Parameters"
+	      Position		      [156, 28]
+	    }
+	    Annotation {
+	      Text		      "Aerodynamic Coefficients"
+	      Position		      [340, 29]
+	    }
+	    Annotation {
+	      Text		      "Aerodynamic Loads"
+	      Position		      [564, 32]
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Aircraft Inertia"
+	  Ports			  [2, 5]
+	  Position		  [455, 108, 555, 262]
+	  SourceBlock		  "aerosimlib/Inertia/Aircraft Inertia"
+	  SourceType		  "Aircraft inertia"
+	  FuelIni		  "FuelIni"
+	  Mempty		  "mempty"
+	  Mgross		  "mgross"
+	  CGempty		  "CGempty"
+	  CGgross		  "CGgross"
+	  Jempty		  "Jempty"
+	  Jgross		  "Jgross"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Atmosphere"
+	  Ports			  [6, 6]
+	  Position		  [460, 444, 560, 676]
+	  ShowPortLabels	  on
+	  Permissions		  "ReadWrite"
+	  TreatAsAtomicUnit	  off
+	  RTWSystemCode		  "Auto"
+	  RTWFcnNameOpts	  "Auto"
+	  RTWFileNameOpts	  "Auto"
+	  SimViewingDevice	  off
+	  System {
+	    Name		    "Atmosphere"
+	    Location		    [344, 306, 1026, 759]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "MSL"
+	      Position		      [25, 43, 55, 57]
+	      Port		      "1"
+	      PortDimensions	      "1"
+	      SampleTime	      "-1"
+	      DataType		      "double"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "AGL"
+	      Position		      [25, 78, 55, 92]
+	      Port		      "2"
+	      PortDimensions	      "1"
+	      SampleTime	      "-1"
+	      DataType		      "double"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Winds"
+	      Position		      [25, 113, 55, 127]
+	      Port		      "3"
+	      PortDimensions	      "[3 1]"
+	      SampleTime	      "-1"
+	      DataType		      "double"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "VelB"
+	      Position		      [25, 148, 55, 162]
+	      Port		      "4"
+	      PortDimensions	      "[3 1]"
+	      SampleTime	      "-1"
+	      DataType		      "double"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "VelW"
+	      Position		      [25, 183, 55, 197]
+	      Port		      "5"
+	      PortDimensions	      "[3 1]"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "DCM"
+	      Position		      [25, 253, 55, 267]
+	      Port		      "6"
+	      PortDimensions	      "[3 3]"
+	      SampleTime	      "-1"
+	      DataType		      "double"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Background Wind"
+	      Ports		      [2, 2]
+	      Position		      [130, 121, 220, 194]
+	      SourceBlock	      "aerosimlib/Atmosphere/Background Wind"
+	      SourceType	      "Background wind"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Standard Atmosphere"
+	      Ports		      [1, 4]
+	      Position		      [120, 12, 220, 88]
+	      SourceBlock	      "aerosimlib/Atmosphere/Standard Atmosphe"
+"re"
+	      SourceType	      "Standard atmosphere"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      Ports		      [2, 1]
+	      Position		      [445, 240, 465, 260]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|++"
+	      SaturateOnIntegerOverflow	on
+	    }
+	    Block {
+	      BlockType		      Terminator
+	      Name		      "Terminator"
+	      Position		      [380, 380, 400, 400]
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Wind Shear"
+	      Ports		      [3, 2]
+	      Position		      [260, 334, 355, 406]
+	      SourceBlock	      "aerosimlib/Atmosphere/Wind Shear"
+	      SourceType	      "Wind shear"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "pstatic"
+	      Position		      [625, 38, 655, 52]
+	      Port		      "1"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "OAT"
+	      Position		      [625, 73, 655, 87]
+	      Port		      "2"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "rho"
+	      Position		      [625, 108, 655, 122]
+	      Port		      "3"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "a"
+	      Position		      [625, 143, 655, 157]
+	      Port		      "4"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "WindVel"
+	      Position		      [625, 178, 655, 192]
+	      Port		      "5"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "WindRates"
+	      Position		      [625, 213, 655, 227]
+	      Port		      "6"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Line {
+	      SrcBlock		      "MSL"
+	      SrcPort		      1
+	      DstBlock		      "Standard Atmosphere"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Winds"
+	      SrcPort		      1
+	      Points		      [50, 0; 0, 20]
+	      DstBlock		      "Background Wind"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "DCM"
+	      SrcPort		      1
+	      Points		      [50, 0; 0, -85]
+	      DstBlock		      "Background Wind"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Background Wind"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, 50; 135, 0; 0, 90; 85, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Background Wind"
+	      SrcPort		      2
+	      Points		      [20, 0]
+	      DstBlock		      "Wind Shear"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "VelB"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 240]
+	      DstBlock		      "Wind Shear"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Wind Shear"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, -30; 175, 0; 0, -105]
+	      DstBlock		      "WindRates"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Standard Atmosphere"
+	      SrcPort		      1
+	      Points		      [380, 0; 0, 25]
+	      DstBlock		      "pstatic"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Standard Atmosphere"
+	      SrcPort		      2
+	      Points		      [370, 0; 0, 40]
+	      DstBlock		      "OAT"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Standard Atmosphere"
+	      SrcPort		      3
+	      Points		      [360, 0; 0, 55]
+	      DstBlock		      "rho"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Standard Atmosphere"
+	      SrcPort		      4
+	      Points		      [350, 0; 0, 70]
+	      DstBlock		      "a"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      Points		      [75, 0; 0, -65]
+	      DstBlock		      "WindVel"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Wind Shear"
+	      SrcPort		      2
+	      DstBlock		      "Terminator"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      Text		      "Inputs"
+	      Position		      [43, 26]
+	    }
+	    Annotation {
+	      Text		      "Outputs"
+	      Position		      [640, 20]
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux"
+	  Ports			  [1, 7]
+	  Position		  [65, 89, 70, 231]
+	  BackgroundColor	  "black"
+	  ShowName		  off
+	  Outputs		  "7"
+	  BusSelectionMode	  off
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Earth"
+	  Ports			  [2, 8]
+	  Position		  [795, 351, 895, 544]
+	  ShowPortLabels	  on
+	  Permissions		  "ReadWrite"
+	  TreatAsAtomicUnit	  off
+	  RTWSystemCode		  "Auto"
+	  RTWFcnNameOpts	  "Auto"
+	  RTWFileNameOpts	  "Auto"
+	  SimViewingDevice	  off
+	  System {
+	    Name		    "Earth"
+	    Location		    [66, 266, 511, 722]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Position"
+	      Position		      [20, 43, 50, 57]
+	      Port		      "1"
+	      PortDimensions	      "[3 1]"
+	      SampleTime	      "-1"
+	      DataType		      "double"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "DCM"
+	      Position		      [20, 78, 50, 92]
+	      Port		      "2"
+	      PortDimensions	      "[3 3]"
+	      SampleTime	      "-1"
+	      DataType		      "double"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "ECEF Position"
+	      Ports		      [1, 1]
+	      Position		      [125, 352, 225, 428]
+	      SourceBlock	      "aerosimlib/Transformations/ECEF Positio"
+"n"
+	      SourceType	      "ECEF Position"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "EGM-96"
+	      Ports		      [1, 1]
+	      Position		      [115, 139, 195, 201]
+	      SourceBlock	      "aerosimlib/Earth/EGM-96"
+	      SourceType	      "EGM-96 geoid undulation model"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Ground Alt"
+	      Position		      [20, 112, 50, 128]
+	      Value		      "GndAlt"
+	      VectorParams1D	      on
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Ground Detection"
+	      Ports		      [2, 2]
+	      Position		      [245, 279, 320, 321]
+	      SourceBlock	      "aerosimlib/Earth/Ground Detection"
+	      SourceType	      "Ground detection"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux3"
+	      Ports		      [2, 1]
+	      Position		      [220, 18, 225, 67]
+	      ShowName		      off
+	      Inputs		      "2"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "WGS-84"
+	      Ports		      [1, 4]
+	      Position		      [115, 19, 195, 116]
+	      SourceBlock	      "aerosimlib/Earth/WGS-84"
+	      SourceType	      "WGS-84 Earth model"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "WMM-2000"
+	      Ports		      [2, 1]
+	      Position		      [115, 224, 195, 286]
+	      SourceBlock	      "aerosimlib/Earth/WMM-2000"
+	      SourceType	      "WMM-2000"
+	      wmmfile		      "wmmfile"
+	      simdate		      "dmy"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "MSL"
+	      Position		      [390, 48, 420, 62]
+	      Port		      "1"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "AGL"
+	      Position		      [390, 78, 420, 92]
+	      Port		      "2"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "AConGnd"
+	      Position		      [390, 108, 420, 122]
+	      Port		      "3"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Rearth"
+	      Position		      [390, 138, 420, 152]
+	      Port		      "4"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Requiv"
+	      Position		      [390, 168, 420, 182]
+	      Port		      "5"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Gravity"
+	      Position		      [390, 198, 420, 212]
+	      Port		      "6"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "MagField"
+	      Position		      [390, 228, 420, 242]
+	      Port		      "7"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "ECEF"
+	      Position		      [390, 258, 420, 272]
+	      Port		      "8"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Line {
+	      SrcBlock		      "ECEF Position"
+	      SrcPort		      1
+	      Points		      [130, 0; 0, -125]
+	      DstBlock		      "ECEF"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "WMM-2000"
+	      SrcPort		      1
+	      Points		      [130, 0; 0, -20]
+	      DstBlock		      "MagField"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "WGS-84"
+	      SrcPort		      4
+	      Points		      [110, 0; 0, 100]
+	      DstBlock		      "Gravity"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "WGS-84"
+	      SrcPort		      3
+	      Points		      [120, 0; 0, 95]
+	      DstBlock		      "Requiv"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Mux3"
+	      SrcPort		      1
+	      Points		      [100, 0; 0, 100]
+	      DstBlock		      "Rearth"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Ground Detection"
+	      SrcPort		      1
+	      Points		      [25, 0; 0, -175]
+	      DstBlock		      "AConGnd"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Ground Detection"
+	      SrcPort		      2
+	      Points		      [15, 0; 0, -225]
+	      DstBlock		      "AGL"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "WGS-84"
+	      SrcPort		      2
+	      DstBlock		      "Mux3"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "WGS-84"
+	      SrcPort		      1
+	      DstBlock		      "Mux3"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "EGM-96"
+	      SrcPort		      1
+	      Points		      [0, 0; 15, 0]
+	      Branch {
+		Points			[35, 0; 0, -115]
+		DstBlock		"MSL"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 120]
+		DstBlock		"Ground Detection"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Ground Alt"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 190]
+	      DstBlock		      "Ground Detection"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "DCM"
+	      SrcPort		      1
+	      Points		      [30, 0; 0, 185]
+	      DstBlock		      "WMM-2000"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Position"
+	      SrcPort		      1
+	      Points		      [40, 0; 0, 20]
+	      Branch {
+		Points			[0, 100]
+		Branch {
+		  Points		  [0, 70]
+		  Branch {
+		    Points		    [0, 150]
+		    DstBlock		    "ECEF Position"
+		    DstPort		    1
+		  }
+		  Branch {
+		    DstBlock		    "WMM-2000"
+		    DstPort		    1
+		  }
+		}
+		Branch {
+		  DstBlock		  "EGM-96"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		DstBlock		"WGS-84"
+		DstPort			1
+	      }
+	    }
+	    Annotation {
+	      Text		      "Outputs"
+	      Position		      [404, 32]
+	    }
+	    Annotation {
+	      Text		      "Inputs"
+	      Position		      [39, 24]
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Equations of Motion"
+	  Ports			  [7, 7]
+	  Position		  [795, 75, 895, 265]
+	  ShowPortLabels	  on
+	  Permissions		  "ReadWrite"
+	  TreatAsAtomicUnit	  off
+	  RTWSystemCode		  "Auto"
+	  RTWFcnNameOpts	  "Auto"
+	  RTWFileNameOpts	  "Auto"
+	  SimViewingDevice	  off
+	  System {
+	    Name		    "Equations of Motion"
+	    Location		    [513, 204, 1021, 742]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Accel"
+	      Position		      [15, 43, 45, 57]
+	      Port		      "1"
+	      PortDimensions	      "[3 1]"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Moment"
+	      Position		      [15, 73, 45, 87]
+	      Port		      "2"
+	      PortDimensions	      "[3 1]"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Inertia"
+	      Position		      [15, 103, 45, 117]
+	      Port		      "3"
+	      PortDimensions	      "[4 1]"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Rearth"
+	      Position		      [15, 143, 45, 157]
+	      Port		      "4"
+	      PortDimensions	      "[2 1]"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "Gravity"
+	      Position		      [15, 178, 45, 192]
+	      Port		      "5"
+	      PortDimensions	      "1"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "AConGnd"
+	      Position		      [15, 213, 45, 227]
+	      Port		      "6"
+	      PortDimensions	      "1"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "RST"
+	      Position		      [15, 243, 45, 257]
+	      Port		      "7"
+	      PortDimensions	      "1"
+	      SampleTime	      "-1"
+	      DataType		      "auto"
+	      SignalType	      "auto"
+	      Interpolate	      on
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Body-Inertial DCM\nFrom Euler Angles"
+	      Ports		      [1, 1]
+	      Position		      [295, 255, 390, 315]
+	      SourceBlock	      "aerosimlib/Transformations/Body-Inertia"
+"l DCM\nFrom Euler Angles"
+	      SourceType	      "Body-Inertial DCM"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      "Demux"
+	      Ports		      [1, 2]
+	      Position		      [120, 397, 125, 448]
+	      BackgroundColor	      "black"
+	      ShowName		      off
+	      Outputs		      "2"
+	      BusSelectionMode	      off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Forces"
+	      Ports		      [5, 1]
+	      Position		      [150, 16, 250, 124]
+	      SourceBlock	      "aerosimlib/Equations of Motion/Body-Fra"
+"me EOM/Forces"
+	      SourceType	      "Force equations"
+	      VelocitiesIni	      "VelocitiesIni"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Kinematics (Euler)"
+	      Ports		      [2, 1]
+	      Position		      [150, 245, 250, 325]
+	      SourceBlock	      "aerosimlib/Equations of Motion/Body-Fra"
+"me EOM/Kinematics (Euler)"
+	      SourceType	      "Kinematic Equations"
+	      EulerIni		      "EulerIni"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Moments"
+	      Ports		      [3, 2]
+	      Position		      [150, 145, 250, 225]
+	      SourceBlock	      "aerosimlib/Equations of Motion/Body-Fra"
+"me EOM/Moments"
+	      SourceType	      "Moment equations"
+	      RatesIni		      "RatesIni"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Navigation"
+	      Ports		      [6, 2]
+	      Position		      [150, 347, 250, 498]
+	      SourceBlock	      "aerosimlib/Equations of Motion/Body-Fra"
+"me EOM/Navigation"
+	      SourceType	      "Navigation equations"
+	      PositionIni	      "PositionIni"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "VelB"
+	      Position		      [450, 63, 480, 77]
+	      Port		      "1"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Rates"
+	      Position		      [450, 93, 480, 107]
+	      Port		      "2"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Euler"
+	      Position		      [450, 123, 480, 137]
+	      Port		      "3"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Position"
+	      Position		      [450, 153, 480, 167]
+	      Port		      "4"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Groundspeed"
+	      Position		      [450, 183, 480, 197]
+	      Port		      "5"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "DCM"
+	      Position		      [450, 213, 480, 227]
+	      Port		      "6"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Ang Acc"
+	      Position		      [450, 248, 480, 262]
+	      Port		      "7"
+	      OutputWhenDisabled      "held"
+	      InitialOutput	      "[]"
+	    }
+	    Line {
+	      SrcBlock		      "Navigation"
+	      SrcPort		      2
+	      Points		      [165, 0; 0, -270]
+	      DstBlock		      "Groundspeed"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Navigation"
+	      SrcPort		      1
+	      Points		      [160, 0; 0, -225]
+	      DstBlock		      "Position"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Moments"
+	      SrcPort		      2
+	      Points		      [155, 0; 0, 50]
+	      DstBlock		      "Ang Acc"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "RST"
+	      SrcPort		      1
+	      Points		      [0, 0; 35, 0]
+	      Branch {
+		Points			[0, 55]
+		Branch {
+		  Points		  [0, 180]
+		  DstBlock		  "Navigation"
+		  DstPort		  6
+		}
+		Branch {
+		  DstBlock		  "Kinematics (Euler)"
+		  DstPort		  2
+		}
+	      }
+	      Branch {
+		Points			[0, -40]
+		Branch {
+		  DstBlock		  "Moments"
+		  DstPort		  3
+		}
+		Branch {
+		  Points		  [0, -100]
+		  DstBlock		  "Forces"
+		  DstPort		  5
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Moments"
+	      SrcPort		      1
+	      Points		      [0, 0; 15, 0]
+	      Branch {
+		Points			[0, -65]
+		DstBlock		"Rates"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 350; -165, 0; 0, -250]
+		Branch {
+		  Points		  [0, -235]
+		  DstBlock		  "Forces"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "Kinematics (Euler)"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Kinematics (Euler)"
+	      SrcPort		      1
+	      Points		      [25, 0]
+	      Branch {
+		Points			[0, -155]
+		DstBlock		"Euler"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Body-Inertial DCM\nFrom Euler Angles"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Forces"
+	      SrcPort		      1
+	      Points		      [0, 0; 20, 0]
+	      Branch {
+		Points			[0, 450; -175, 0; 0, -160]
+		DstBlock		"Navigation"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"VelB"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "AConGnd"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 240]
+	      DstBlock		      "Navigation"
+	      DstPort		      5
+	    }
+	    Line {
+	      SrcBlock		      "Gravity"
+	      SrcPort		      1
+	      Points		      [10, 0; 0, -115]
+	      DstBlock		      "Forces"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Inertia"
+	      SrcPort		      1
+	      Points		      [25, 0; 0, 50]
+	      DstBlock		      "Moments"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Moment"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 105]
+	      DstBlock		      "Moments"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Accel"
+	      SrcPort		      1
+	      DstBlock		      "Forces"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      2
+	      DstBlock		      "Navigation"
+	      DstPort		      4
+	    }
+	    Line {
+	      SrcBlock		      "Demux"
+	      SrcPort		      1
+	      DstBlock		      "Navigation"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Rearth"
+	      SrcPort		      1
+	      Points		      [15, 0; 0, 275]
+	      DstBlock		      "Demux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Body-Inertial DCM\nFrom Euler Angles"
+	      SrcPort		      1
+	      Points		      [10, 0]
+	      Branch {
+		Points			[0, 240; -310, 0; 0, -140]
+		Branch {
+		  DstBlock		  "Navigation"
+		  DstPort		  2
+		}
+		Branch {
+		  Points		  [0, -295]
+		  DstBlock		  "Forces"
+		  DstPort		  4
+		}
+	      }
+	      Branch {
+		Points			[0, -65]
+		DstBlock		"DCM"
+		DstPort			1
+	      }
+	    }
+	    Annotation {
+	      Text		      "Inputs"
+	      Position		      [34, 25]
+	    }
+	    Annotation {
+	      Text		      "Outputs"
+	      Position		      [466, 41]
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "GA Propulsion System"
+	  Ports			  [7, 6]
+	  Position		  [180, 228, 280, 402]
+	  SourceBlock		  "aerosimlib/Propulsion/GA Propulsion System"
+	  SourceType		  "General-aviation propulsion system"
+	  OmegaIni		  "OmegaIni"
+	  RPM			  "RPM"
+	  MAP			  "MAP"
+	  FuelFlow		  "FuelFlow"
+	  Power			  "Power"
+	  Jeng			  "Jeng"
+	  J			  "J"
+	  CT			  "CT"
+	  CP			  "CP"
+	  Rprop			  "Rprop"
+	  Jprop			  "Jprop"
+	  TSL			  "TSL"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  Ports			  [4, 1]
+	  Position		  [95, 89, 100, 171]
+	  ShowName		  off
+	  Inputs		  "4"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux1"
+	  Ports			  [3, 1]
+	  Position		  [95, 171, 100, 229]
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux2"
+	  Ports			  [3, 1]
+	  Position		  [645, 451, 650, 499]
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux4"
+	  Ports			  [6, 1]
+	  Position		  [1035, 239, 1040, 386]
+	  ShowName		  off
+	  Inputs		  "6"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux7"
+	  Ports			  [6, 1]
+	  Position		  [1035, 81, 1040, 234]
+	  ShowName		  off
+	  Inputs		  "6"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Total Acceleration"
+	  Ports			  [3, 1]
+	  Position		  [635, 66, 725, 154]
+	  SourceBlock		  "aerosimlib/Equations of Motion/Total Accele"
+"ration"
+	  SourceType		  "Total acceleration"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Total Moment"
+	  Ports			  [5, 1]
+	  Position		  [630, 234, 730, 356]
+	  SourceBlock		  "aerosimlib/Equations of Motion/Total Moment"
+	  SourceType		  "Total moment"
+	  raero			  "rAC"
+	  rprop			  "rHub"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "States"
+	  Position		  [1065, 153, 1095, 167]
+	  Port			  "1"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Sensors"
+	  Position		  [1065, 308, 1095, 322]
+	  Port			  "2"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "VelW"
+	  Position		  [1060, 753, 1090, 767]
+	  Port			  "3"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Mach"
+	  Position		  [300, 143, 330, 157]
+	  Port			  "4"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Ang Acc"
+	  Position		  [920, 238, 950, 252]
+	  Port			  "5"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "AeroCoeff"
+	  Position		  [300, 93, 330, 107]
+	  Port			  "6"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "PropCoeff"
+	  Position		  [300, 383, 330, 397]
+	  Port			  "7"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "EngCoeff"
+	  Position		  [300, 353, 330, 367]
+	  Port			  "8"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Mass"
+	  Position		  [1060, 693, 1090, 707]
+	  Port			  "9"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "ECEF"
+	  Position		  [920, 528, 950, 542]
+	  Port			  "10"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "MSL"
+	  Position		  [1035, 403, 1065, 417]
+	  Port			  "11"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "AGL"
+	  Position		  [1035, 433, 1065, 447]
+	  Port			  "12"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "REarth"
+	  Position		  [920, 453, 950, 467]
+	  Port			  "13"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "AConGnd"
+	  Position		  [920, 403, 950, 417]
+	  Port			  "14"
+	  OutputWhenDisabled	  "held"
+	  InitialOutput		  "[]"
+	}
+	Line {
+	  SrcBlock		  "Equations of Motion"
+	  SrcPort		  7
+	  DstBlock		  "Ang Acc"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "RST"
+	  SrcPort		  1
+	  Points		  [0, 0; 60, 0]
+	  Branch {
+	    Points		    [240, 0; 0, -30; 35, 0]
+	    Branch {
+	      DstBlock		      "Aircraft Inertia"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [330, 0; 0, -150]
+	      DstBlock		      "Equations of Motion"
+	      DstPort		      7
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "GA Propulsion System"
+	    DstPort		    7
+	  }
+	}
+	Line {
+	  SrcBlock		  "Aircraft Inertia"
+	  SrcPort		  5
+	  Points		  "[5, 0; 0, 165; -155, 0; 0, 20; -265, 0; 0, "
+"-165]"
+	  DstBlock		  "GA Propulsion System"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Earth"
+	  SrcPort		  2
+	  Points		  [80, 0; 0, 55]
+	  Branch {
+	    DstBlock		    "AGL"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 265; -555, 0; 0, -205]
+	    DstBlock		    "Atmosphere"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "Earth"
+	  SrcPort		  1
+	  Points		  [85, 0; 0, 50]
+	  Branch {
+	    DstBlock		    "MSL"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 300; -565, 0; 0, -250]
+	    DstBlock		    "Atmosphere"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Aerodynamics"
+	  SrcPort		  4
+	  Points		  [130, 0; 0, 310]
+	  Branch {
+	    Points		    [-255, 0; 0, -70]
+	    DstBlock		    "GA Propulsion System"
+	    DstPort		    6
+	  }
+	  Branch {
+	    Points		    [0, 185]
+	    Branch {
+	      Points		      [0, 140]
+	      DstBlock		      "VelW"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "Atmosphere"
+	      DstPort		      5
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "GA Propulsion System"
+	  SrcPort		  4
+	  Points		  [135, 0; 0, -180]
+	  DstBlock		  "Aircraft Inertia"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "GA Propulsion System"
+	  SrcPort		  3
+	  Points		  "[295, 0; 0, 90; 160, 0; 0, -80; 260, 0; 0, "
+"-90]"
+	  DstBlock		  "Mux7"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "Aircraft Inertia"
+	  SrcPort		  1
+	  Points		  "[25, 0; 0, 260; 160, 0; 0, -80; 240, 0; 0, "
+"-110]"
+	  DstBlock		  "Mux7"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Mux2"
+	  SrcPort		  1
+	  Points		  [105, 0; 0, -145; 255, 0; 0, 20]
+	  DstBlock		  "Mux4"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Aerodynamics"
+	  SrcPort		  6
+	  Points		  [140, 0; 0, 250; 160, 0; 0, 50]
+	  DstBlock		  "Mux2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Equations of Motion"
+	  SrcPort		  6
+	  Points		  [75, 0; 0, 360]
+	  Branch {
+	    Points		    [-200, 0; 0, -85]
+	    DstBlock		    "Earth"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 135; -535, 0; 0, -55]
+	    DstBlock		    "Atmosphere"
+	    DstPort		    6
+	  }
+	}
+	Line {
+	  SrcBlock		  "GA Propulsion System"
+	  SrcPort		  2
+	  Points		  [145, 0; 0, 50]
+	  DstBlock		  "Total Moment"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "GA Propulsion System"
+	  SrcPort		  1
+	  Points		  [150, 0; 0, 55; 170, 0]
+	  Branch {
+	    DstBlock		    "Total Moment"
+	    DstPort		    3
+	  }
+	  Branch {
+	    Points		    [0, -185]
+	    DstBlock		    "Total Acceleration"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "Aerodynamics"
+	  SrcPort		  2
+	  Points		  [325, 0; 0, 195]
+	  DstBlock		  "Total Moment"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Aerodynamics"
+	  SrcPort		  1
+	  Points		  [330, 0; 0, 30]
+	  Branch {
+	    DstBlock		    "Total Moment"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 0]
+	    DstBlock		    "Total Acceleration"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Aircraft Inertia"
+	  SrcPort		  3
+	  Points		  [40, 0; 0, 160]
+	  DstBlock		  "Total Moment"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Total Moment"
+	  SrcPort		  1
+	  Points		  [5, 0; 0, -175]
+	  DstBlock		  "Equations of Motion"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Aircraft Inertia"
+	  SrcPort		  4
+	  Points		  [185, 0; 0, -70]
+	  DstBlock		  "Equations of Motion"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Aircraft Inertia"
+	  SrcPort		  2
+	  Points		  [0, 0; 15, 0]
+	  Branch {
+	    Points		    [0, 265; -145, 0; 0, 280]
+	    DstBlock		    "Mass"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [45, 0]
+	    DstBlock		    "Total Acceleration"
+	    DstPort		    3
+	  }
+	}
+	Line {
+	  SrcBlock		  "Earth"
+	  SrcPort		  4
+	  Points		  [65, 0; 0, 135; -215, 0; 0, -400]
+	  DstBlock		  "Equations of Motion"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Earth"
+	  SrcPort		  6
+	  Points		  [60, 0; 0, 80; -205, 0; 0, -370]
+	  DstBlock		  "Equations of Motion"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Earth"
+	  SrcPort		  7
+	  Points		  [115, 0; 0, -135]
+	  DstBlock		  "Mux4"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "Total Acceleration"
+	  SrcPort		  1
+	  Points		  [30, 0]
+	  Branch {
+	    Points		    [0, 190]
+	    DstBlock		    "Mux4"
+	    DstPort		    3
+	  }
+	  Branch {
+	    Points		    [20, 0]
+	    DstBlock		    "Equations of Motion"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Equations of Motion"
+	  SrcPort		  5
+	  Points		  [80, 0; 0, 80]
+	  DstBlock		  "Mux4"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Earth"
+	  SrcPort		  3
+	  Points		  [0, 0; 5, 0]
+	  Branch {
+	    Points		    [0, 150; -140, 0; 0, -340]
+	    DstBlock		    "Equations of Motion"
+	    DstPort		    6
+	  }
+	  Branch {
+	    DstBlock		    "AConGnd"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Earth"
+	  SrcPort		  5
+	  DstBlock		  "REarth"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "GA Propulsion System"
+	  SrcPort		  6
+	  DstBlock		  "PropCoeff"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "GA Propulsion System"
+	  SrcPort		  5
+	  DstBlock		  "EngCoeff"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  7
+	  DstBlock		  "Mux1"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  6
+	  DstBlock		  "Mux1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  5
+	  DstBlock		  "Mux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  4
+	  DstBlock		  "Mux"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  3
+	  DstBlock		  "Mux"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  2
+	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Demux"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Controls"
+	  SrcPort		  1
+	  DstBlock		  "Demux"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux4"
+	  SrcPort		  1
+	  DstBlock		  "Sensors"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux7"
+	  SrcPort		  1
+	  DstBlock		  "States"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux1"
+	  SrcPort		  1
+	  Points		  [5, 0; 0, 40]
+	  DstBlock		  "GA Propulsion System"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Equations of Motion"
+	  SrcPort		  1
+	  Points		  [110, 0]
+	  Branch {
+	    DstBlock		    "Mux7"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 630; -575, 0]
+	    Branch {
+	      Points		      [-315, 0; 0, -675]
+	      DstBlock		      "Aerodynamics"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, -145]
+	      DstBlock		      "Atmosphere"
+	      DstPort		      4
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "Equations of Motion"
+	  SrcPort		  2
+	  Points		  [95, 0]
+	  Branch {
+	    Points		    [0, 205]
+	    Branch {
+	      DstBlock		      "Mux4"
+	      DstPort		      4
+	    }
+	    Branch {
+	      Points		      [0, 395; -865, 0; 0, -630]
+	      DstBlock		      "Aerodynamics"
+	      DstPort		      3
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "Mux7"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "Equations of Motion"
+	  SrcPort		  4
+	  Points		  [105, 0]
+	  Branch {
+	    Points		    [0, 80]
+	    Branch {
+	      Points		      [0, 325; -235, 0; 0, -175]
+	      DstBlock		      "Earth"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "Mux4"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "Mux7"
+	    DstPort		    4
+	  }
+	}
+	Line {
+	  SrcBlock		  "Mux"
+	  SrcPort		  1
+	  DstBlock		  "Aerodynamics"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Equations of Motion"
+	  SrcPort		  3
+	  DstBlock		  "Mux7"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Aerodynamics"
+	  SrcPort		  5
+	  DstBlock		  "Mach"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Aerodynamics"
+	  SrcPort		  3
+	  DstBlock		  "AeroCoeff"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Earth"
+	  SrcPort		  8
+	  DstBlock		  "ECEF"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Atmosphere"
+	  SrcPort		  1
+	  Points		  [30, 0]
+	  Branch {
+	    DstBlock		    "Mux2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 275; -470, 0; 0, -445]
+	    DstBlock		    "GA Propulsion System"
+	    DstPort		    3
+	  }
+	}
+	Line {
+	  SrcBlock		  "Atmosphere"
+	  SrcPort		  2
+	  Points		  [25, 0]
+	  Branch {
+	    Points		    [0, -10]
+	    DstBlock		    "Mux2"
+	    DstPort		    3
+	  }
+	  Branch {
+	    Points		    [0, 230; -475, 0; 0, -415]
+	    DstBlock		    "GA Propulsion System"
+	    DstPort		    4
+	  }
+	}
+	Line {
+	  SrcBlock		  "Atmosphere"
+	  SrcPort		  3
+	  Points		  [50, 0; 0, 215; -480, 0; 0, -415]
+	  Branch {
+	    Points		    [0, -190]
+	    DstBlock		    "Aerodynamics"
+	    DstPort		    6
+	  }
+	  Branch {
+	    DstBlock		    "GA Propulsion System"
+	    DstPort		    5
+	  }
+	}
+	Line {
+	  SrcBlock		  "Atmosphere"
+	  SrcPort		  4
+	  Points		  [45, 0; 0, 170; -470, 0; 0, -580]
+	  DstBlock		  "Aerodynamics"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "Atmosphere"
+	  SrcPort		  5
+	  Points		  [40, 0; 0, 125; -455, 0; 0, -675]
+	  DstBlock		  "Aerodynamics"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Atmosphere"
+	  SrcPort		  6
+	  Points		  [35, 0; 0, 80; -445, 0; 0, -630]
+	  DstBlock		  "Aerodynamics"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Winds"
+	  SrcPort		  1
+	  DstBlock		  "Atmosphere"
+	  DstPort		  3
+	}
+	Annotation {
+	  Text			  "Solve equations of motion"
+	  Position		  [841, 60]
+	}
+	Annotation {
+	  Text			  "Inputs"
+	  Position		  [36, 74]
+	}
+	Annotation {
+	  Text			  "Outputs"
+	  Position		  [1053, 65]
+	}
+	Annotation {
+	  Text			  "Aerodynamic Model"
+	  Position		  [228, 18]
+	}
+	Annotation {
+	  Text			  "Earth Model"
+	  Position		  [847, 338]
+	}
+	Annotation {
+	  Text			  "Sum forces and moments"
+	  Position		  [673, 32]
+	}
+	Annotation {
+	  Text			  "Atmosphere Model"
+	  Position		  [512, 433]
+	}
+	Annotation {
+	  Text			  "Propulsion Model"
+	  Position		  [228, 215]
+	}
+      }
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux1"
+      Ports		      [1, 3]
+      Position		      [395, 81, 400, 159]
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "3"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux3"
+      Ports		      [1, 14]
+      Position		      [395, 252, 400, 483]
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "14"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Flap"
+      Position		      [25, 41, 55, 59]
+      Value		      "TrimParam.Flap"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Ignition"
+      Position		      [25, 236, 55, 254]
+      Value		      "TrimParam.Ign"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Mixture"
+      Position		      [25, 201, 55, 219]
+      Value		      "TrimParam.Mix"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux"
+      Ports		      [7, 1]
+      Position		      [170, 39, 175, 181]
+      ShowName		      off
+      Inputs		      "7"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Reset"
+      Position		      [145, 301, 175, 319]
+      Value		      "0"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Signal Specification"
+      Ports		      [1, 1]
+      Position		      [445, 83, 520, 107]
+      ShowName		      off
+      SourceBlock	      "simulink3/Signals\n& Systems/Signal Specificatio"
+"n"
+      SourceType	      "Signal Specification"
+      D			      "1"
+      Ts		      "-1"
+      DataType		      "double"
+      SignalType	      "real"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Signal Specification1"
+      Ports		      [1, 1]
+      Position		      [445, 108, 520, 132]
+      ShowName		      off
+      SourceBlock	      "simulink3/Signals\n& Systems/Signal Specificatio"
+"n"
+      SourceType	      "Signal Specification"
+      D			      "1"
+      Ts		      "-1"
+      DataType		      "double"
+      SignalType	      "real"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Signal Specification2"
+      Ports		      [1, 1]
+      Position		      [445, 133, 520, 157]
+      ShowName		      off
+      SourceBlock	      "simulink3/Signals\n& Systems/Signal Specificatio"
+"n"
+      SourceType	      "Signal Specification"
+      D			      "1"
+      Ts		      "-1"
+      DataType		      "double"
+      SignalType	      "real"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Signal Specification3"
+      Ports		      [1, 1]
+      Position		      [440, 378, 515, 402]
+      ShowName		      off
+      SourceBlock	      "simulink3/Signals\n& Systems/Signal Specificatio"
+"n"
+      SourceType	      "Signal Specification"
+      D			      "1"
+      Ts		      "-1"
+      DataType		      "double"
+      SignalType	      "real"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Signal Specification4"
+      Ports		      [1, 1]
+      Position		      [440, 353, 515, 377]
+      ShowName		      off
+      SourceBlock	      "simulink3/Signals\n& Systems/Signal Specificatio"
+"n"
+      SourceType	      "Signal Specification"
+      D			      "1"
+      Ts		      "-1"
+      DataType		      "double"
+      SignalType	      "real"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Signal Specification5"
+      Ports		      [1, 1]
+      Position		      [440, 328, 515, 352]
+      ShowName		      off
+      SourceBlock	      "simulink3/Signals\n& Systems/Signal Specificatio"
+"n"
+      SourceType	      "Signal Specification"
+      D			      "1"
+      Ts		      "-1"
+      DataType		      "double"
+      SignalType	      "real"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Signal Specification6"
+      Ports		      [1, 1]
+      Position		      [440, 423, 515, 447]
+      ShowName		      off
+      SourceBlock	      "simulink3/Signals\n& Systems/Signal Specificatio"
+"n"
+      SourceType	      "Signal Specification"
+      D			      "1"
+      Ts		      "-1"
+      DataType		      "double"
+      SignalType	      "real"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Winds"
+      Position		      [145, 201, 175, 219]
+      Value		      "TrimParam.Winds"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "TAS"
+      Position		      [565, 83, 595, 97]
+      Port		      "1"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "Beta"
+      Position		      [565, 113, 595, 127]
+      Port		      "2"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "AOA"
+      Position		      [565, 143, 595, 157]
+      Port		      "3"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "phi"
+      Position		      [565, 323, 595, 337]
+      Port		      "4"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "theta"
+      Position		      [565, 353, 595, 367]
+      Port		      "5"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "psi"
+      Position		      [565, 383, 595, 397]
+      Port		      "6"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "Alt"
+      Position		      [565, 428, 595, 442]
+      Port		      "7"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Line {
+      SrcBlock		      "Mux"
+      SrcPort		      1
+      DstBlock		      "Aerosonde UAV\n(Euler-angle kinematics)"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Flap"
+      SrcPort		      1
+      DstBlock		      "Mux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Elevator"
+      SrcPort		      1
+      Points		      [10, 0; 0, -15]
+      DstBlock		      "Mux"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Aileron"
+      SrcPort		      1
+      Points		      [15, 0; 0, -25]
+      DstBlock		      "Mux"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Rudder"
+      SrcPort		      1
+      Points		      [20, 0; 0, -35]
+      DstBlock		      "Mux"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "Throttle"
+      SrcPort		      1
+      Points		      [25, 0; 0, -45]
+      DstBlock		      "Mux"
+      DstPort		      5
+    }
+    Line {
+      SrcBlock		      "Mixture"
+      SrcPort		      1
+      Points		      [30, 0; 0, -60]
+      DstBlock		      "Mux"
+      DstPort		      6
+    }
+    Line {
+      SrcBlock		      "Ignition"
+      SrcPort		      1
+      Points		      [35, 0; 0, -75]
+      DstBlock		      "Mux"
+      DstPort		      7
+    }
+    Line {
+      SrcBlock		      "Winds"
+      SrcPort		      1
+      DstBlock		      "Aerosonde UAV\n(Euler-angle kinematics)"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Reset"
+      SrcPort		      1
+      DstBlock		      "Aerosonde UAV\n(Euler-angle kinematics)"
+      DstPort		      3
+    }
+    Line {
+      Labels		      [0, 0]
+      SrcBlock		      "Aerosonde UAV\n(Euler-angle kinematics)"
+      SrcPort		      3
+      DstBlock		      "Demux1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      2
+      DstBlock		      "Signal Specification1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      1
+      DstBlock		      "Signal Specification"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      3
+      DstBlock		      "Signal Specification2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Aerosonde UAV\n(Euler-angle kinematics)"
+      SrcPort		      1
+      Points		      [20, 0; 0, 290]
+      DstBlock		      "Demux3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux3"
+      SrcPort		      12
+      DstBlock		      "Signal Specification6"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux3"
+      SrcPort		      7
+      Points		      [10, 0; 0, -20]
+      DstBlock		      "Signal Specification5"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux3"
+      SrcPort		      8
+      Points		      [15, 0; 0, -10]
+      DstBlock		      "Signal Specification4"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux3"
+      SrcPort		      9
+      DstBlock		      "Signal Specification3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Signal Specification"
+      SrcPort		      1
+      Points		      [5, 0; 0, -5]
+      DstBlock		      "TAS"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Signal Specification1"
+      SrcPort		      1
+      DstBlock		      "Beta"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Signal Specification2"
+      SrcPort		      1
+      Points		      [5, 0; 0, 5]
+      DstBlock		      "AOA"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Signal Specification5"
+      SrcPort		      1
+      Points		      [5, 0; 0, -10]
+      DstBlock		      "phi"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Signal Specification4"
+      SrcPort		      1
+      Points		      [5, 0; 0, -5]
+      DstBlock		      "theta"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Signal Specification3"
+      SrcPort		      1
+      DstBlock		      "psi"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Signal Specification6"
+      SrcPort		      1
+      DstBlock		      "Alt"
+      DstPort		      1
+    }
+  }
+}

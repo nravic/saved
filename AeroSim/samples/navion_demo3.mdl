@@ -1,0 +1,802 @@
+Model {
+  Name			  "navion_demo3"
+  Version		  4.0
+  SampleTimeColors	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  Created		  "Mon Jul 01 17:09:14 2002"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "mariusn"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Sat Aug 02 14:50:19 2003"
+  ModelVersionFormat	  "1.%<AutoIncrement:52>"
+  ConfigurationManager	  "none"
+  SimParamPage		  "Solver"
+  LinearizationMsg	  "none"
+  Profile		  off
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeLogAll		  on
+  BufferReuse		  on
+  SimulationMode	  "normal"
+  Solver		  "ode4"
+  SolverMode		  "Auto"
+  StartTime		  "0.0"
+  StopTime		  "300"
+  MaxOrder		  5
+  MaxStep		  "auto"
+  MinStep		  "auto"
+  MaxNumMinSteps	  "-1"
+  InitialStep		  "auto"
+  FixedStep		  "0.05"
+  RelTol		  "1e-3"
+  AbsTol		  "auto"
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  Refine		  "1"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveTime		  off
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  off
+  OutputSaveName	  "yout"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Array"
+  Decimation		  "1"
+  LimitDataPoints	  off
+  MaxDataPoints		  "1000"
+  ConsistencyChecking	  "none"
+  ArrayBoundsChecking	  "none"
+  AlgebraicLoopMsg	  "warning"
+  BlockPriorityViolationMsg "warning"
+  MinStepSizeMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  MultiTaskRateTransMsg	  "error"
+  SingleTaskRateTransMsg  "none"
+  CheckForMatrixSingularity "none"
+  IntegerOverflowMsg	  "warning"
+  Int32ToFloatConvMsg	  "warning"
+  UnnecessaryDatatypeConvMsg "none"
+  VectorMatrixConversionMsg "none"
+  SignalLabelMismatchMsg  "none"
+  UnconnectedInputMsg	  "none"
+  UnconnectedOutputMsg	  "none"
+  UnconnectedLineMsg	  "none"
+  SfunCompatibilityCheckMsg "none"
+  RTWInlineParameters	  off
+  BlockReductionOpt	  off
+  BooleanDataType	  off
+  ParameterPooling	  on
+  OptimizeBlockIOStorage  on
+  ZeroCross		  on
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  RTWRetainRTWFile	  off
+  TLCProfiler		  off
+  TLCDebug		  off
+  TLCCoverage		  off
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "tp501806"
+    Location		    [10, 91, 804, 693]
+    Open		    off
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      Display
+      Name		      "AOA"
+      Ports		      [1]
+      Position		      [435, 186, 520, 214]
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Aircraft states"
+      Ports		      [1]
+      Position		      [580, 45, 665, 335]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Airspeed"
+      Ports		      [1]
+      Position		      [435, 86, 520, 114]
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Airspeed plot"
+      Ports		      [1]
+      Position		      [470, 395, 500, 425]
+      BackgroundColor	      "orange"
+      DropShadow	      on
+      Floating		      off
+      Location		      [820, 70, 1209, 309]
+      Open		      off
+      NumInputPorts	      "1"
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      Grid		      "on"
+      TimeRange		      "300"
+      YMin		      "40"
+      YMax		      "52"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      off
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Bank angle"
+      Ports		      [1]
+      Position		      [435, 236, 520, 264]
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Bank-angle-to-Aileron\nIntegral"
+      Position		      [220, 475, 250, 505]
+      Orientation	      "left"
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Gain		      "0.1*pi/180"
+      Multiplication	      "Element-wise(K.*u)"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Bank-angle-to-Aileron\nProportional"
+      Position		      [220, 410, 250, 440]
+      Orientation	      "left"
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Gain		      "3*pi/180"
+      Multiplication	      "Element-wise(K.*u)"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux"
+      Ports		      [1, 3]
+      Position		      [320, 86, 325, 154]
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "3"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux1"
+      Ports		      [1, 3]
+      Position		      [390, 266, 395, 334]
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "3"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Elevator"
+      Position		      [15, 56, 55, 74]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "-0.05"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Flap"
+      Position		      [15, 16, 55, 34]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "0"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Heading"
+      Ports		      [1]
+      Position		      [435, 336, 520, 364]
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Ignition"
+      Position		      [15, 216, 55, 234]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "1"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Integrator
+      Name		      "Integrator"
+      Ports		      [1, 1]
+      Position		      [305, 475, 335, 505]
+      Orientation	      "left"
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      AbsoluteTolerance	      "auto"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Mixture"
+      Position		      [15, 176, 55, 194]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "13"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux"
+      Ports		      [7, 1]
+      Position		      [130, 20, 135, 190]
+      ShowName		      off
+      Inputs		      "7"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "North American Navion"
+      Ports		      [3, 15]
+      Position		      [175, 57, 290, 353]
+      BackgroundColor	      "lightBlue"
+      DropShadow	      on
+      SourceBlock	      "aerosimlib/Complete Aircraft/6-DOF Aircraft Mod"
+"el\n(Body-frame EOM)"
+      SourceType	      "6-DOF Aircraft Model"
+      aircraftcfg	      "'navioncfg.mat'"
+      VelocitiesIni	      "[50 0 0]'"
+      RatesIni		      "[0 0 0]'"
+      QuaternionsIni	      "[1 0 0 0]'"
+      PositionIni	      "[45*pi/180 -122*pi/180 1000]'"
+      FuelIni		      "200"
+      OmegaIni		      "2400*pi/30"
+      GndAlt		      "20"
+      wmmfile		      "'C:\\Program Files\\AeroSim\\wmm.cof'"
+      dmy		      "[09 01 2002]"
+      tsamp		      "0.05"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Pitch angle"
+      Ports		      [1]
+      Position		      [435, 286, 520, 314]
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Pitch angle plot"
+      Ports		      [1]
+      Position		      [470, 445, 500, 475]
+      BackgroundColor	      "orange"
+      DropShadow	      on
+      Floating		      off
+      Location		      [820, 366, 1209, 605]
+      Open		      off
+      NumInputPorts	      "1"
+      TickLabels	      "OneTimeTick"
+      ZoomMode		      "on"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+      }
+      Grid		      "on"
+      TimeRange		      "300"
+      YMin		      "-5"
+      YMax		      "15"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData1"
+      DataFormat	      "StructureWithTime"
+      LimitDataPoints	      off
+      MaxDataPoints	      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Radians\nto Degrees"
+      Ports		      [1, 1]
+      Position		      [345, 285, 370, 315]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ShowName		      off
+      SourceBlock	      "simulink_extras/Transformations/Radians\nto Deg"
+"rees"
+      SourceType	      "RadiansToDegrees"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Radians\nto Degrees1"
+      Ports		      [1, 1]
+      Position		      [340, 125, 365, 155]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ShowName		      off
+      SourceBlock	      "simulink_extras/Transformations/Radians\nto Deg"
+"rees"
+      SourceType	      "RadiansToDegrees"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Radians\nto Degrees2"
+      Ports		      [1, 1]
+      Position		      [380, 105, 405, 135]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ShowName		      off
+      SourceBlock	      "simulink_extras/Transformations/Radians\nto Deg"
+"rees"
+      SourceType	      "RadiansToDegrees"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Reset"
+      Position		      [15, 296, 55, 314]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "0"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Rudder"
+      Position		      [15, 96, 55, 114]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "0"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Sideslip"
+      Ports		      [1]
+      Position		      [435, 136, 520, 164]
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Stop
+      Name		      "Stop Simulation\nwhen A/C on the ground"
+      Position		      [325, 327, 360, 363]
+      BackgroundColor	      "red"
+      DropShadow	      on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum"
+      Ports		      [2, 1]
+      Position		      [155, 415, 175, 435]
+      Orientation	      "left"
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|++"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Throttle"
+      Position		      [15, 136, 55, 154]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "0.5"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Winds"
+      Position		      [15, 256, 55, 274]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "[0 0 0]"
+      VectorParams1D	      on
+    }
+    Line {
+      SrcBlock		      "Reset"
+      SrcPort		      1
+      DstBlock		      "North American Navion"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Winds"
+      SrcPort		      1
+      Points		      [95, 0; 0, -60]
+      DstBlock		      "North American Navion"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "North American Navion"
+      SrcPort		      1
+      Points		      [255, 0; 0, 125]
+      DstBlock		      "Aircraft states"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "North American Navion"
+      SrcPort		      6
+      Points		      [15, 0; 0, 135]
+      DstBlock		      "Radians\nto Degrees"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "North American Navion"
+      SrcPort		      3
+      Points		      [10, 0]
+      DstBlock		      "Demux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      3
+      DstBlock		      "Radians\nto Degrees1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      2
+      DstBlock		      "Radians\nto Degrees2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      1
+      Points		      [90, 0]
+      Branch {
+	DstBlock		"Airspeed"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 310]
+	DstBlock		"Airspeed plot"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Radians\nto Degrees2"
+      SrcPort		      1
+      Points		      [5, 0; 0, 30]
+      DstBlock		      "Sideslip"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Radians\nto Degrees1"
+      SrcPort		      1
+      Points		      [25, 0; 0, 60]
+      DstBlock		      "AOA"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "North American Navion"
+      SrcPort		      15
+      DstBlock		      "Stop Simulation\nwhen A/C on the ground"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Radians\nto Degrees"
+      SrcPort		      1
+      DstBlock		      "Demux1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      2
+      Points		      [10, 0]
+      Branch {
+	DstBlock		"Pitch angle"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 160]
+	DstBlock		"Pitch angle plot"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      3
+      Points		      [15, 0; 0, 30]
+      DstBlock		      "Heading"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	Points			[0, -30]
+	DstBlock		"Bank angle"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 145]
+	Branch {
+	  DstBlock		  "Bank-angle-to-Aileron\nProportional"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, 65]
+	  DstBlock		  "Integrator"
+	  DstPort		  1
+	}
+      }
+    }
+    Line {
+      SrcBlock		      "Flap"
+      SrcPort		      1
+      Points		      [55, 0]
+      DstBlock		      "Mux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Elevator"
+      SrcPort		      1
+      Points		      [10, 0; 0, -10]
+      DstBlock		      "Mux"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Rudder"
+      SrcPort		      1
+      DstBlock		      "Mux"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "Throttle"
+      SrcPort		      1
+      Points		      [10, 0; 0, -15]
+      DstBlock		      "Mux"
+      DstPort		      5
+    }
+    Line {
+      SrcBlock		      "Mixture"
+      SrcPort		      1
+      Points		      [15, 0; 0, -30]
+      DstBlock		      "Mux"
+      DstPort		      6
+    }
+    Line {
+      SrcBlock		      "Ignition"
+      SrcPort		      1
+      Points		      [20, 0; 0, -45]
+      DstBlock		      "Mux"
+      DstPort		      7
+    }
+    Line {
+      SrcBlock		      "Mux"
+      SrcPort		      1
+      DstBlock		      "North American Navion"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Bank-angle-to-Aileron\nProportional"
+      SrcPort		      1
+      DstBlock		      "Sum"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Integrator"
+      SrcPort		      1
+      DstBlock		      "Bank-angle-to-Aileron\nIntegral"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Bank-angle-to-Aileron\nIntegral"
+      SrcPort		      1
+      Points		      [-50, 0]
+      DstBlock		      "Sum"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Sum"
+      SrcPort		      1
+      Points		      [-50, 0; 0, -345]
+      DstBlock		      "Mux"
+      DstPort		      3
+    }
+    Annotation {
+      Text		      "Groundspeed X-axis"
+      Position		      [727, 53]
+    }
+    Annotation {
+      Text		      "Groundspeed Y-axis"
+      Position		      [727, 73]
+    }
+    Annotation {
+      Text		      "Groundspeed Z-axis"
+      Position		      [727, 93]
+    }
+    Annotation {
+      Text		      "Roll rate p"
+      Position		      [707, 113]
+    }
+    Annotation {
+      Text		      "Pitch rate q"
+      Position		      [707, 133]
+    }
+    Annotation {
+      Text		      "Yaw rate r"
+      Position		      [707, 153]
+    }
+    Annotation {
+      Text		      "Quaternion e0"
+      Position		      [717, 173]
+    }
+    Annotation {
+      Text		      "Quaternion ex"
+      Position		      [717, 193]
+    }
+    Annotation {
+      Text		      "Quaternion ey"
+      Position		      [717, 213]
+    }
+    Annotation {
+      Text		      "Quaternion ez"
+      Position		      [717, 233]
+    }
+    Annotation {
+      Text		      "Latitude"
+      Position		      [702, 253]
+    }
+    Annotation {
+      Text		      "Longitude"
+      Position		      [707, 273]
+    }
+    Annotation {
+      Text		      "Altitude"
+      Position		      [702, 293]
+    }
+    Annotation {
+      Text		      "Fuel mass"
+      Position		      [707, 313]
+    }
+    Annotation {
+      Text		      "Engine speed"
+      Position		      [717, 333]
+    }
+    Annotation {
+      Text		      "Navion - Demo 3\nSimulation sample time: 50 ms"
+"\nSimulation time: 5 min.\nAircraft control: longitudinal - open-loop\n      "
+"           lateral - closed-loop"
+      Position		      [689, 543]
+    }
+    Annotation {
+      Text		      "Bank-angle to ailerons PI control"
+      Position		      [194, 400]
+    }
+    Annotation {
+      Text		      "With the lateral modes stabilized, we can now "
+"\ntake a look at the longitudinal dynamics: the airspeed\nand pitch angle plo"
+"ts illustrate the slow-damping \nphugoid mode."
+      Position		      [654, 441]
+    }
+  }
+}

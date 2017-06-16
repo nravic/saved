@@ -1,0 +1,836 @@
+Model {
+  Name			  "c172fg_demo"
+  Version		  4.0
+  SampleTimeColors	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  Created		  "Fri Sep 20 10:43:05 2002"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "mariusn"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Sat Aug 02 14:45:40 2003"
+  ModelVersionFormat	  "1.%<AutoIncrement:39>"
+  ConfigurationManager	  "None"
+  SimParamPage		  "Solver"
+  LinearizationMsg	  "none"
+  Profile		  off
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeLogAll		  on
+  BufferReuse		  on
+  SimulationMode	  "normal"
+  Solver		  "ode4"
+  SolverMode		  "SingleTasking"
+  StartTime		  "0.0"
+  StopTime		  "180"
+  MaxOrder		  5
+  MaxStep		  "auto"
+  MinStep		  "auto"
+  MaxNumMinSteps	  "-1"
+  InitialStep		  "auto"
+  FixedStep		  "0.02"
+  RelTol		  "1e-3"
+  AbsTol		  "auto"
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  Refine		  "1"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveTime		  off
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  off
+  OutputSaveName	  "yout"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Array"
+  Decimation		  "1"
+  LimitDataPoints	  off
+  MaxDataPoints		  "1000"
+  ConsistencyChecking	  "none"
+  ArrayBoundsChecking	  "none"
+  AlgebraicLoopMsg	  "warning"
+  BlockPriorityViolationMsg "warning"
+  MinStepSizeMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  MultiTaskRateTransMsg	  "error"
+  SingleTaskRateTransMsg  "none"
+  CheckForMatrixSingularity "none"
+  IntegerOverflowMsg	  "warning"
+  Int32ToFloatConvMsg	  "warning"
+  UnnecessaryDatatypeConvMsg "none"
+  VectorMatrixConversionMsg "none"
+  SignalLabelMismatchMsg  "none"
+  UnconnectedInputMsg	  "none"
+  UnconnectedOutputMsg	  "none"
+  UnconnectedLineMsg	  "none"
+  SfunCompatibilityCheckMsg "none"
+  RTWInlineParameters	  off
+  BlockReductionOpt	  on
+  BooleanDataType	  on
+  ParameterPooling	  on
+  OptimizeBlockIOStorage  on
+  ZeroCross		  on
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  RTWRetainRTWFile	  off
+  TLCProfiler		  off
+  TLCDebug		  off
+  TLCCoverage		  off
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "tp453729"
+    Location		    [486, 103, 1209, 757]
+    Open		    off
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      Display
+      Name		      "ALT ft"
+      Ports		      [1]
+      Position		      [470, 208, 555, 232]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "AOA deg"
+      Ports		      [1]
+      Position		      [470, 72, 555, 98]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Aerodynamic\nCoefficients"
+      Ports		      [1]
+      Position		      [580, 193, 665, 317]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Air/Fuel Ratio"
+      Ports		      [1]
+      Position		      [535, 413, 620, 437]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Attitude"
+      Ports		      [1]
+      Position		      [415, 539, 500, 601]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "CESSNA-172"
+      Ports		      [3, 9]
+      Position		      [210, 51, 310, 329]
+      BackgroundColor	      "lightBlue"
+      DropShadow	      on
+      SourceBlock	      "aerosimlib/FlightGear-Compatible/Complete Aircr"
+"aft/CESSNA-172"
+      SourceType	      "FlightGear Aircraft Model"
+      ACName		      "'c172p'"
+      FGPath		      "'c:\\flightgear-0.9.2\\data'"
+      VelocitiesIni	      "[60 0 0]'"
+      RatesIni		      "[0 0 0]'"
+      QuaternionsIni	      "[1 0 0 0]'"
+      PositionIni	      "[37.6*pi/180 -122.3*pi/180 2000]'"
+      OmegaIni		      "2500*pi/30"
+      FuelIni		      "[50 50]"
+      GndAlt		      "0"
+      tsamp		      "0.02"
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux"
+      Ports		      [1, 3]
+      Position		      [310, 423, 315, 477]
+      Orientation	      "left"
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "3"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux1"
+      Ports		      [1, 3]
+      Position		      [355, 118, 360, 172]
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "3"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux2"
+      Ports		      [1, 5]
+      Position		      [390, 377, 395, 463]
+      BackgroundColor	      "black"
+      ShowName		      off
+      Outputs		      "5"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Elevator"
+      Position		      [25, 52, 55, 68]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "0.05"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Ignition"
+      Position		      [25, 182, 55, 198]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "1"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Display
+      Name		      "KTAS"
+      Ports		      [1]
+      Position		      [470, 28, 555, 52]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "LAT deg"
+      Ports		      [1]
+      Position		      [470, 118, 555, 142]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "LON deg"
+      Ports		      [1]
+      Position		      [470, 163, 555, 187]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "MAP inHg"
+      Ports		      [1]
+      Position		      [535, 368, 620, 392]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Mixture"
+      Position		      [25, 147, 55, 163]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "0.8"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux"
+      Ports		      [7, 1]
+      Position		      [140, 24, 145, 176]
+      ShowName		      off
+      Inputs		      "7"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Pa2inHg"
+      Position		      [475, 365, 505, 395]
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Gain		      "0.00029529"
+      Multiplication	      "Element-wise(K.*u)"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Pitch Damper"
+      Position		      [215, 410, 245, 440]
+      Orientation	      "left"
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Gain		      "2"
+      Multiplication	      "Element-wise(K.*u)"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Power HP"
+      Ports		      [1]
+      Position		      [535, 458, 620, 482]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Product
+      Name		      "Product"
+      Ports		      [2, 1]
+      Position		      [415, 395, 450, 430]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ShowName		      off
+      Inputs		      "*/"
+      Multiplication	      "Element-wise(.*)"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Display
+      Name		      "Propeller \nCoefficients"
+      Ports		      [1]
+      Position		      [395, 264, 480, 326]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Display
+      Name		      "RPM"
+      Ports		      [1]
+      Position		      [535, 503, 620, 527]
+      BackgroundColor	      "cyan"
+      DropShadow	      on
+      Format		      "short"
+      Decimation	      "1"
+      Floating		      off
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Radians\nto Degrees"
+      Ports		      [1, 1]
+      Position		      [395, 70, 425, 100]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ShowName		      off
+      SourceBlock	      "simulink_extras/Transformations/Radians\nto Deg"
+"rees"
+      SourceType	      "RadiansToDegrees"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Radians\nto Degrees1"
+      Ports		      [1, 1]
+      Position		      [395, 110, 425, 140]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ShowName		      off
+      SourceBlock	      "simulink_extras/Transformations/Radians\nto Deg"
+"rees"
+      SourceType	      "RadiansToDegrees"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Radians\nto Degrees2"
+      Ports		      [1, 1]
+      Position		      [395, 145, 425, 175]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ShowName		      off
+      SourceBlock	      "simulink_extras/Transformations/Radians\nto Deg"
+"rees"
+      SourceType	      "RadiansToDegrees"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Radians\nto Degrees3"
+      Ports		      [1, 1]
+      Position		      [360, 555, 390, 585]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ShowName		      off
+      SourceBlock	      "simulink_extras/Transformations/Radians\nto Deg"
+"rees"
+      SourceType	      "RadiansToDegrees"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Roll Damper"
+      Position		      [215, 465, 245, 495]
+      Orientation	      "left"
+      BackgroundColor	      "yellow"
+      DropShadow	      on
+      Gain		      "-2"
+      Multiplication	      "Element-wise(K.*u)"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum"
+      Ports		      [2, 1]
+      Position		      [100, 50, 120, 70]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|++"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Throttle"
+      Position		      [25, 112, 55, 128]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "0.6"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "W2HP"
+      Position		      [475, 455, 505, 485]
+      BackgroundColor	      "yellow"
+      Gain		      "0.00134102"
+      Multiplication	      "Element-wise(K.*u)"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "Winds"
+      Position		      [155, 182, 185, 198]
+      BackgroundColor	      "magenta"
+      DropShadow	      on
+      Value		      "[0 0 0]"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "m 2 ft"
+      Ports		      [1, 1]
+      Position		      [395, 204, 445, 236]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      SourceBlock	      "aerosimlib/Unit Conversion/Distance/m 2 ft"
+      SourceType	      "Meters to feet"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "m/s 2 kts"
+      Ports		      [1, 1]
+      Position		      [395, 19, 445, 51]
+      BackgroundColor	      "green"
+      DropShadow	      on
+      SourceBlock	      "aerosimlib/Unit Conversion/Velocity/m//s 2 kts"
+      SourceType	      "Meters per second to knots"
+    }
+    Line {
+      SrcBlock		      "Mux"
+      SrcPort		      1
+      DstBlock		      "CESSNA-172"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Winds"
+      SrcPort		      1
+      DstBlock		      "CESSNA-172"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Throttle"
+      SrcPort		      1
+      DstBlock		      "Mux"
+      DstPort		      5
+    }
+    Line {
+      SrcBlock		      "Mixture"
+      SrcPort		      1
+      Points		      [15, 0; 0, -15]
+      DstBlock		      "Mux"
+      DstPort		      6
+    }
+    Line {
+      SrcBlock		      "Ignition"
+      SrcPort		      1
+      Points		      [20, 0; 0, -30]
+      DstBlock		      "Mux"
+      DstPort		      7
+    }
+    Line {
+      SrcBlock		      "Elevator"
+      SrcPort		      1
+      DstBlock		      "Sum"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum"
+      SrcPort		      1
+      DstBlock		      "Mux"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      1
+      Points		      [-25, 0; 0, 50]
+      DstBlock		      "Roll Damper"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      2
+      Points		      [-35, 0; 0, -25]
+      DstBlock		      "Pitch Damper"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CESSNA-172"
+      SrcPort		      4
+      Points		      [25, 0; 0, 290]
+      Branch {
+	DstBlock		"Demux"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 120]
+	DstBlock		"Radians\nto Degrees3"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Pitch Damper"
+      SrcPort		      1
+      Points		      [-100, 0]
+      DstBlock		      "Sum"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Roll Damper"
+      SrcPort		      1
+      Points		      [-90, 0; 0, -400]
+      DstBlock		      "Mux"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "m/s 2 kts"
+      SrcPort		      1
+      Points		      [5, 0]
+      DstBlock		      "KTAS"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CESSNA-172"
+      SrcPort		      1
+      Points		      [20, 0; 0, -35]
+      DstBlock		      "m/s 2 kts"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CESSNA-172"
+      SrcPort		      2
+      Points		      [20, 0; 0, -15]
+      DstBlock		      "Radians\nto Degrees"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Radians\nto Degrees"
+      SrcPort		      1
+      DstBlock		      "AOA deg"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CESSNA-172"
+      SrcPort		      3
+      Points		      [20, 0; 0, 15]
+      DstBlock		      "Demux1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      1
+      DstBlock		      "Radians\nto Degrees1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      2
+      Points		      [10, 0; 0, 15]
+      DstBlock		      "Radians\nto Degrees2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Radians\nto Degrees1"
+      SrcPort		      1
+      Points		      [10, 0; 0, 5]
+      DstBlock		      "LAT deg"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Radians\nto Degrees2"
+      SrcPort		      1
+      Points		      [10, 0; 0, 15]
+      DstBlock		      "LON deg"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "m 2 ft"
+      SrcPort		      1
+      DstBlock		      "ALT ft"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux1"
+      SrcPort		      3
+      Points		      [10, 0; 0, 55]
+      DstBlock		      "m 2 ft"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CESSNA-172"
+      SrcPort		      6
+      Points		      [50, 0; 0, 35]
+      DstBlock		      "Aerodynamic\nCoefficients"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CESSNA-172"
+      SrcPort		      7
+      Points		      [40, 0; 0, 45]
+      DstBlock		      "Propeller \nCoefficients"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CESSNA-172"
+      SrcPort		      8
+      Points		      [35, 0; 0, 140]
+      DstBlock		      "Demux2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux2"
+      SrcPort		      1
+      Points		      [25, 0; 0, -10]
+      DstBlock		      "Pa2inHg"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Pa2inHg"
+      SrcPort		      1
+      DstBlock		      "MAP inHg"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux2"
+      SrcPort		      2
+      DstBlock		      "Product"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux2"
+      SrcPort		      3
+      DstBlock		      "Product"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Product"
+      SrcPort		      1
+      Points		      [30, 0; 0, 10]
+      DstBlock		      "Air/Fuel Ratio"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "W2HP"
+      SrcPort		      1
+      DstBlock		      "Power HP"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux2"
+      SrcPort		      5
+      Points		      [30, 0; 0, 20]
+      DstBlock		      "W2HP"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CESSNA-172"
+      SrcPort		      9
+      Points		      [30, 0; 0, 205]
+      DstBlock		      "RPM"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Radians\nto Degrees3"
+      SrcPort		      1
+      DstBlock		      "Attitude"
+      DstPort		      1
+    }
+    Annotation {
+      Text		      "Engine\n Parameters"
+      Position		      [679, 454]
+    }
+    Annotation {
+      Text		      "Basic Autopilot"
+      Position		      [236, 534]
+    }
+    Annotation {
+      Text		      "J"
+      Position		      [494, 273]
+      HorizontalAlignment     "left"
+    }
+    Annotation {
+      Text		      "CP"
+      Position		      [491, 293]
+      HorizontalAlignment     "left"
+    }
+    Annotation {
+      Text		      "CT"
+      Position		      [493, 315]
+      HorizontalAlignment     "left"
+    }
+    Annotation {
+      Text		      "CD"
+      Position		      [681, 205]
+    }
+    Annotation {
+      Text		      "CY"
+      Position		      [681, 225]
+    }
+    Annotation {
+      Text		      "CL"
+      Position		      [681, 245]
+    }
+    Annotation {
+      Text		      "Cl"
+      Position		      [681, 265]
+    }
+    Annotation {
+      Text		      "Cm"
+      Position		      [681, 285]
+    }
+    Annotation {
+      Text		      "Cn"
+      Position		      [681, 305]
+    }
+    Annotation {
+      Text		      "CESSNA-172 - Demo\nUsing JSBSim aircraft config"
+"uration file\n(FlightGear 0.9.2)\nSimulation sample time: 20 ms\nSimulation t"
+"ime: 3 min."
+      Position		      [614, 605]
+    }
+  }
+}

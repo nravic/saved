@@ -1,0 +1,2 @@
+LIBRARY SFUNJOY.DLL
+EXPORTS mexFunction

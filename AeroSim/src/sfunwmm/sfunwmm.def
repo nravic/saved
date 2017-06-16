@@ -1,0 +1,2 @@
+LIBRARY SFUNWMM.DLL
+EXPORTS mexFunction
